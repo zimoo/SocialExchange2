@@ -5,8 +5,4 @@ using System.Text;
 
 namespace SocialExchange2
 {
-    public abstract class Outcome : ValueEnum<string>
-    {
-        public Outcome(string value) : base(value) { }
-    }
 }
