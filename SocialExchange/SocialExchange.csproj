@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{067C9432-CC3B-40E8-B564-CDE4FA3FD197}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SocialExchange</RootNamespace>
+    <AssemblyName>SocialExchange</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Enumerant.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="ImplicitRecognitionActivity.cs" />
+    <Compile Include="ImplicitRecognitionOutcomes.cs" />
+    <Compile Include="ImplicitRecognitionTask.cs" />
+    <Compile Include="PlayerInput.cs" />
+    <Compile Include="Interaction.cs" />
+    <Compile Include="LogicEngine.cs" />
+    <Compile Include="ITimestamped.cs" />
+    <Compile Include="Outcome.cs" />
+    <Compile Include="Persona.cs" />
+    <Compile Include="PersonaClassifications.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Round.cs" />
+    <Compile Include="SetOnceBackingField.cs" />
+    <Compile Include="Task.cs" />
+    <Compile Include="TrustExchange.cs" />
+    <Compile Include="TrustExchangeRound.cs" />
+    <Compile Include="TrustExchangeTask.cs" />
+    <Compile Include="TrustExchangeTask2.cs" />
+    <Compile Include="ValueEnum.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Females\C2_021_F2.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_023_F3.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_032_F7.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_039_F9.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_054_F12.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_071_F15.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_085_F16.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_087_F17.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_117_F22.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_123_F23.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_131_F25.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_132_F26.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_135_F27.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_137_F28.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_142_F29.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_143_F30.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_152_F31.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_153_F32.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_002_M1.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_005_M3.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_045_M10.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_048_M12.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_051_M13.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_079_M16.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_081_M18.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_086_M19.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_095_M21.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_103_M23.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_106_M24.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_109_M25.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_140_M27.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_147_M28.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_151_M29.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_155_M30.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_158_M31.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_159_M32.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_172_M34.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_183_M36.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
