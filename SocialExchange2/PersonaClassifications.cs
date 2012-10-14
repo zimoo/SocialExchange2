@@ -5,23 +5,17 @@ using System.Text;
 
 namespace SocialExchange2
 {
-    public static class InteractionOutcomes
+    public class PersonaClassification : ValueEnum<string>
     {
-        public static readonly InteractionOutcome INDETERMINATE = new InteractionOutcome("INDETERMINATE");
-        public static readonly InteractionOutcome DEFECTOR = new InteractionOutcome("DEFECTOR");
-        public static readonly InteractionOutcome COOPERATOR = new InteractionOutcome("COOPERATOR");
-        public static readonly InteractionOutcome NOVEL = new InteractionOutcome("NOVEL");
-        public static readonly InteractionOutcome IMPLICITLY_CHOSEN = new InteractionOutcome("IMPLICITLY_CHOSEN");
-        public static readonly InteractionOutcome IMPLICITLY_DISCARDED = new InteractionOutcome("IMPLICITLY_DISCARDED");
-        public static readonly InteractionOutcome EXPLICITLY_RECOGNIZED_AS_COOPERATOR = new InteractionOutcome("EXPLICITLY_RECOGNIZED_AS_COOPERATOR");
-        public static readonly InteractionOutcome EXPLICITLY_RECOGNIZED_AS_DEFECTOR = new InteractionOutcome("EXPLICITLY_RECOGNIZED_AS_DEFECTOR");
-        public static readonly InteractionOutcome EXPLICITLY_NOT_RECOGNIZED = new InteractionOutcome("EXPLICITLY_NOT_RECOGNIZED");
+        public PersonaClassification(string value) : base(value) { }
     }
 
-    public class InteractionOutcome : ValueEnum<string>
+    public static class PersonaClassifications
     {
-        public const string Prefix = "";
-
-        public InteractionOutcome(string value) : base(Prefix + value) { }
+        public static readonly PersonaClassification Unused = new PersonaClassification("Unused");
+        public static readonly PersonaClassification Novel = new PersonaClassification("Novel");
+        public static readonly PersonaClassification Cooperator = new PersonaClassification("Cooperator");
+        public static readonly PersonaClassification Defector = new PersonaClassification("Defector");
+        public static readonly PersonaClassification Indeterminate = new PersonaClassification("Indeterminate");
     }
 }

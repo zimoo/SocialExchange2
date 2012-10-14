@@ -44,28 +44,22 @@ namespace SocialExchange2
             return CurrentRound;
         }
 
-        //public InteractionOutcome PlayerSubmits(bool givesPoint)
-        //{
-        //    if (givesPoint)
-        //    {
-        //        CurrentRound.PlayerGivesPointToPersona();
-        //    }
-        //    else
-        //    {
-        //        CurrentRound.PlayerSkipsPersona();
-        //    }
+        public PersonaClassification PlayerSubmits(bool givesPoint)
+        {
+            CurrentRound.PlayerSubmits(givesPoint);
+            PersonaClassification result = CurrentRound.PersonaClassification;
 
-        //    EndTimestamp =
-        //        CurrentRoundIndex == Rounds.Count - 1 ?
-        //        DateTime.Now :
-        //        default(DateTime);
+            EndTimestamp =
+                CurrentRoundIndex == Rounds.Count - 1 ?
+                DateTime.Now :
+                default(DateTime);
 
-        //    return CurrentRound.TrustExchange.PersonaClassification;
-        //}
+            return result;
+        }
 
-        //public int GetCount(PersonaClassification classification)
-        //{
-        //    return Rounds.Where(r => r.TrustExchange.PersonaClassification == classification).Count();
-        //}
+        public int GetCount(PersonaClassification personaClassification)
+        {
+            return Rounds.Where(r => r.PersonaClassification == personaClassification).Count();
+        }
     }
 }

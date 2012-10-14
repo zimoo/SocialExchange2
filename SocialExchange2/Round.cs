@@ -9,6 +9,9 @@ namespace SocialExchange2
     {
         public Persona Persona { get; protected set; }
 
+        public PlayerInputClassification PlayerInputClassification { get; protected set; }
+        public PersonaClassification PersonaClassification { get; protected set; }
+
         public DateTime BeginTimestamp { get; protected set; }
         public DateTime EndTimestamp { get; protected set; }
 

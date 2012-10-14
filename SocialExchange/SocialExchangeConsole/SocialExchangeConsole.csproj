@@ -45,6 +45,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\SocialExchange2\SocialExchange2.csproj">
+      <Project>{17717df4-7a0b-48da-b73a-93d182160e07}</Project>
+      <Name>SocialExchange2</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SocialExchange.csproj">
       <Project>{067c9432-cc3b-40e8-b564-cde4fa3fd197}</Project>
       <Name>SocialExchange</Name>

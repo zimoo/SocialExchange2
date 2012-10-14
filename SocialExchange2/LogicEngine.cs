@@ -12,7 +12,7 @@ namespace SocialExchange2
     {
         public List<Persona> Personas { get; protected set; }
         public TrustExchangeTask TrustExchangeTask { get; protected set; }
-        public Func<InteractionOutcome> PersonaResponseLogic { get; protected set; }
+        public Func<PersonaClassification> PersonaResponseLogic { get; protected set; }
         public int TrustExchangeTaskRoundcount = 5;
 
         public LogicEngine()
@@ -52,16 +52,21 @@ namespace SocialExchange2
                 if (!rounds.Select(r => r.Persona).Cast<Persona>().ToList().Contains(roundPersonaCandidate))
                 {
                     rounds.Add(
-                        new TrustExchangeRound(
+                        new TrustExchangeRound
+                        (
                             roundPersonaCandidate,
-                            () =>
-                            {
-                                InteractionOutcome[] options =
-                                    new InteractionOutcome[] { InteractionOutcomes.COOPERATOR, InteractionOutcomes.DEFECTOR };
+                            (points) =>
+                                {
+                                    return 0;
+                                },
+                            (points) =>
+                                {
+                                    PersonaClassification[] options =
+                                        new PersonaClassification[] { PersonaClassifications.Cooperator, PersonaClassifications.Defector };
 
-                                return
-                                    options[new Random().Next(0, options.Count())];
-                            }
+                                    return
+                                        options[new Random().Next(0, options.Count())];
+                                }
                         )
                     );
                 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Globalization;
-using SocialExchange;
+using SocialExchange2;
 
 namespace SocialExchangeConsole
 {
@@ -31,7 +31,7 @@ namespace SocialExchangeConsole
 
                 LogicEngine.TrustExchangeTask.PlayerSubmits(playerInput);
 
-                Console.WriteLine(string.Format("RESPONSE: {0}", LogicEngine.TrustExchangeTask.CurrentRound.TrustExchange.PersonaClassification.Value));
+                Console.WriteLine(string.Format("RESPONSE: {0}", LogicEngine.TrustExchangeTask.CurrentRound.PersonaClassification.Value));
                 Console.WriteLine();
 
                 if(LogicEngine.TrustExchangeTask.CurrentRoundIndex == LogicEngine.TrustExchangeTask.Rounds.Count - 1)
@@ -44,11 +44,10 @@ namespace SocialExchangeConsole
                 }
             }
 
-            Console.WriteLine(string.Format("TOTAL COOPERATORS: {0}", LogicEngine.TrustExchangeTask.GetCount(PersonaClassifications.COOPERATOR)));
-            Console.WriteLine(string.Format("TOTAL DEFECTORS:   {0}", LogicEngine.TrustExchangeTask.GetCount(PersonaClassifications.DEFECTOR)));
-            Console.WriteLine(string.Format("TOTAL SKIPPED:   {0}", LogicEngine.TrustExchangeTask.GetCount(PersonaClassifications.SKIPPED)));
-            Console.WriteLine(string.Format("TOTAL INDETERMINATE:   {0}", LogicEngine.TrustExchangeTask.GetCount(PersonaClassifications.INDETERMINATE)));
-            Console.WriteLine(string.Format("TOTAL NOVEL:   {0}", LogicEngine.TrustExchangeTask.GetCount(PersonaClassifications.NOVEL)));
+            Console.WriteLine(string.Format("TOTAL COOPERATORS: {0}", LogicEngine.TrustExchangeTask.GetCount(PersonaClassifications.Cooperator)));
+            Console.WriteLine(string.Format("TOTAL DEFECTORS:   {0}", LogicEngine.TrustExchangeTask.GetCount(PersonaClassifications.Defector)));
+            Console.WriteLine(string.Format("TOTAL INDETERMINATE:   {0}", LogicEngine.TrustExchangeTask.GetCount(PersonaClassifications.Indeterminate)));
+            Console.WriteLine(string.Format("TOTAL NOVEL:   {0}", LogicEngine.TrustExchangeTask.GetCount(PersonaClassifications.Novel)));
         }
     }
 }

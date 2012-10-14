@@ -7,22 +7,45 @@ namespace SocialExchange2
 {
     public class TrustExchangeRound : Round
     {
-        public TrustExchangeInteraction TrustExchangeInteraction { get; protected set; }
+        public int PlayerToPersonaRawPoints { get; protected set; }
+        public int PersonaToPlayerRawPoints { get; protected set; }
+        public Func<int, int> GetPersonaReturnPoints { get; protected set; }
+        public Func<PlayerInputClassification, PersonaClassification> GetPersonaClassification { get; protected set; }
 
-        public TrustExchangeRound(Persona persona, Func<InteractionOutcome> interactionOutcomeLogic)
+        public TrustExchangeRound
+        (
+            Persona persona, 
+            Func<int, int> getPersonaReturnPoints, 
+            Func<PlayerInputClassification, PersonaClassification> getPersonaClassification
+        )
             : base(persona)
         {
-            TrustExchangeInteraction = new TrustExchangeInteraction(interactionOutcomeLogic);                
+            PlayerToPersonaRawPoints = 0;
+            PersonaToPlayerRawPoints = 0;
+            PersonaClassification = PersonaClassifications.Indeterminate;
+            GetPersonaReturnPoints = getPersonaReturnPoints;
+            GetPersonaClassification = getPersonaClassification;
         }
 
-        //public void PlayerGivesPointToPersona()
-        //{
-        //    TrustExchangeInteraction.PlayerGivesPointToPersona();
-        //}
+        internal void PlayerSubmits(bool givesPoint)
+        {
+            throw new NotImplementedException();
+        }
 
-        //public void PlayerSkipsPersona()
+
+        //public int PlayerGivesPointsToPersona(int rawPoints)
         //{
-        //    TrustExchangeInteraction.PlayerSkipsPersona();
+        //    PlayerToPersonaRawPoints = rawPoints;
+
+        //    InteractionOutcome =
+        //        GetInteractionOutcome
+        //        (
+        //            rawPoints > 0 ?
+        //            Interaction.PlayerInput.GavePoints :
+        //            Interaction.PlayerInput.GaveZeroPoints
+        //        );
+
+        //    return PersonaToPlayerRawPoints = GetPersonaReturnPoints(rawPoints);
         //}
     }
 }
