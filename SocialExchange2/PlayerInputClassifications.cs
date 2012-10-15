@@ -11,7 +11,6 @@ namespace SocialExchange2
     }
     public class PlayerInputClassifications
     {
-        public static readonly PlayerInputClassification GaveNoPoints = new PlayerInputClassification("GaveNoPoints");
         public static readonly PlayerInputClassification GavePoints = new PlayerInputClassification("GavePoints");
         public static readonly PlayerInputClassification ImplicitlyChosePersona = new PlayerInputClassification("ImplicitlyChosePersona");
         public static readonly PlayerInputClassification ImplicitlyDiscardedPersona = new PlayerInputClassification("ImplicitlyDiscardedPersona");

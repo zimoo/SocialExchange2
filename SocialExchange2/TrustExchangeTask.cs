@@ -34,32 +34,33 @@ namespace SocialExchange2
             CurrentRoundIndex = 0;
         }
 
-        public Round Advance()
+        public void ProcessPlayerInput(int points)
         {
-            CurrentRoundIndex =
-                (CurrentRoundIndex >= 0) && (CurrentRoundIndex + 1 < Rounds.Count) ?
-                CurrentRoundIndex + 1 :
-                CurrentRoundIndex;
-
-            return CurrentRound;
-        }
-
-        public PersonaClassification PlayerSubmits(bool givesPoint)
-        {
-            CurrentRound.PlayerSubmits(givesPoint);
-            PersonaClassification result = CurrentRound.PersonaClassification;
+            CurrentRound.ProcessPlayerInput(points);
 
             EndTimestamp =
                 CurrentRoundIndex == Rounds.Count - 1 ?
                 DateTime.Now :
                 default(DateTime);
-
-            return result;
         }
 
         public int GetCount(PersonaClassification personaClassification)
         {
             return Rounds.Where(r => r.PersonaClassification == personaClassification).Count();
+        }
+
+
+        public Round AdvanceToNextRound()
+        {
+            if (CurrentRoundIndex < Rounds.Count - 1)
+            {
+                CurrentRoundIndex =
+                    (CurrentRoundIndex >= 0) && (CurrentRoundIndex + 1 < Rounds.Count) ?
+                    CurrentRoundIndex + 1 :
+                    CurrentRoundIndex;
+            }
+
+            return Rounds[CurrentRoundIndex];
         }
     }
 }

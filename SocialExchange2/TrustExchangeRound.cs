@@ -9,7 +9,7 @@ namespace SocialExchange2
     {
         public int PlayerToPersonaRawPoints { get; protected set; }
         public int PersonaToPlayerRawPoints { get; protected set; }
-        public Func<int, int> GetPersonaReturnPoints { get; protected set; }
+        public Func<int, int> GetRawPersonaReturnPoints { get; protected set; }
         public Func<PlayerInputClassification, PersonaClassification> GetPersonaClassification { get; protected set; }
 
         public TrustExchangeRound
@@ -23,29 +23,20 @@ namespace SocialExchange2
             PlayerToPersonaRawPoints = 0;
             PersonaToPlayerRawPoints = 0;
             PersonaClassification = PersonaClassifications.Indeterminate;
-            GetPersonaReturnPoints = getPersonaReturnPoints;
+            GetRawPersonaReturnPoints = getPersonaReturnPoints;
             GetPersonaClassification = getPersonaClassification;
         }
 
-        internal void PlayerSubmits(bool givesPoint)
+        internal void ProcessPlayerInput(int points)
         {
-            throw new NotImplementedException();
+            PlayerToPersonaRawPoints += points;
+            PlayerInputClassification = PlayerInputClassifications.GavePoints;
+
+            PersonaClassification = GetPersonaClassification(PlayerInputClassification);
+            if(PersonaClassification.Value == PersonaClassifications.Cooperator.Value)
+            {
+                PersonaToPlayerRawPoints += GetRawPersonaReturnPoints(points);
+            }
         }
-
-
-        //public int PlayerGivesPointsToPersona(int rawPoints)
-        //{
-        //    PlayerToPersonaRawPoints = rawPoints;
-
-        //    InteractionOutcome =
-        //        GetInteractionOutcome
-        //        (
-        //            rawPoints > 0 ?
-        //            Interaction.PlayerInput.GavePoints :
-        //            Interaction.PlayerInput.GaveZeroPoints
-        //        );
-
-        //    return PersonaToPlayerRawPoints = GetPersonaReturnPoints(rawPoints);
-        //}
     }
 }

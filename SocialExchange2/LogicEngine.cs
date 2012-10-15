@@ -11,8 +11,10 @@ namespace SocialExchange2
     public class LogicEngine
     {
         public List<Persona> Personas { get; protected set; }
+
         public TrustExchangeTask TrustExchangeTask { get; protected set; }
-        public Func<PersonaClassification> PersonaResponseLogic { get; protected set; }
+        public int TrustExchangePointsMultiplier { get; protected set; }
+
         public int TrustExchangeTaskRoundcount = 5;
 
         public LogicEngine()
@@ -42,8 +44,9 @@ namespace SocialExchange2
 
         private void InitializeTrustExchangeTask()
         {
-            List<TrustExchangeRound> rounds = new List<TrustExchangeRound>(TrustExchangeTaskRoundcount);
+            TrustExchangePointsMultiplier = 2;
 
+            List<TrustExchangeRound> rounds = new List<TrustExchangeRound>(TrustExchangeTaskRoundcount);
             TrustExchangeTask = new TrustExchangeTask(rounds);
 
             while (rounds.Count < TrustExchangeTaskRoundcount)
@@ -57,7 +60,7 @@ namespace SocialExchange2
                             roundPersonaCandidate,
                             (points) =>
                                 {
-                                    return 0;
+                                    return points * TrustExchangePointsMultiplier;
                                 },
                             (points) =>
                                 {
@@ -71,16 +74,6 @@ namespace SocialExchange2
                     );
                 }
             }
-        }
-
-        public bool AdvanceTrustExchangeRound()
-        {
-            if (TrustExchangeTask.CurrentRoundIndex < TrustExchangeTask.Rounds.Count - 1)
-            {
-                TrustExchangeTask.Advance();
-            }
-
-            return TrustExchangeTask.CurrentRoundIndex == TrustExchangeTask.Rounds.Count - 1;
         }
     }
 }

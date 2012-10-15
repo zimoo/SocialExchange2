@@ -53,6 +53,56 @@
     <Compile Include="TrustExchangeTask.cs" />
     <Compile Include="ValueEnum.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Females\C2_021_F2.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_023_F3.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_028_F5.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_037_F8.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_039_F9.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_071_F15.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_085_F16.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_088_F18.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_123_F23.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_135_F27.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_142_F29.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_143_F30.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_152_F31.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_153_F32.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_160_f33.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_167_F34.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_168_F35.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_184_F38.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_185_F39.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_217_F44.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_234_F46.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_235_F47.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_242_F48.jpg" />
+    <EmbeddedResource Include="Images\Females\C2_244_F49.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_027_M7.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_036_M9.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_051_M13.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_064_M14.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_070_M15.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_079_M16.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_086_M19.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_090_M20.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_102_M22.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_103_M23.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_106_M24.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_109_M25.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_139_M26.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_151_M29.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_159_M32.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_175_M35.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_183_M36.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_199_M37.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_202_M38.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_209_M40.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_226_M44.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_227_M45.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_238_M49.jpg" />
+    <EmbeddedResource Include="Images\Males\C2_239_M50.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

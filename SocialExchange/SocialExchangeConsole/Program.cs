@@ -25,11 +25,13 @@ namespace SocialExchangeConsole
                 Console.WriteLine(string.Format("ROUND {0} / {1}:", LogicEngine.TrustExchangeTask.CurrentRoundIndex + 1, LogicEngine.TrustExchangeTask.Rounds.Count));
                 Console.WriteLine(string.Format("PERSONA: {0}", LogicEngine.TrustExchangeTask.CurrentRound.Persona.Filename));
 
-                Console.Write("Give points? (Y/N) ");
+                Console.Write("Give how many points? (1/2) ");
 
-                bool playerInput = Console.In.ReadLine().StartsWith("Y", true, CultureInfo.InvariantCulture);
+                int points = -1;
+                Int32.TryParse(Console.In.ReadLine(), out points);//.StartsWith("1", true, CultureInfo.InvariantCulture);
 
-                LogicEngine.TrustExchangeTask.PlayerSubmits(playerInput);
+                // TODO : wrap this in order to redirect invalid input
+                LogicEngine.TrustExchangeTask.ProcessPlayerInput(points);
 
                 Console.WriteLine(string.Format("RESPONSE: {0}", LogicEngine.TrustExchangeTask.CurrentRound.PersonaClassification.Value));
                 Console.WriteLine();
@@ -40,7 +42,7 @@ namespace SocialExchangeConsole
                 }
                 else
                 {
-                    LogicEngine.AdvanceTrustExchangeRound();
+                    LogicEngine.TrustExchangeTask.AdvanceToNextRound();
                 }
             }
 
