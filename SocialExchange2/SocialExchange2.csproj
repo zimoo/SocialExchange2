@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RecognitionTask.cs" />
+    <Compile Include="RecognitionRound.cs" />
     <Compile Include="PersonaClassifications.cs" />
     <Compile Include="PlayerInputClassifications.cs" />
     <Compile Include="LogicEngine.cs" />

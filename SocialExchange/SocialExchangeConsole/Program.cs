@@ -28,7 +28,7 @@ namespace SocialExchangeConsole
                 Console.Write("Give how many points? (1/2) ");
 
                 int points = -1;
-                Int32.TryParse(Console.In.ReadLine(), out points);//.StartsWith("1", true, CultureInfo.InvariantCulture);
+                Int32.TryParse(Console.In.ReadLine(), out points);
 
                 // TODO : wrap this in order to redirect invalid input
                 LogicEngine.TrustExchangeTask.ProcessPlayerInput(points);

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SocialExchange2
 {
-    public partial class TrustExchangeTask
+    public class TrustExchangeTask
     {
         protected List<TrustExchangeRound> _rounds = null;
         public IList<TrustExchangeRound> Rounds { get { return _rounds.AsReadOnly(); } }
