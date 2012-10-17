@@ -12,6 +12,7 @@ namespace SocialExchange2
 
         public DateTime BeginTimestamp { get; protected set; }
         public DateTime EndTimestamp { get; protected set; }
+
         public RecognitionTask(List<RecognitionRound> rounds)
         {
             _rounds = rounds;
