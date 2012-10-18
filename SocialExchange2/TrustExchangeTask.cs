@@ -8,7 +8,7 @@ namespace SocialExchange2
     public class TrustExchangeTask
     {
         protected List<TrustExchangeRound> _rounds = null;
-        public IList<TrustExchangeRound> Rounds { get { return _rounds.AsReadOnly(); } }
+        public List<TrustExchangeRound> Rounds { get { return _rounds.AsReadOnly().ToList(); } }
 
         public DateTime BeginTimestamp { get; protected set; }
         public DateTime EndTimestamp { get; protected set; }
@@ -42,11 +42,6 @@ namespace SocialExchange2
                 CurrentRoundIndex == Rounds.Count - 1 ?
                 DateTime.Now :
                 default(DateTime);
-        }
-
-        public int GetCount(PersonaClassification personaClassification)
-        {
-            return Rounds.Where(r => r.PersonaClassification == personaClassification).Count();
         }
 
 

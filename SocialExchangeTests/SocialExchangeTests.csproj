@@ -56,12 +56,6 @@
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SocialExchange\SocialExchange.csproj">
-      <Project>{067c9432-cc3b-40e8-b564-cde4fa3fd197}</Project>
-      <Name>SocialExchange</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

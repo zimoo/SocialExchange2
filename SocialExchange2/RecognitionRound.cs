@@ -11,20 +11,19 @@ namespace SocialExchange2
 
         public RecognitionRound
         (
-            Persona persona,
-            Func<PlayerInputClassification, PersonaClassification> getPersonaClassification
+            Persona persona
         )
             : base(persona)
         {
-            PersonaClassification = PersonaClassifications.Indeterminate;
-            GetPersonaClassification = getPersonaClassification;
+            Persona.Classification =
+                Persona.Classification.Value == PersonaClassifications.Unused.Value ? 
+                Persona.Classification = PersonaClassifications.Novel :
+                Persona.Classification;
         }
 
         public void ProcessPlayerInput(PlayerInputClassification playerInputClassification)
         {
             PlayerInputClassification = playerInputClassification;
-
-            PersonaClassification = GetPersonaClassification(PlayerInputClassification);
 
             EndTimestamp = DateTime.Now;
         }

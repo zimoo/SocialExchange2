@@ -8,6 +8,11 @@ namespace SocialExchange2
     public class PersonaClassification : ValueEnum<string>
     {
         public PersonaClassification(string value) : base(value) { }
+
+        public override string ToString()
+        {
+            return Value.ToString();
+        }
     }
 
     public static class PersonaClassifications

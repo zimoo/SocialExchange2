@@ -7,35 +7,40 @@ namespace SocialExchange2
 {
     public class TrustExchangeRound : Round
     {
-        public int PlayerToPersonaRawPoints { get; protected set; }
-        public int PersonaToPlayerRawPoints { get; protected set; }
-        public Func<int, int> GetRawPersonaReturnPoints { get; protected set; }
-        public Func<PlayerInputClassification, PersonaClassification> GetPersonaClassification { get; protected set; }
+        public int RawPlayerPointsIn { get; protected set; }
+        public int MultipliedPersonaPointsOut { get; protected set; }
+        public Func<int, int> CalculateMultipliedPersonaPointsOut { get; protected set; }
+        public Func<PersonaClassification> GetPersonaClassification { get; protected set; }
 
         public TrustExchangeRound
         (
             Persona persona, 
-            Func<int, int> getPersonaReturnPoints, 
-            Func<PlayerInputClassification, PersonaClassification> getPersonaClassification
+            Func<int, int> calculateMultipliedPersonaPointsOut, 
+            Func<PersonaClassification> getPersonaClassification
         )
             : base(persona)
         {
-            PlayerToPersonaRawPoints = 0;
-            PersonaToPlayerRawPoints = 0;
-            PersonaClassification = PersonaClassifications.Indeterminate;
-            GetRawPersonaReturnPoints = getPersonaReturnPoints;
+            RawPlayerPointsIn = 0;
+            MultipliedPersonaPointsOut = 0;
+
+            Persona.Classification =
+                Persona.Classification.Value == PersonaClassifications.Unused.Value ?
+                Persona.Classification = PersonaClassifications.Indeterminate :
+                Persona.Classification;
+
+            CalculateMultipliedPersonaPointsOut = calculateMultipliedPersonaPointsOut;
             GetPersonaClassification = getPersonaClassification;
         }
 
         internal void ProcessPlayerInput(int points)
         {
-            PlayerToPersonaRawPoints += points;
+            RawPlayerPointsIn += points;
             PlayerInputClassification = PlayerInputClassifications.GavePoints;
 
-            PersonaClassification = GetPersonaClassification(PlayerInputClassification);
-            if(PersonaClassification.Value == PersonaClassifications.Cooperator.Value)
+            Persona.Classification = GetPersonaClassification();
+            if(Persona.Classification.Value == PersonaClassifications.Cooperator.Value)
             {
-                PersonaToPlayerRawPoints += GetRawPersonaReturnPoints(points);
+                MultipliedPersonaPointsOut += CalculateMultipliedPersonaPointsOut(points);
             }
         }
     }

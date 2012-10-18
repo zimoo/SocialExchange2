@@ -12,19 +12,52 @@ namespace SocialExchange2
     {
         public List<Persona> Personas { get; protected set; }
 
-        public TrustExchangeTask TrustExchangeTask { get; protected set; }
-        public RecognitionTask ImplicitRecognitionTask { get; protected set; }
-        public RecognitionTask ExplicitRecognitionTask { get; protected set; }
+        protected TrustExchangeTask _TrustExchangeTask = null;
+        public TrustExchangeTask TrustExchangeTask
+        {
+            get
+            {
+                return _TrustExchangeTask;
+            }
+            protected set
+            {
+                _TrustExchangeTask = value;
+            }
+        }
+
+        protected RecognitionTask _ImplicitRecognitionTask = null;
+        public RecognitionTask ImplicitRecognitionTask
+        {
+            get
+            {
+                return _ImplicitRecognitionTask;
+            }
+            protected set
+            {
+                _ImplicitRecognitionTask = value;
+            }
+        }
+
+        protected RecognitionTask _ExplicitRecognitionTask = null;
+        public RecognitionTask ExplicitRecognitionTask
+        {
+            get
+            {
+                return _ExplicitRecognitionTask;
+            }
+            protected set
+            {
+                _ExplicitRecognitionTask = value;
+            }
+        }
 
         public int TrustExchangePointsMultiplier = 2;
-        public int RoundCountPerTask = 5;
+        public int RoundCountPerTask = 24;
 
         public LogicEngine()
         {
             InitializePersonas();
             InitializeTrustExchangeTask();
-            //InitializeImplicitRecognitionTask();
-            //InitializeExplicitRecognitionTask();
         }
 
         private void InitializePersonas()
@@ -46,42 +79,22 @@ namespace SocialExchange2
                 .ToList();
         }
 
-        private List<Persona> GetUnutilizedPersonas()
-        {
-            return Personas.Where(persona => persona.Utilized == false).ToList();
-        }
-
-        private List<Persona> GetNovelPersonas(PersonaClassification personaClassification, List<Round> notInRounds, int count)
-        {
-            return
-                TrustExchangeTask.Rounds.Where
-                (
-                    round =>
-                        round.PersonaClassification.Value == personaClassification.Value &&
-                        !notInRounds.Contains(round)
-                )
-                .Select<Round, Persona>
-                (
-                    round =>
-                        round.Persona
-                )
-                .Take(count)
-                .ToList();
-        }
-
         private void InitializeTrustExchangeTask()
         {
             InitializeTask<TrustExchangeTask, TrustExchangeRound>
             (
-                TrustExchangeTask,
+                ref _TrustExchangeTask,
+
                 (rounds) => new TrustExchangeTask(rounds),
-                GetUnutilizedPersonas(),
+
+                GetPersonas<Round>(PersonaClassifications.Unused),
+
                 (persona) =>
                         new TrustExchangeRound
                         (
                             persona,
                             (points) => points * TrustExchangePointsMultiplier,
-                            (points) =>
+                            () =>
                             {
                                 PersonaClassification[] options =
                                     new PersonaClassification[] { PersonaClassifications.Cooperator, PersonaClassifications.Defector };
@@ -93,67 +106,40 @@ namespace SocialExchange2
             );
         }
 
-        private void InitializeImplicitRecognitionTask()
+        public void InitializeImplicitRecognitionTask()
         {
-            InitializeRecognitionTask(ImplicitRecognitionTask, new List<Round>());
+            InitializeRecognitionTask(ref _ImplicitRecognitionTask, (List<Round>) null);
         }
 
-        private void InitializeExplicitRecognitionTask()
+        public void InitializeExplicitRecognitionTask()
         {
-            InitializeRecognitionTask(ExplicitRecognitionTask, ImplicitRecognitionTask.Rounds.ToList<Round>());
+            InitializeRecognitionTask(ref _ExplicitRecognitionTask, ImplicitRecognitionTask.Rounds.ToList<Round>());
         }
 
-        private void InitializeRecognitionTask(RecognitionTask task, List<Round> notInRounds)
+        private void InitializeRecognitionTask<T>(ref RecognitionTask task, List<T> notInRounds = null)
+            where T : Round
         {
             InitializeTask<RecognitionTask, RecognitionRound>
             (
-                task,
-                (rounds) => new RecognitionTask(rounds),
-                GetNovelPersonas(PersonaClassifications.Cooperator, notInRounds, 6)
-                    .Concat(GetNovelPersonas(PersonaClassifications.Defector, notInRounds, 6))
-                        .Concat(GetUnutilizedPersonas())
-                            .ToList(),
-                (persona) =>
-                        new RecognitionRound
-                        (
-                            persona,
-                            (playerInputClassification) =>
-                            {
-                                if(playerInputClassification.Value == PlayerInputClassifications.ImplicitlyChosePersona.Value)
-                                {
-                                    return PersonaClassifications.Cooperator;
-                                }
-                                else
-                                    if (playerInputClassification.Value == PlayerInputClassifications.ImplicitlyDiscardedPersona.Value)
-                                    {
-                                        return PersonaClassifications.Defector;
-                                    }
-                                    else
-                                        if (playerInputClassification.Value == PlayerInputClassifications.ExplicitlyChoseCooperatorPersona.Value)
-                                        {
-                                            return PersonaClassifications.Cooperator;
-                                        }
-                                        else
-                                            if (playerInputClassification.Value == PlayerInputClassifications.ExplicitlyChoseDefectorPersona.Value)
-                                            {
-                                                return PersonaClassifications.Defector;
-                                            }
-                                            else
-                                                if (playerInputClassification.Value == PlayerInputClassifications.ExplicitlyDiscardedPersona.Value)
-                                                {
-                                                    return PersonaClassifications.Indeterminate;
-                                                }
-                                                else
-                                                {
-                                                    throw new NotImplementedException();
-                                                }
+                ref task,
 
-                            }
-                        )
+                (rounds) => new RecognitionTask(rounds),
+
+                GetPersonas<T>(PersonaClassifications.Cooperator, RoundCountPerTask / 4, notInRounds)
+                    .Concat(GetPersonas<T>(PersonaClassifications.Defector, RoundCountPerTask / 4, notInRounds))
+                    .Concat(GetPersonas<Round>(PersonaClassifications.Unused, RoundCountPerTask / 2)).ToList(),
+
+                (persona) => new RecognitionRound(persona)
             );
         }
 
-        private void InitializeTask<TTask, TRound>(TTask task, Func<List<TRound>, TTask> taskInitializer, List<Persona> availablePersonas, Func<Persona, TRound> roundInitializer)
+        private void InitializeTask<TTask, TRound>
+        (
+            ref TTask task, 
+            Func<List<TRound>, TTask> taskInitializer, 
+            List<Persona> availablePersonas, 
+            Func<Persona, TRound> roundInitializer
+        )
             where TRound : Round
         {
             List<TRound> rounds = new List<TRound>(RoundCountPerTask);
@@ -161,46 +147,50 @@ namespace SocialExchange2
 
             while (rounds.Count < RoundCountPerTask)
             {
-                Persona personaCandidate = availablePersonas[new Random().Next(0, availablePersonas.Count - 1)];
+                Persona personaCandidate = availablePersonas[new Random().Next(0, availablePersonas.Count)];
                 if (!rounds.Select(r => r.Persona).Cast<Persona>().ToList().Contains(personaCandidate))
                 {
                     rounds.Add(roundInitializer(personaCandidate));
-                    personaCandidate.Utilized = true;
                 }
             }
         }
 
-        
-        //private void InitializeTrustExchangeTask_OLD()
-        //{
-        //    List<TrustExchangeRound> rounds = new List<TrustExchangeRound>(RoundCountPerTask);
-        //    TrustExchangeTask = new TrustExchangeTask(rounds);
+        public List<Persona> GetPersonas<T>(PersonaClassification personaClassification, int take = -1, List<T> notInRounds = null)
+            where T : Round
+        {
+            List<Persona> allMatchingPersonas =
+                Personas
+                .Where
+                (
+                    persona => 
+                        persona.Classification == personaClassification && 
+                        (
+                            ReferenceEquals(notInRounds, null) || 
+                            (!ReferenceEquals(notInRounds, null) && !notInRounds.Select<T,Persona>(round => round.Persona).Contains(persona))
+                        )
+                )
+                .ToList();
 
-        //    while (rounds.Count < RoundCountPerTask)
-        //    {
-        //        Persona roundPersonaCandidate = Personas[new Random().Next(0, Personas.Count - 1)];
-        //        if (!rounds.Select(r => r.Persona).Cast<Persona>().ToList().Contains(roundPersonaCandidate))
-        //        {
-        //            rounds.Add(
-        //                new TrustExchangeRound
-        //                (
-        //                    roundPersonaCandidate,
-        //                    (points) =>
-        //                    {
-        //                        return points * TrustExchangePointsMultiplier;
-        //                    },
-        //                    (points) =>
-        //                    {
-        //                        PersonaClassification[] options =
-        //                            new PersonaClassification[] { PersonaClassifications.Cooperator, PersonaClassifications.Defector };
+            return
+                allMatchingPersonas
+                .Take(take == -1 ? allMatchingPersonas.Count : take)
+                .ToList();
+        }
 
-        //                        return
-        //                            options[new Random().Next(0, options.Count())];
-        //                    }
-        //                )
-        //            );
-        //        }
-        //    }
-        //}
+        public static PersonaClassification GetNextTrustExchangePersonaClassification(List<PersonaClassification> currentClassifications)
+        {
+            int totalCount = currentClassifications.Count;
+            int indeterminateCount = currentClassifications.Where(c => c.Value == PersonaClassifications.Indeterminate.Value).Count();
+            int absDiffTotalIndeterminate = (int) Math.Abs(totalCount - indeterminateCount);
+
+            int cooperatorCount = currentClassifications.Where(c => c.Value == PersonaClassifications.Cooperator.Value).Count();
+            int defectorCount = currentClassifications.Where(c => c.Value == PersonaClassifications.Defector.Value).Count();
+            int absDiffDefectorCooperator = (int)Math.Abs(cooperatorCount - defectorCount);
+
+            if(absDiffDefectorCooperator >= absDiffTotalIndeterminate)
+            {
+
+            }
+        }
     }
 }

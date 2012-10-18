@@ -8,17 +8,27 @@ namespace SocialExchange2
 {
     public class Persona
     {
-        public bool Utilized { get; set; }
+        public PersonaClassification Classification { get; set; }
 
         public Bitmap Image { get; protected set; }
         public string Filename { get; protected set; }
 
         public Persona(Bitmap image, string filename)
         {
-            Utilized = false;
+            Classification = PersonaClassifications.Unused;
 
             Image = image;
             Filename = filename;
+        }
+
+        public override string ToString()
+        {
+            return 
+                String.Join(", ",
+                    "[PERSONA]",
+                    string.Format("{0}",Filename),
+                    string.Format("{0}",Classification)
+                    );
         }
     }
 }

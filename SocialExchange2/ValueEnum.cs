@@ -21,5 +21,10 @@ namespace SocialExchange2
             return 
                 (other != null) ? this.Value.CompareTo(other.Value) : 1;
         }
+
+        public override string ToString()
+        {
+            return Value.ToString();
+        }
     }
 }

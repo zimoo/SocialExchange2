@@ -24,10 +24,5 @@ namespace SocialExchange2
 
             EndTimestamp = DateTime.Now;
         }
-
-        public int GetCount(PersonaClassification personaClassification)
-        {
-            return Rounds.Where(r => r.PersonaClassification == personaClassification).Count();
-        }
     }
 }
