@@ -94,14 +94,7 @@ namespace SocialExchange2
                         (
                             persona,
                             (points) => points * TrustExchangePointsMultiplier,
-                            () =>
-                            {
-                                PersonaClassification[] options =
-                                    new PersonaClassification[] { PersonaClassifications.Cooperator, PersonaClassifications.Defector };
-
-                                return
-                                    options[new Random().Next(0, options.Count())];
-                            }
+                            GetNextTrustExchangePersonaClassification
                         )
             );
         }
@@ -177,19 +170,46 @@ namespace SocialExchange2
                 .ToList();
         }
 
-        public static PersonaClassification GetNextTrustExchangePersonaClassification(List<PersonaClassification> currentClassifications)
+
+        public PersonaClassification GetNextTrustExchangePersonaClassification()
         {
-            int totalCount = currentClassifications.Count;
-            int indeterminateCount = currentClassifications.Where(c => c.Value == PersonaClassifications.Indeterminate.Value).Count();
-            int absDiffTotalIndeterminate = (int) Math.Abs(totalCount - indeterminateCount);
+            List<PersonaClassification> classifications = Personas.Select<Persona, PersonaClassification>(p => p.Classification).ToList();
 
-            int cooperatorCount = currentClassifications.Where(c => c.Value == PersonaClassifications.Cooperator.Value).Count();
-            int defectorCount = currentClassifications.Where(c => c.Value == PersonaClassifications.Defector.Value).Count();
-            int absDiffDefectorCooperator = (int)Math.Abs(cooperatorCount - defectorCount);
+            int cooperatorCount = classifications.Where(c => c.Value == PersonaClassifications.Cooperator.Value).Count();
+            int defectorCount = classifications.Where(c => c.Value == PersonaClassifications.Defector.Value).Count();
+            int indeterminateRemainingCount = RoundCountPerTask - cooperatorCount - defectorCount;
+            
+            Func <PersonaClassification> getRandomPersonaClassification =             
+                () =>
+                {
+                    PersonaClassification[] options =
+                        new PersonaClassification[] { PersonaClassifications.Cooperator, PersonaClassifications.Defector };
 
-            if(absDiffDefectorCooperator >= absDiffTotalIndeterminate)
+                    return
+                        options[new Random().Next(0, options.Count())];
+                };
+
+            if (indeterminateRemainingCount >= RoundCountPerTask / 2)
             {
-
+                return getRandomPersonaClassification();
+            }
+            else
+            {
+                if (cooperatorCount > defectorCount)
+                {
+                    if(indeterminateRemainingCount >= (cooperatorCount - defectorCount))
+                    {
+                        return PersonaClassifications.Defector;
+                    }
+                    else
+                    {
+                        return PersonaClassifications.Cooperator;
+                    }
+                }
+                else
+                {
+                    return PersonaClassifications.Cooperator;
+                }
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SocialExchange2;
 
@@ -37,11 +38,36 @@ namespace SocialExchangeTests
         [TestMethod]
         public void LogicEngine_GetNextPersonaClassification_Tests()
         {
-            List<PersonaClassification> classifications = new List<PersonaClassification>(24);
+            int totalCooperators = 0;
+            int totalDefectors = 0;
+            List<List<Persona>> cooperatorPersonas = new List<List<Persona>>();
 
-            classifications.ForEach(c => c = PersonaClassifications.Indeterminate);
+            for(int i = 0; i < 10; i++)
+            {
+                LogicEngine = new SocialExchange2.LogicEngine();
 
-            classifications.ForEach(c => c = LogicEngine.GetNextTrustExchangePersonaClassification(classifications));
+                while (LogicEngine.TrustExchangeTask.CurrentRoundIndex < LogicEngine.TrustExchangeTask.Rounds.Count)
+                {
+                    LogicEngine.TrustExchangeTask.ProcessPlayerInput(2);
+                    if (LogicEngine.TrustExchangeTask.CurrentRoundIndex == LogicEngine.TrustExchangeTask.Rounds.Count - 1)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        LogicEngine.TrustExchangeTask.AdvanceToNextRound();
+                    }
+                }
+
+                List<PersonaClassification> classifications = LogicEngine.Personas.Select<Persona,PersonaClassification>(p => p.Classification).ToList();
+
+                totalCooperators += classifications.Where(c => c == PersonaClassifications.Cooperator).ToList().Count();
+                totalDefectors += classifications.Where(c => c == PersonaClassifications.Defector).ToList().Count();
+
+                cooperatorPersonas.Add(LogicEngine.Personas.Where(p => p.Classification == PersonaClassifications.Cooperator).ToList());
+            }
+
+            Assert.AreEqual(totalCooperators, totalDefectors);
         }
     }
 }
