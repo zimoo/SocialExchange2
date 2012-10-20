@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialExchange2", "..\Socia
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialExchange2Tests", "SocialExchange2Tests\SocialExchange2Tests.csproj", "{5A3092BE-B720-46AA-A40F-E68BF13C0A7A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialExchangeWinForms", "SocialExchangeWinForms\SocialExchangeWinForms.csproj", "{FA2C3AE0-54D7-44EF-8D14-F8FA6B8610FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{B40CCD59-D5F3-46CE-B58D-64B502976017}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B40CCD59-D5F3-46CE-B58D-64B502976017}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B40CCD59-D5F3-46CE-B58D-64B502976017}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA2C3AE0-54D7-44EF-8D14-F8FA6B8610FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA2C3AE0-54D7-44EF-8D14-F8FA6B8610FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA2C3AE0-54D7-44EF-8D14-F8FA6B8610FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA2C3AE0-54D7-44EF-8D14-F8FA6B8610FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -36,5 +42,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{5A3092BE-B720-46AA-A40F-E68BF13C0A7A} = {8A12C62F-EFA5-42A5-A2F2-7E07B47208FF}
 		{B40CCD59-D5F3-46CE-B58D-64B502976017} = {3AD01B83-7CD4-41B9-B01B-032E410712E7}
+		{FA2C3AE0-54D7-44EF-8D14-F8FA6B8610FE} = {3AD01B83-7CD4-41B9-B01B-032E410712E7}
 	EndGlobalSection
 EndGlobal
