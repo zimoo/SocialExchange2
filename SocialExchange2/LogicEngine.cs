@@ -52,6 +52,7 @@ namespace SocialExchange2
         }
 
         public int TrustExchangePointsMultiplier = 2;
+        public int TrustExchangeStartingPoints = 24;
         public int RoundCountPerTask = 24;
 
         public LogicEngine()
@@ -85,7 +86,7 @@ namespace SocialExchange2
             (
                 ref _TrustExchangeTask,
 
-                (rounds) => new TrustExchangeTask(rounds),
+                (rounds) => new TrustExchangeTask(rounds, TrustExchangeStartingPoints),
 
                 GetPersonas<Round>(PersonaClassifications.Unused),
 

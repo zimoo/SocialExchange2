@@ -92,6 +92,12 @@
   <ItemGroup>
     <None Include="Resources\C2_045_M10.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\SocialExchange2\SocialExchange2.csproj">
+      <Project>{17717df4-7a0b-48da-b73a-93d182160e07}</Project>
+      <Name>SocialExchange2</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

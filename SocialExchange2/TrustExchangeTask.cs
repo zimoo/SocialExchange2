@@ -28,9 +28,23 @@ namespace SocialExchange2
             }
         }
 
-        public TrustExchangeTask(List<TrustExchangeRound> rounds)
+        public int StartingPoints { get; protected set; }
+        public int PlayerScore 
+        {
+            get
+            {
+                return
+                    StartingPoints 
+                    - Rounds.Sum((round) => round.RawPlayerPointsIn)
+                    + Rounds.Sum((round) => round.MultipliedPersonaPointsOut);
+            }
+        }
+
+        public TrustExchangeTask(List<TrustExchangeRound> rounds, int startingPoints)
         {
             _rounds = rounds;
+            StartingPoints = startingPoints;
+
             CurrentRoundIndex = 0;
         }
 
