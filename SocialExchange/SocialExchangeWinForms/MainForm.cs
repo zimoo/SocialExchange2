@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using SocialExchange2;
 
@@ -163,7 +164,7 @@ namespace SocialExchangeWinForms
         {            
             SetTrustExchangeControlEnabledState(false);
             
-            SetTextBoxText
+            ParallelSetTextBoxText
             (
                 TrustExchangeTaskStatusTextBox,
                 string.Format(STATUS_TEXT__SENDING_PLAYER2_X_POINTS, points)
@@ -172,17 +173,17 @@ namespace SocialExchangeWinForms
             int priorScore = LogicEngine.TrustExchangeTask.PlayerScore;
             LogicEngine.TrustExchangeTask.ProcessPlayerInput(points);
 
-            StepProgressBar(millisMin: 20, millisMax: 20);
+            ParallelStepProgressBar(millisMin: 20, millisMax: 20);
 
-            SetTextBoxText
+            ParallelSetTextBoxText
             (
                 TrustExchangeTaskStatusTextBox,
                 STATUS_TEXT__WAITING_ON_PLAYER2_RESPONSE
             );
 
-            StepProgressBar();
+            ParallelStepProgressBar();
             
-            SetTextBoxText
+            ParallelSetTextBoxText
             (
                 TrustExchangeTaskStatusTextBox,
                 string.Format
@@ -192,7 +193,7 @@ namespace SocialExchangeWinForms
                 )
             );
 
-            SetTextBoxText
+            ParallelSetTextBoxText
             (
                 TrustExchangeTaskScoreTextBox,
                 string.Format(SCORE_TEXT, LogicEngine.TrustExchangeTask.PlayerScore)
@@ -207,7 +208,7 @@ namespace SocialExchangeWinForms
                     string.Format("decreased from {0} to {1}", priorScore, LogicEngine.TrustExchangeTask.PlayerScore) :
                         string.Format("remains at {0}",LogicEngine.TrustExchangeTask.PlayerScore);
 
-            SetTextBoxText
+            ParallelSetTextBoxText
             (
                 TrustExchangeTaskStatusTextBox,
                 string.Format(STATUS_TEXT__YOUR_POINTS_X, contextualScoringMessage)
@@ -219,7 +220,7 @@ namespace SocialExchangeWinForms
                 LogicEngine.TrustExchangeTask.CurrentRoundIndex != LogicEngine.TrustExchangeTask.Rounds.Count - 1
             )
             {
-                SetTextBoxText
+                ParallelSetTextBoxText
                 (
                     TrustExchangeTaskStatusTextBox,
                     STATUS_TEXT__ADVANCING_TO_NEXT_PLAYER
@@ -230,7 +231,7 @@ namespace SocialExchangeWinForms
                 SetTrustExchangePictureBoxImageToCurrentRoundPersona();
                 SetTrustExchangeControlEnabledState(true);
 
-                SetTextBoxText
+                ParallelSetTextBoxText
                 (
                     TrustExchangeTaskStatusTextBox,
                     STATUS_TEXT__GIVE_1_OR_2_POINTS_TO_PLAYER2
@@ -242,11 +243,16 @@ namespace SocialExchangeWinForms
             }
         }
         
-        public void SetTextBoxText(TextBox textBox, string text)
+        public void ParallelSetTextBoxText(TextBox textBox, string text)
         {
-            textBox.Text = text;
-            textBox.Invalidate();
-            textBox.Visible = true;
+            Parallel.Invoke(
+                () =>
+                {
+                    textBox.Text = text;
+                    textBox.Invalidate();
+                    textBox.Visible = true;
+                }
+            );
         }
 
         private void ShowTab(TabPage tab)
@@ -268,21 +274,26 @@ namespace SocialExchangeWinForms
             this.TrustExchangePictureBox.ImageLocation = LogicEngine.TrustExchangeTask.CurrentRound.Persona.Filename;
         }
 
-        private void StepProgressBar(int fromPercentage = -1, int toPercentage = 100, int millisMin = 50, int millisMax = 200)
+        private void ParallelStepProgressBar(int fromPercentage = -1, int toPercentage = 100, int millisMin = 50, int millisMax = 200)
         {
-            ProgressBar.Visible = true;
+            Parallel.Invoke(
+                () =>
+                {
+                    ProgressBar.Visible = true;
 
-            ProgressBar.Value = fromPercentage == -1 ? ProgressBar.Value : fromPercentage;
+                    ProgressBar.Value = fromPercentage == -1 ? ProgressBar.Value : fromPercentage;
 
-            while (ProgressBar.Value < toPercentage)
-            {
-                Thread.Sleep(new Random().Next(millisMin, millisMax));
-                ProgressBar.PerformStep();
-            }
+                    while (ProgressBar.Value < toPercentage)
+                    {
+                        Thread.Sleep(new Random().Next(millisMin, millisMax));
+                        ProgressBar.PerformStep();
+                    }
 
-            ProgressBar.Visible = false;
+                    ProgressBar.Visible = false;
 
-            ProgressBar.Value = toPercentage == 100 ? 0 : fromPercentage;
+                    ProgressBar.Value = toPercentage == 100 ? 0 : fromPercentage;
+                }
+            );
         }
     }
 }
