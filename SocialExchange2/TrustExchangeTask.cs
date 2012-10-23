@@ -33,10 +33,13 @@ namespace SocialExchange2
         {
             get
             {
+                int sumRawPlayerPointsIn = Rounds.Sum((round) => round.RawPlayerPointsIn);
+                int sumMultipliedPersonaPointsOut = Rounds.Sum((round) => round.MultipliedPersonaPointsOut);;
+
                 return
-                    StartingPoints 
-                    - Rounds.Sum((round) => round.RawPlayerPointsIn)
-                    + Rounds.Sum((round) => round.MultipliedPersonaPointsOut);
+                    StartingPoints
+                    - sumRawPlayerPointsIn
+                    + sumMultipliedPersonaPointsOut;
             }
         }
 

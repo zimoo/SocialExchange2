@@ -21,10 +21,11 @@ namespace SocialExchangeWinForms
 
         public const string SCORE_TEXT = "You have {0} points.";
 
-        public const string STATUS_TEXT__GIVE_1_OR_2_POINTS_TO_PLAYER2 = "Give 1 or 2 Points to Player2?";
-        public const string STATUS_TEXT__SENDING_PLAYER2_X_POINTS = "Sending Player2 {0} points...";
-        public const string STATUS_TEXT__WAITING_ON_PLAYER2_RESPONSE = "Waiting on Player2 response...";
-        public const string STATUS_TEXT__PLAYER2_RESPONDED_WITH_X_POINTS = "Player2 responded with {0} points.";
+        public const string STATUS_TEXT__GIVE_1_OR_2_POINTS_TO_PLAYER2 = "Give 1 or 2 Points?";
+        public const string STATUS_TEXT__SENDING_PLAYER2_X_POINTS = "Sending {0} points...";
+        public const string STATUS_TEXT__WAITING_ON_PLAYER2_RESPONSE = "Waiting on response...";
+        public const string STATUS_TEXT__PLAYER2_RESPONDED_WITH_X_POINTS = "You received {0} points back.";
+        public const string STATUS_TEXT__SCORE_REDUCED_TO_X = "Score reduced to {0}.";
         public const string STATUS_TEXT__YOUR_POINTS_X = "Your points {0}.";
         public const string STATUS_TEXT__ADVANCING_TO_NEXT_PLAYER = "Advancing to next player...";
 
@@ -121,6 +122,9 @@ namespace SocialExchangeWinForms
 
         private void AdvanceToTrustExchangeTask()
         {
+            Status.SetText(STATUS_TEXT__GIVE_1_OR_2_POINTS_TO_PLAYER2);
+            Score.SetText(SCORE_TEXT, LogicEngine.TrustExchangeTask.PlayerScore);
+
             SetTrustExchangePictureBoxImageToCurrentRoundPersona();
 
             ShowTab(TrustExchangeTaskTab);
@@ -161,58 +165,19 @@ namespace SocialExchangeWinForms
         }
 
         private void GivePoints(int points)
-        {            
+        {
             SetTrustExchangeControlEnabledState(false);
-            
-            ParallelSetTextBoxText
-            (
-                TrustExchangeTaskStatusTextBox,
-                string.Format(STATUS_TEXT__SENDING_PLAYER2_X_POINTS, points)
-            );
 
-            int priorScore = LogicEngine.TrustExchangeTask.PlayerScore;
+            int scoreAtRoundStart = LogicEngine.TrustExchangeTask.PlayerScore;
+            
+            NotifyPlayerOfSendingPoints(points);
+            NotifyPlayerOfReductionOfScoreBySentPoints(points);
+
             LogicEngine.TrustExchangeTask.ProcessPlayerInput(points);
 
-            ParallelStepProgressBar(millisMin: 20, millisMax: 20);
-
-            ParallelSetTextBoxText
-            (
-                TrustExchangeTaskStatusTextBox,
-                STATUS_TEXT__WAITING_ON_PLAYER2_RESPONSE
-            );
-
-            ParallelStepProgressBar();
-            
-            ParallelSetTextBoxText
-            (
-                TrustExchangeTaskStatusTextBox,
-                string.Format
-                (
-                    STATUS_TEXT__PLAYER2_RESPONDED_WITH_X_POINTS, 
-                    LogicEngine.TrustExchangeTask.CurrentRound.MultipliedPersonaPointsOut
-                )
-            );
-
-            ParallelSetTextBoxText
-            (
-                TrustExchangeTaskScoreTextBox,
-                string.Format(SCORE_TEXT, LogicEngine.TrustExchangeTask.PlayerScore)
-            );
-
-            Thread.Sleep(3000);
-            
-            string contextualScoringMessage =
-                priorScore > LogicEngine.TrustExchangeTask.PlayerScore ?
-                string.Format("increased from {0} to {1}", priorScore, LogicEngine.TrustExchangeTask.PlayerScore) :
-                    priorScore < LogicEngine.TrustExchangeTask.PlayerScore ?
-                    string.Format("decreased from {0} to {1}", priorScore, LogicEngine.TrustExchangeTask.PlayerScore) :
-                        string.Format("remains at {0}",LogicEngine.TrustExchangeTask.PlayerScore);
-
-            ParallelSetTextBoxText
-            (
-                TrustExchangeTaskStatusTextBox,
-                string.Format(STATUS_TEXT__YOUR_POINTS_X, contextualScoringMessage)
-            );
+            NotifyPlayerOfWaitingOnPersonaResponse();
+            NotifyPlayerOfPersonaResponse();
+            NotifyPlayerOfScoringThisRound(scoreAtRoundStart);// - points);
             
             if
             (
@@ -220,39 +185,70 @@ namespace SocialExchangeWinForms
                 LogicEngine.TrustExchangeTask.CurrentRoundIndex != LogicEngine.TrustExchangeTask.Rounds.Count - 1
             )
             {
-                ParallelSetTextBoxText
-                (
-                    TrustExchangeTaskStatusTextBox,
-                    STATUS_TEXT__ADVANCING_TO_NEXT_PLAYER
-                );
-                Thread.Sleep(3000);
+                //MessageBox.Show("Click OK when you are ready to advance to the next player.", "Advancing to next player...", MessageBoxButtons.OK);
 
-                LogicEngine.TrustExchangeTask.AdvanceToNextRound();
-                SetTrustExchangePictureBoxImageToCurrentRoundPersona();
-                SetTrustExchangeControlEnabledState(true);
+                //StatusTextBox.SetTextAsync(STATUS_TEXT__ADVANCING_TO_NEXT_PLAYER);
+                //Thread.Sleep(2000);
 
-                ParallelSetTextBoxText
-                (
-                    TrustExchangeTaskStatusTextBox,
-                    STATUS_TEXT__GIVE_1_OR_2_POINTS_TO_PLAYER2
-                );
+                NextRoundButton.Visible = true;
             }
             else
             {
                 MessageBox.Show("Advancing to Q&A Task.");
             }
         }
-        
-        public void ParallelSetTextBoxText(TextBox textBox, string text)
+
+        private void NotifyPlayerOfSendingPoints(int points)
         {
-            Parallel.Invoke(
-                () =>
-                {
-                    textBox.Text = text;
-                    textBox.Invalidate();
-                    textBox.Visible = true;
-                }
-            );
+            Score.SetTextInvoke(SCORE_TEXT, LogicEngine.TrustExchangeTask.PlayerScore);
+            Status.SetTextInvoke(STATUS_TEXT__SENDING_PLAYER2_X_POINTS, points);
+            ProgressBar.StepInvoke(millisMin: 20, millisMax: 20);
+        }
+
+        private void NotifyPlayerOfReductionOfScoreBySentPoints(int points)
+        {
+            Score.SetTextInvoke(SCORE_TEXT, LogicEngine.TrustExchangeTask.PlayerScore - points);
+            Status.SetTextInvoke(STATUS_TEXT__SCORE_REDUCED_TO_X, LogicEngine.TrustExchangeTask.PlayerScore - points);
+            Thread.Sleep(1500);
+        }
+
+        private void NotifyPlayerOfWaitingOnPersonaResponse()
+        {
+            Status.SetTextInvoke(STATUS_TEXT__WAITING_ON_PLAYER2_RESPONSE);
+            //ProgressBar.StepProgressBar(millisMin: 100, millisMax: 800);
+            ProgressBar.StepInvoke(millisMin: 20, millisMax: 20);
+        }
+
+        private void NotifyPlayerOfPersonaResponse()
+        {
+            Score.SetTextInvoke(SCORE_TEXT, LogicEngine.TrustExchangeTask.PlayerScore);
+            Status.SetTextInvoke(STATUS_TEXT__PLAYER2_RESPONDED_WITH_X_POINTS, LogicEngine.TrustExchangeTask.CurrentRound.MultipliedPersonaPointsOut);
+            Thread.Sleep(2500);
+        }
+
+        private void NotifyPlayerOfScoringThisRound(int scoreAtRoundStart)//, int points, int scoreAfterSendingPoints)
+        {
+            int finalScore = LogicEngine.TrustExchangeTask.PlayerScore;
+
+            //string contextualScoringMessage =
+            //    scoreAtRoundStart > finalScore ?
+            //    string.Format("decreased from {0} to {1}", scoreAtRoundStart, finalScore) :
+            //    //scoreAtRoundStart < finalScore ?
+            //        string.Format("increased from {0} to {1}", scoreAtRoundStart, finalScore);//:
+            ////string.Format("remain at {0}", finalScore);
+
+            int diff = Math.Abs(scoreAtRoundStart - finalScore);
+            string contextualScoringMessage =
+                string.Format
+                (
+                    "You {0} {1} point{2}!",
+                    scoreAtRoundStart > finalScore ? "lost" : "gained",
+                    diff,
+                    diff > 1 ? "s" : ""
+                );
+
+            Status.SetTextInvoke(contextualScoringMessage);
+            Thread.Sleep(2500);
         }
 
         private void ShowTab(TabPage tab)
@@ -274,26 +270,66 @@ namespace SocialExchangeWinForms
             this.TrustExchangePictureBox.ImageLocation = LogicEngine.TrustExchangeTask.CurrentRound.Persona.Filename;
         }
 
-        private void ParallelStepProgressBar(int fromPercentage = -1, int toPercentage = 100, int millisMin = 50, int millisMax = 200)
+        private void NextRoundButton_Click(object sender, EventArgs e)
         {
-            Parallel.Invoke(
-                () =>
-                {
-                    ProgressBar.Visible = true;
+            LogicEngine.TrustExchangeTask.AdvanceToNextRound();
+            SetTrustExchangePictureBoxImageToCurrentRoundPersona();
+            SetTrustExchangeControlEnabledState(true);
+            Status.SetTextInvoke(STATUS_TEXT__GIVE_1_OR_2_POINTS_TO_PLAYER2);
+            NextRoundButton.Visible = false;
+        }
+    }
 
-                    ProgressBar.Value = fromPercentage == -1 ? ProgressBar.Value : fromPercentage;
+    public static class Extensions
+    {
+        //public async static void SetTextAsync(this TextBox textBox, string text, params object[] @params)
+        //{
+        //    await System.Threading.Tasks.Task.Run(() => textBox.SetText(text, @params));
+        //}
 
-                    while (ProgressBar.Value < toPercentage)
-                    {
-                        Thread.Sleep(new Random().Next(millisMin, millisMax));
-                        ProgressBar.PerformStep();
-                    }
+        public static void SetTextInvoke(this TextBox textBox, string text, params object[] @params)
+        {
+            //BackgroundWorker worker = new BackgroundWorker();
+            //worker.DoWork +=
+            //    (sender, e) =>
+            //    {
+            textBox.Invoke(new Action(() => textBox.SetText(text, @params)));
+            Application.DoEvents();
+            Thread.Sleep(10);
+            //    };
 
-                    ProgressBar.Visible = false;
+            //worker.RunWorkerAsync(new object[] { textBox, text }.Concat(@params));
+        }
 
-                    ProgressBar.Value = toPercentage == 100 ? 0 : fromPercentage;
-                }
-            );
+        public static void StepInvoke(this ProgressBar progressBar, int fromPercentage = -1, int toPercentage = 100, int millisMin = 50, int millisMax = 200)
+        {
+            progressBar.Invoke(new Action(() => progressBar.Step(fromPercentage, toPercentage, millisMin, millisMax)));
+            Application.DoEvents();
+        }
+
+        public static void SetText(this TextBox textBox, string text, params object[] @params)
+        {
+            textBox.Text = string.Format(text, @params ?? new object[] { text });
+        }
+
+
+        public static void Step(this ProgressBar progressBar, int fromPercentage = -1, int toPercentage = 100, int millisMin = 50, int millisMax = 200)
+        {
+            progressBar.Visible = true;
+
+            progressBar.Value = fromPercentage == -1 ? progressBar.Value : fromPercentage;
+
+            while (progressBar.Value < toPercentage)
+            {
+                Thread.Sleep(new Random().Next(millisMin, millisMax));
+                progressBar.PerformStep();
+            }
+
+            progressBar.Visible = false;
+
+            progressBar.Value = toPercentage == 100 ? 0 : fromPercentage;
+
+            Thread.Sleep(10);
         }
     }
 }

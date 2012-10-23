@@ -31,15 +31,22 @@
             this.Tabs = new System.Windows.Forms.TabControl();
             this.TrustExchangeTaskTab = new System.Windows.Forms.TabPage();
             this.ProgressBar = new System.Windows.Forms.ProgressBar();
-            this.TrustExchangeTaskScoreTextBox = new System.Windows.Forms.TextBox();
-            this.TrustExchangeTaskStatusTextBox = new System.Windows.Forms.TextBox();
+            this.Score = new System.Windows.Forms.TextBox();
             this.ImageAndPointsButtonsPanel = new System.Windows.Forms.Panel();
+            this.NextRoundButton = new System.Windows.Forms.Button();
             this.Give1PointButton = new System.Windows.Forms.Button();
+            this.Status = new System.Windows.Forms.TextBox();
             this.Give2PointsButton = new System.Windows.Forms.Button();
             this.TrustExchangePictureBox = new System.Windows.Forms.PictureBox();
             this.DemographicsTaskTab = new System.Windows.Forms.TabPage();
             this.ImplicitRecognitionTaskTab = new System.Windows.Forms.TabPage();
             this.ImpRecogTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.ExplicitRecognitionTaskTab = new System.Windows.Forms.TabPage();
+            this.ExpRecogTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.MenuStrip = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ImpRecogImgA1 = new SocialExchangeWinForms.RecognitionUserControl();
             this.ImpRecogImgA2 = new SocialExchangeWinForms.RecognitionUserControl();
             this.ImpRecogImgA3 = new SocialExchangeWinForms.RecognitionUserControl();
@@ -64,8 +71,6 @@
             this.ImpRecogImgC6 = new SocialExchangeWinForms.RecognitionUserControl();
             this.ImpRecogImgC7 = new SocialExchangeWinForms.RecognitionUserControl();
             this.ImpRecogImgC8 = new SocialExchangeWinForms.RecognitionUserControl();
-            this.ExplicitRecognitionTaskTab = new System.Windows.Forms.TabPage();
-            this.ExpRecogTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.ExpRecogImgA1 = new SocialExchangeWinForms.RecognitionUserControl();
             this.ExpRecogImgA2 = new SocialExchangeWinForms.RecognitionUserControl();
             this.ExpRecogImgA3 = new SocialExchangeWinForms.RecognitionUserControl();
@@ -90,10 +95,6 @@
             this.ExpRecogImgC6 = new SocialExchangeWinForms.RecognitionUserControl();
             this.ExpRecogImgC7 = new SocialExchangeWinForms.RecognitionUserControl();
             this.ExpRecogImgC8 = new SocialExchangeWinForms.RecognitionUserControl();
-            this.MenuStrip = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Tabs.SuspendLayout();
             this.TrustExchangeTaskTab.SuspendLayout();
             this.ImageAndPointsButtonsPanel.SuspendLayout();
@@ -124,8 +125,7 @@
             // 
             this.TrustExchangeTaskTab.BackColor = System.Drawing.SystemColors.Control;
             this.TrustExchangeTaskTab.Controls.Add(this.ProgressBar);
-            this.TrustExchangeTaskTab.Controls.Add(this.TrustExchangeTaskScoreTextBox);
-            this.TrustExchangeTaskTab.Controls.Add(this.TrustExchangeTaskStatusTextBox);
+            this.TrustExchangeTaskTab.Controls.Add(this.Score);
             this.TrustExchangeTaskTab.Controls.Add(this.ImageAndPointsButtonsPanel);
             this.TrustExchangeTaskTab.Location = new System.Drawing.Point(4, 22);
             this.TrustExchangeTaskTab.Name = "TrustExchangeTaskTab";
@@ -143,47 +143,47 @@
             this.ProgressBar.Size = new System.Drawing.Size(1136, 44);
             this.ProgressBar.TabIndex = 7;
             // 
-            // TrustExchangeTaskScoreTextBox
+            // Score
             // 
-            this.TrustExchangeTaskScoreTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.Score.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TrustExchangeTaskScoreTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TrustExchangeTaskScoreTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TrustExchangeTaskScoreTextBox.Location = new System.Drawing.Point(10, 19);
-            this.TrustExchangeTaskScoreTextBox.Multiline = true;
-            this.TrustExchangeTaskScoreTextBox.Name = "TrustExchangeTaskScoreTextBox";
-            this.TrustExchangeTaskScoreTextBox.ReadOnly = true;
-            this.TrustExchangeTaskScoreTextBox.Size = new System.Drawing.Size(1130, 47);
-            this.TrustExchangeTaskScoreTextBox.TabIndex = 6;
-            this.TrustExchangeTaskScoreTextBox.Text = "SCORE_TEXT_BOX";
-            this.TrustExchangeTaskScoreTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // TrustExchangeTaskStatusTextBox
-            // 
-            this.TrustExchangeTaskStatusTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TrustExchangeTaskStatusTextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.TrustExchangeTaskStatusTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TrustExchangeTaskStatusTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TrustExchangeTaskStatusTextBox.Location = new System.Drawing.Point(7, 600);
-            this.TrustExchangeTaskStatusTextBox.Multiline = true;
-            this.TrustExchangeTaskStatusTextBox.Name = "TrustExchangeTaskStatusTextBox";
-            this.TrustExchangeTaskStatusTextBox.ReadOnly = true;
-            this.TrustExchangeTaskStatusTextBox.Size = new System.Drawing.Size(1136, 144);
-            this.TrustExchangeTaskStatusTextBox.TabIndex = 5;
-            this.TrustExchangeTaskStatusTextBox.Text = "STATUS_TEXT_BOX";
-            this.TrustExchangeTaskStatusTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Score.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Score.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Score.Location = new System.Drawing.Point(10, 34);
+            this.Score.Multiline = true;
+            this.Score.Name = "Score";
+            this.Score.ReadOnly = true;
+            this.Score.Size = new System.Drawing.Size(1130, 47);
+            this.Score.TabIndex = 6;
+            this.Score.Text = "SCORE_TEXT_BOX";
+            this.Score.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ImageAndPointsButtonsPanel
             // 
             this.ImageAndPointsButtonsPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ImageAndPointsButtonsPanel.Controls.Add(this.NextRoundButton);
             this.ImageAndPointsButtonsPanel.Controls.Add(this.Give1PointButton);
+            this.ImageAndPointsButtonsPanel.Controls.Add(this.Status);
             this.ImageAndPointsButtonsPanel.Controls.Add(this.Give2PointsButton);
             this.ImageAndPointsButtonsPanel.Controls.Add(this.TrustExchangePictureBox);
             this.ImageAndPointsButtonsPanel.Location = new System.Drawing.Point(7, 87);
             this.ImageAndPointsButtonsPanel.Name = "ImageAndPointsButtonsPanel";
-            this.ImageAndPointsButtonsPanel.Size = new System.Drawing.Size(1136, 507);
+            this.ImageAndPointsButtonsPanel.Size = new System.Drawing.Size(1136, 615);
             this.ImageAndPointsButtonsPanel.TabIndex = 8;
+            // 
+            // NextRoundButton
+            // 
+            this.NextRoundButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NextRoundButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NextRoundButton.Location = new System.Drawing.Point(431, 476);
+            this.NextRoundButton.Name = "NextRoundButton";
+            this.NextRoundButton.Size = new System.Drawing.Size(274, 49);
+            this.NextRoundButton.TabIndex = 9;
+            this.NextRoundButton.Text = "Click For Next Round";
+            this.NextRoundButton.UseVisualStyleBackColor = true;
+            this.NextRoundButton.Visible = false;
+            this.NextRoundButton.Click += new System.EventHandler(this.NextRoundButton_Click);
             // 
             // Give1PointButton
             // 
@@ -195,6 +195,22 @@
             this.Give1PointButton.Text = "Give 1 Point";
             this.Give1PointButton.UseVisualStyleBackColor = true;
             this.Give1PointButton.Click += new System.EventHandler(this.Give1PointButton_Click);
+            // 
+            // Status
+            // 
+            this.Status.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Status.BackColor = System.Drawing.SystemColors.Control;
+            this.Status.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Status.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Status.Location = new System.Drawing.Point(-1, 531);
+            this.Status.Multiline = true;
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            this.Status.Size = new System.Drawing.Size(1136, 81);
+            this.Status.TabIndex = 5;
+            this.Status.Text = "STATUS_TEXT_BOX";
+            this.Status.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Give2PointsButton
             // 
@@ -287,6 +303,93 @@
             this.ImpRecogTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.ImpRecogTableLayoutPanel.Size = new System.Drawing.Size(1151, 800);
             this.ImpRecogTableLayoutPanel.TabIndex = 0;
+            // 
+            // ExplicitRecognitionTaskTab
+            // 
+            this.ExplicitRecognitionTaskTab.BackColor = System.Drawing.SystemColors.Control;
+            this.ExplicitRecognitionTaskTab.Controls.Add(this.ExpRecogTableLayoutPanel);
+            this.ExplicitRecognitionTaskTab.Location = new System.Drawing.Point(4, 22);
+            this.ExplicitRecognitionTaskTab.Name = "ExplicitRecognitionTaskTab";
+            this.ExplicitRecognitionTaskTab.Size = new System.Drawing.Size(1151, 800);
+            this.ExplicitRecognitionTaskTab.TabIndex = 3;
+            this.ExplicitRecognitionTaskTab.Text = "Matching";
+            // 
+            // ExpRecogTableLayoutPanel
+            // 
+            this.ExpRecogTableLayoutPanel.ColumnCount = 8;
+            this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA1, 0, 0);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA2, 1, 0);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA3, 2, 0);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA4, 3, 0);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA5, 4, 0);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA6, 5, 0);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA7, 6, 0);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA8, 7, 0);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB1, 0, 1);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB2, 1, 1);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB3, 2, 1);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB4, 3, 1);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB5, 4, 1);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB6, 5, 1);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB7, 6, 1);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB8, 7, 1);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC1, 0, 2);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC2, 1, 2);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC3, 2, 2);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC4, 3, 2);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC5, 4, 2);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC6, 5, 2);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC7, 6, 2);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC8, 7, 2);
+            this.ExpRecogTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExpRecogTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.ExpRecogTableLayoutPanel.Name = "ExpRecogTableLayoutPanel";
+            this.ExpRecogTableLayoutPanel.RowCount = 3;
+            this.ExpRecogTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.ExpRecogTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.ExpRecogTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.ExpRecogTableLayoutPanel.Size = new System.Drawing.Size(1151, 800);
+            this.ExpRecogTableLayoutPanel.TabIndex = 1;
+            // 
+            // MenuStrip
+            // 
+            this.MenuStrip.Enabled = false;
+            this.MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.MenuStrip.Location = new System.Drawing.Point(0, 0);
+            this.MenuStrip.Name = "MenuStrip";
+            this.MenuStrip.Size = new System.Drawing.Size(1184, 24);
+            this.MenuStrip.TabIndex = 1;
+            this.MenuStrip.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openToolStripMenuItem,
+            this.saveToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.openToolStripMenuItem.Text = "Open";
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.saveToolStripMenuItem.Text = "Save";
             // 
             // ImpRecogImgA1
             // 
@@ -504,61 +607,6 @@
             this.ImpRecogImgC8.Size = new System.Drawing.Size(144, 262);
             this.ImpRecogImgC8.TabIndex = 23;
             // 
-            // ExplicitRecognitionTaskTab
-            // 
-            this.ExplicitRecognitionTaskTab.BackColor = System.Drawing.SystemColors.Control;
-            this.ExplicitRecognitionTaskTab.Controls.Add(this.ExpRecogTableLayoutPanel);
-            this.ExplicitRecognitionTaskTab.Location = new System.Drawing.Point(4, 22);
-            this.ExplicitRecognitionTaskTab.Name = "ExplicitRecognitionTaskTab";
-            this.ExplicitRecognitionTaskTab.Size = new System.Drawing.Size(1151, 800);
-            this.ExplicitRecognitionTaskTab.TabIndex = 3;
-            this.ExplicitRecognitionTaskTab.Text = "Matching";
-            // 
-            // ExpRecogTableLayoutPanel
-            // 
-            this.ExpRecogTableLayoutPanel.ColumnCount = 8;
-            this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA1, 0, 0);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA2, 1, 0);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA3, 2, 0);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA4, 3, 0);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA5, 4, 0);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA6, 5, 0);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA7, 6, 0);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA8, 7, 0);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB1, 0, 1);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB2, 1, 1);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB3, 2, 1);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB4, 3, 1);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB5, 4, 1);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB6, 5, 1);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB7, 6, 1);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB8, 7, 1);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC1, 0, 2);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC2, 1, 2);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC3, 2, 2);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC4, 3, 2);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC5, 4, 2);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC6, 5, 2);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC7, 6, 2);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC8, 7, 2);
-            this.ExpRecogTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpRecogTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
-            this.ExpRecogTableLayoutPanel.Name = "ExpRecogTableLayoutPanel";
-            this.ExpRecogTableLayoutPanel.RowCount = 3;
-            this.ExpRecogTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.ExpRecogTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.ExpRecogTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.ExpRecogTableLayoutPanel.Size = new System.Drawing.Size(1151, 800);
-            this.ExpRecogTableLayoutPanel.TabIndex = 1;
-            // 
             // ExpRecogImgA1
             // 
             this.ExpRecogImgA1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -775,38 +823,6 @@
             this.ExpRecogImgC8.Size = new System.Drawing.Size(144, 262);
             this.ExpRecogImgC8.TabIndex = 23;
             // 
-            // MenuStrip
-            // 
-            this.MenuStrip.Enabled = false;
-            this.MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
-            this.MenuStrip.Location = new System.Drawing.Point(0, 0);
-            this.MenuStrip.Name = "MenuStrip";
-            this.MenuStrip.Size = new System.Drawing.Size(1184, 24);
-            this.MenuStrip.TabIndex = 1;
-            this.MenuStrip.Text = "menuStrip1";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openToolStripMenuItem,
-            this.saveToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
-            // 
-            // openToolStripMenuItem
-            // 
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
-            this.openToolStripMenuItem.Text = "Open";
-            // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
-            this.saveToolStripMenuItem.Text = "Save";
-            // 
             // SocialExchangeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -823,6 +839,7 @@
             this.TrustExchangeTaskTab.ResumeLayout(false);
             this.TrustExchangeTaskTab.PerformLayout();
             this.ImageAndPointsButtonsPanel.ResumeLayout(false);
+            this.ImageAndPointsButtonsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TrustExchangePictureBox)).EndInit();
             this.ImplicitRecognitionTaskTab.ResumeLayout(false);
             this.ImpRecogTableLayoutPanel.ResumeLayout(false);
@@ -849,8 +866,8 @@
         private System.Windows.Forms.PictureBox TrustExchangePictureBox;
         private System.Windows.Forms.Button Give1PointButton;
         private System.Windows.Forms.Button Give2PointsButton;
-        private System.Windows.Forms.TextBox TrustExchangeTaskStatusTextBox;
-        private System.Windows.Forms.TextBox TrustExchangeTaskScoreTextBox;
+        private System.Windows.Forms.TextBox Status;
+        private System.Windows.Forms.TextBox Score;
         private System.Windows.Forms.ProgressBar ProgressBar;
         private System.Windows.Forms.Panel ImageAndPointsButtonsPanel;
         private System.Windows.Forms.TableLayoutPanel ImpRecogTableLayoutPanel;
@@ -903,6 +920,7 @@
         private RecognitionUserControl ExpRecogImgC6;
         private RecognitionUserControl ExpRecogImgC7;
         private RecognitionUserControl ExpRecogImgC8;
+        private System.Windows.Forms.Button NextRoundButton;
     }
 }
 
