@@ -16,8 +16,8 @@ namespace SocialExchangeWinForms
     {
         public static LogicEngine LogicEngine = new LogicEngine();
 
-        public List<RecognitionUserControl> ImplicitRecognitionControls { get; protected set; }
-        public List<RecognitionUserControl> ExplicitRecognitionControls { get; protected set; }
+        public List<RecognitionUserControl> ImpRecogControls { get; protected set; }
+        public List<RecognitionUserControl> ExpRecogControls { get; protected set; }
 
         public const string SCORE_TEXT = "You have {0} points.";
 
@@ -56,8 +56,8 @@ namespace SocialExchangeWinForms
 
         private void InitializeImplicitRecognitionControlList()
         {
-            ImplicitRecognitionControls = new List<RecognitionUserControl>();
-            ImplicitRecognitionControls.AddRange(
+            ImpRecogControls = new List<RecognitionUserControl>();
+            ImpRecogControls.AddRange(
                 new RecognitionUserControl[] {
                     ImpRecogImgA1,
                     ImpRecogImgA2,
@@ -89,8 +89,8 @@ namespace SocialExchangeWinForms
 
         private void InitializeExplicitRecognitionControlList()
         {
-            ExplicitRecognitionControls = new List<RecognitionUserControl>();
-            ExplicitRecognitionControls.AddRange(
+            ExpRecogControls = new List<RecognitionUserControl>();
+            ExpRecogControls.AddRange(
                 new RecognitionUserControl[] {
                     ExpRecogImgA1,
                     ExpRecogImgA2,
@@ -137,21 +137,125 @@ namespace SocialExchangeWinForms
 
         private void AdvanceToDemographicsTask()
         {
-            throw new NotImplementedException();
+            ShowTab(DemographicsTaskTab);
+
+            MessageBox.Show("Insert demographics task here.", "Advancing to Next Task", MessageBoxButtons.OK);
+
+            AdvanceToImplicitRecognitionTask();
         }
 
         private void AdvanceToImplicitRecognitionTask()
         {
             LogicEngine.InitializeImplicitRecognitionTask();
 
-            throw new NotImplementedException();
+            ImpRecogControls
+                .ForEach
+                (
+                    control => 
+                    {
+                        control.RecognitionRound = LogicEngine.ImplicitRecognitionTask.Rounds[ImpRecogControls.IndexOf(control)];
+
+                        control.PictureBox.Image = control.RecognitionRound.Persona.Image;
+
+                        control.Radio1.Visible = false;
+                        control.Radio2.Text = "Choose";
+                        control.Radio3.Text = "Discard";
+
+                        control.Radio2.CheckedChanged += 
+                            (sender, e) => 
+                            {
+                                int countChecked =
+                                    ImpRecogControls.Count<RecognitionUserControl>(ruc => ruc.Radio2.Checked == true);
+                                if (countChecked < 12)
+                                {
+                                    ImpRecogSubmitButton.Enabled = false;
+                                }
+                                else
+                                    if (countChecked == 12)
+                                    {
+                                        ImpRecogSubmitButton.Enabled = true;
+                                    }
+                                    else
+                                        if(countChecked > 12)
+                                        {
+                                            ImpRecogSubmitButton.Enabled = false;
+
+                                            MessageBox.Show
+                                            (
+                                                string.Format("You have chosen {0} too many. ", countChecked - 12) +
+                                                "Please discard those you would NOT want to play again until you reach twelve chosen players.",
+                                                string.Format("Please Discard {0}", countChecked - 12),
+                                                MessageBoxButtons.OK
+                                            );
+                                        }
+                            };
+                    }
+                );
+
+            ShowTab(ImpRecogTaskTab);
         }
 
         private void AdvanceToExplicitRecognitionTask()
         {
             LogicEngine.InitializeExplicitRecognitionTask();
 
-            throw new NotImplementedException();
+            ExpRecogControls
+                .ForEach
+                (
+                    control =>
+                    {
+                        control.RecognitionRound = LogicEngine.ExplicitRecognitionTask.Rounds[ExpRecogControls.IndexOf(control)];
+
+                        control.PictureBox.Image = control.RecognitionRound.Persona.Image;
+
+                        control.Radio1.Text = "YES, gave me points back";
+                        control.Radio2.Text = "NO, gave no points back";
+                        control.Radio3.Text = "I did not play this person";
+
+                        EventHandler validationEventHandler =
+                            (sender, e) =>
+                            {
+                                int countRadio1Checked =
+                                    ExpRecogControls.Count<RecognitionUserControl>(ruc => ruc.Radio1.Checked == true);
+
+                                int countRadio2Checked =
+                                    ExpRecogControls.Count<RecognitionUserControl>(ruc => ruc.Radio2.Checked == true);
+
+                                int countRadio3Checked =
+                                    ExpRecogControls.Count<RecognitionUserControl>(ruc => ruc.Radio2.Checked == true);
+
+                                if (countRadio1Checked < 6 && countRadio2Checked < 6)
+                                {
+                                    ExpRecogSubmitButton.Enabled = false;
+                                }
+                                else
+                                    if (countRadio1Checked == 6 && countRadio2Checked == 6)
+                                    {
+                                        ExpRecogSubmitButton.Enabled = true;
+                                    }
+                                    else
+                                        if (countRadio1Checked > 6 || countRadio2Checked > 6 || countRadio3Checked > 12)
+                                        {
+                                            ExpRecogSubmitButton.Enabled = false;
+
+                                            MessageBox.Show
+                                            (
+                                                string.Format("There are incorrect amounts of certain selections. ", countRadio1Checked - 6) +
+                                                "Please choose exactly 6 players that gave you points, exactly 6 that did not, and exactly 12 that you did not play.",
+                                                string.Format("Choose Exactly 6 And 6", countRadio1Checked - 6),
+                                                MessageBoxButtons.OK
+                                            );
+                                        }
+                            };
+
+
+                        control.Radio1.CheckedChanged += validationEventHandler;
+                        control.Radio2.CheckedChanged += validationEventHandler;
+                        control.Radio3.CheckedChanged += validationEventHandler;
+                    }
+                );
+
+            ShowTab(ExpRecogTaskTab);
         }
 
         private void Give1PointButton_Click(object sender, EventArgs e)
@@ -166,7 +270,7 @@ namespace SocialExchangeWinForms
 
         private void GivePoints(int points)
         {
-            SetTrustExchangeControlEnabledState(false);
+            SetTrustExchangeControlsEnabledStateTo(false);
 
             int scoreAtRoundStart = LogicEngine.TrustExchangeTask.PlayerScore;
             
@@ -177,7 +281,7 @@ namespace SocialExchangeWinForms
 
             NotifyPlayerOfWaitingOnPersonaResponse();
             NotifyPlayerOfPersonaResponse();
-            NotifyPlayerOfScoringThisRound(scoreAtRoundStart);// - points);
+            NotifyPlayerOfScoringThisRound(scoreAtRoundStart);
             
             if
             (
@@ -185,16 +289,12 @@ namespace SocialExchangeWinForms
                 LogicEngine.TrustExchangeTask.CurrentRoundIndex != LogicEngine.TrustExchangeTask.Rounds.Count - 1
             )
             {
-                //MessageBox.Show("Click OK when you are ready to advance to the next player.", "Advancing to next player...", MessageBoxButtons.OK);
-
-                //StatusTextBox.SetTextAsync(STATUS_TEXT__ADVANCING_TO_NEXT_PLAYER);
-                //Thread.Sleep(2000);
-
                 NextRoundButton.Visible = true;
             }
             else
             {
-                MessageBox.Show("Advancing to Q&A Task.");
+                MessageBox.Show("You have finished the Trust Game.", "Advancing to Q&A Task", MessageBoxButtons.OK);
+                AdvanceToDemographicsTask();
             }
         }
 
@@ -209,33 +309,25 @@ namespace SocialExchangeWinForms
         {
             Score.SetTextInvoke(SCORE_TEXT, LogicEngine.TrustExchangeTask.PlayerScore - points);
             Status.SetTextInvoke(STATUS_TEXT__SCORE_REDUCED_TO_X, LogicEngine.TrustExchangeTask.PlayerScore - points);
-            Thread.Sleep(1500);
+            1500.EmulateTimeDelay();
         }
 
         private void NotifyPlayerOfWaitingOnPersonaResponse()
         {
             Status.SetTextInvoke(STATUS_TEXT__WAITING_ON_PLAYER2_RESPONSE);
-            //ProgressBar.StepProgressBar(millisMin: 100, millisMax: 800);
-            ProgressBar.StepInvoke(millisMin: 20, millisMax: 20);
+            ProgressBar.StepInvoke(millisMin: 10, millisMax: 500);
         }
 
         private void NotifyPlayerOfPersonaResponse()
         {
             Score.SetTextInvoke(SCORE_TEXT, LogicEngine.TrustExchangeTask.PlayerScore);
             Status.SetTextInvoke(STATUS_TEXT__PLAYER2_RESPONDED_WITH_X_POINTS, LogicEngine.TrustExchangeTask.CurrentRound.MultipliedPersonaPointsOut);
-            Thread.Sleep(2500);
+            2500.EmulateTimeDelay();
         }
 
-        private void NotifyPlayerOfScoringThisRound(int scoreAtRoundStart)//, int points, int scoreAfterSendingPoints)
+        private void NotifyPlayerOfScoringThisRound(int scoreAtRoundStart)
         {
             int finalScore = LogicEngine.TrustExchangeTask.PlayerScore;
-
-            //string contextualScoringMessage =
-            //    scoreAtRoundStart > finalScore ?
-            //    string.Format("decreased from {0} to {1}", scoreAtRoundStart, finalScore) :
-            //    //scoreAtRoundStart < finalScore ?
-            //        string.Format("increased from {0} to {1}", scoreAtRoundStart, finalScore);//:
-            ////string.Format("remain at {0}", finalScore);
 
             int diff = Math.Abs(scoreAtRoundStart - finalScore);
             string contextualScoringMessage =
@@ -248,7 +340,7 @@ namespace SocialExchangeWinForms
                 );
 
             Status.SetTextInvoke(contextualScoringMessage);
-            Thread.Sleep(2500);
+            2500.EmulateTimeDelay();
         }
 
         private void ShowTab(TabPage tab)
@@ -256,9 +348,10 @@ namespace SocialExchangeWinForms
             Tabs.TabPages.Cast<TabPage>().ToList().ForEach(t => t.Hide());
             tab.Show();
             Tabs.SelectedTab = tab;
+            Application.DoEvents();
         }
 
-        private void SetTrustExchangeControlEnabledState(bool state)
+        private void SetTrustExchangeControlsEnabledStateTo(bool state)
         {
             Give1PointButton.Enabled = state;
             Give2PointsButton.Enabled = state;
@@ -267,69 +360,141 @@ namespace SocialExchangeWinForms
 
         private void LoadTrustExchangeCurrentRoundPersonaImage(string p)
         {
-            this.TrustExchangePictureBox.ImageLocation = LogicEngine.TrustExchangeTask.CurrentRound.Persona.Filename;
+            this.TrustExchangePictureBox.ImageLocation = LogicEngine.TrustExchangeTask.CurrentRound.Persona.FileName;
         }
 
         private void NextRoundButton_Click(object sender, EventArgs e)
         {
             LogicEngine.TrustExchangeTask.AdvanceToNextRound();
             SetTrustExchangePictureBoxImageToCurrentRoundPersona();
-            SetTrustExchangeControlEnabledState(true);
+            SetTrustExchangeControlsEnabledStateTo(true);
             Status.SetTextInvoke(STATUS_TEXT__GIVE_1_OR_2_POINTS_TO_PLAYER2);
             NextRoundButton.Visible = false;
         }
+
+        private void ImpRecogSubmitButton_Click(object sender, EventArgs e)
+        {
+            ImpRecogControls
+                .ForEach
+                (
+                    control =>
+                    {
+                        control.Radio1.Enabled = false;
+                        control.Radio2.Enabled = false;
+                        control.Radio2.Enabled = false;
+
+                        control.RecognitionRound.ProcessPlayerInput
+                        (
+                            control.Radio2.Checked ? 
+                            PlayerInputClassifications.ImplicitlyChosePersona :
+                            PlayerInputClassifications.ImplicitlyDiscardedPersona 
+                        );
+                    }
+                );
+
+            ImpRecogSubmitButton.Enabled = false;
+
+            AdvanceToExplicitRecognitionTask();
+        }
+
+        private void ExpRecogSubmitButton_Click(object sender, EventArgs e)
+        {
+            ExpRecogControls
+                .ForEach
+                (
+                    control =>
+                    {
+                        control.Radio1.Enabled = false;
+                        control.Radio2.Enabled = false;
+                        control.Radio2.Enabled = false;
+
+                        control.RecognitionRound.ProcessPlayerInput
+                        (
+                            control.Radio1.Checked ?
+                            PlayerInputClassifications.ExplicitlyChoseCooperatorPersona :
+                            control.Radio2.Checked ?
+                            PlayerInputClassifications.ExplicitlyChoseDefectorPersona :
+                            PlayerInputClassifications.ExplicitlyDiscardedPersona
+
+                        );
+                    }
+                );
+
+            ExpRecogSubmitButton.Enabled = false;
+
+            MessageBox.Show("You have completed all tasks. Please discuss your results with your proctor.", "CONGRATULATIONS!", MessageBoxButtons.OK); 
+            
+            LogicEngine.SaveResults
+            (
+                string.Join
+                (
+                    Environment.NewLine,
+                    new object[] 
+                    {
+                        RoundExtensions.GetCommaDelimitedColumnNames(),
+                        string.Join(Environment.NewLine, LogicEngine.TrustExchangeTask.Rounds.Select<TrustExchangeRound, object>(r => r.ToString()).ToArray()),
+                        string.Join(Environment.NewLine, LogicEngine.ImplicitRecognitionTask.Rounds.Select<RecognitionRound, object>(r => r.ToString()).ToArray()),
+                        string.Join(Environment.NewLine, LogicEngine.ExplicitRecognitionTask.Rounds.Select<RecognitionRound, object>(r => r.ToString()).ToArray())
+                    }
+                )
+            );
+        }
     }
 
-    public static class Extensions
+    public static class SocialExchangeExtensions
     {
-        //public async static void SetTextAsync(this TextBox textBox, string text, params object[] @params)
-        //{
-        //    await System.Threading.Tasks.Task.Run(() => textBox.SetText(text, @params));
-        //}
+        public static bool IsEmulatingTimeDelay = true;
+
+        public static void EmulateTimeDelay(this int @int)
+        {
+            if (IsEmulatingTimeDelay)
+            {
+                Thread.Sleep(@int);
+                Application.DoEvents();
+            }
+        }
 
         public static void SetTextInvoke(this TextBox textBox, string text, params object[] @params)
         {
-            //BackgroundWorker worker = new BackgroundWorker();
-            //worker.DoWork +=
-            //    (sender, e) =>
-            //    {
             textBox.Invoke(new Action(() => textBox.SetText(text, @params)));
-            Application.DoEvents();
-            Thread.Sleep(10);
-            //    };
-
-            //worker.RunWorkerAsync(new object[] { textBox, text }.Concat(@params));
+            //Application.DoEvents();
+            //Thread.Sleep(10);
         }
 
         public static void StepInvoke(this ProgressBar progressBar, int fromPercentage = -1, int toPercentage = 100, int millisMin = 50, int millisMax = 200)
         {
             progressBar.Invoke(new Action(() => progressBar.Step(fromPercentage, toPercentage, millisMin, millisMax)));
-            Application.DoEvents();
         }
 
         public static void SetText(this TextBox textBox, string text, params object[] @params)
         {
             textBox.Text = string.Format(text, @params ?? new object[] { text });
+            Application.DoEvents();
         }
 
 
         public static void Step(this ProgressBar progressBar, int fromPercentage = -1, int toPercentage = 100, int millisMin = 50, int millisMax = 200)
         {
-            progressBar.Visible = true;
-
-            progressBar.Value = fromPercentage == -1 ? progressBar.Value : fromPercentage;
-
-            while (progressBar.Value < toPercentage)
+            if(IsEmulatingTimeDelay)
             {
-                Thread.Sleep(new Random().Next(millisMin, millisMax));
-                progressBar.PerformStep();
+                progressBar.Visible = true;
+
+                progressBar.Value = fromPercentage == -1 ? progressBar.Value : fromPercentage;
+
+                while (progressBar.Value < toPercentage)
+                {
+                    Thread.Sleep(new Random().Next(millisMin, millisMax));
+                    Application.DoEvents();
+                    progressBar.PerformStep();
+                }
+
+                progressBar.Visible = false;
+
+                progressBar.Value = toPercentage == 100 ? 0 : fromPercentage;
+
+                //Thread.Sleep(10);
+                Application.DoEvents();
             }
-
-            progressBar.Visible = false;
-
-            progressBar.Value = toPercentage == 100 ? 0 : fromPercentage;
-
-            Thread.Sleep(10);
         }
     }
 }

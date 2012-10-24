@@ -39,14 +39,8 @@
             this.Give2PointsButton = new System.Windows.Forms.Button();
             this.TrustExchangePictureBox = new System.Windows.Forms.PictureBox();
             this.DemographicsTaskTab = new System.Windows.Forms.TabPage();
-            this.ImplicitRecognitionTaskTab = new System.Windows.Forms.TabPage();
+            this.ImpRecogTaskTab = new System.Windows.Forms.TabPage();
             this.ImpRecogTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.ExplicitRecognitionTaskTab = new System.Windows.Forms.TabPage();
-            this.ExpRecogTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.MenuStrip = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ImpRecogImgA1 = new SocialExchangeWinForms.RecognitionUserControl();
             this.ImpRecogImgA2 = new SocialExchangeWinForms.RecognitionUserControl();
             this.ImpRecogImgA3 = new SocialExchangeWinForms.RecognitionUserControl();
@@ -71,6 +65,12 @@
             this.ImpRecogImgC6 = new SocialExchangeWinForms.RecognitionUserControl();
             this.ImpRecogImgC7 = new SocialExchangeWinForms.RecognitionUserControl();
             this.ImpRecogImgC8 = new SocialExchangeWinForms.RecognitionUserControl();
+            this.ImpRecogSubmitButton = new System.Windows.Forms.Button();
+            this.ImpRecogStatusButtonAsLabel = new System.Windows.Forms.Button();
+            this.ExpRecogTaskTab = new System.Windows.Forms.TabPage();
+            this.ExpRecogTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.ExpRecogSubmitButton = new System.Windows.Forms.Button();
+            this.ExpRecogStatusButtonAsLabel = new System.Windows.Forms.Button();
             this.ExpRecogImgA1 = new SocialExchangeWinForms.RecognitionUserControl();
             this.ExpRecogImgA2 = new SocialExchangeWinForms.RecognitionUserControl();
             this.ExpRecogImgA3 = new SocialExchangeWinForms.RecognitionUserControl();
@@ -95,13 +95,17 @@
             this.ExpRecogImgC6 = new SocialExchangeWinForms.RecognitionUserControl();
             this.ExpRecogImgC7 = new SocialExchangeWinForms.RecognitionUserControl();
             this.ExpRecogImgC8 = new SocialExchangeWinForms.RecognitionUserControl();
+            this.MenuStrip = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Tabs.SuspendLayout();
             this.TrustExchangeTaskTab.SuspendLayout();
             this.ImageAndPointsButtonsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TrustExchangePictureBox)).BeginInit();
-            this.ImplicitRecognitionTaskTab.SuspendLayout();
+            this.ImpRecogTaskTab.SuspendLayout();
             this.ImpRecogTableLayoutPanel.SuspendLayout();
-            this.ExplicitRecognitionTaskTab.SuspendLayout();
+            this.ExpRecogTaskTab.SuspendLayout();
             this.ExpRecogTableLayoutPanel.SuspendLayout();
             this.MenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -113,8 +117,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Tabs.Controls.Add(this.TrustExchangeTaskTab);
             this.Tabs.Controls.Add(this.DemographicsTaskTab);
-            this.Tabs.Controls.Add(this.ImplicitRecognitionTaskTab);
-            this.Tabs.Controls.Add(this.ExplicitRecognitionTaskTab);
+            this.Tabs.Controls.Add(this.ImpRecogTaskTab);
+            this.Tabs.Controls.Add(this.ExpRecogTaskTab);
             this.Tabs.Location = new System.Drawing.Point(13, 24);
             this.Tabs.Name = "Tabs";
             this.Tabs.SelectedIndex = 0;
@@ -235,6 +239,7 @@
             this.TrustExchangePictureBox.MinimumSize = new System.Drawing.Size(350, 500);
             this.TrustExchangePictureBox.Name = "TrustExchangePictureBox";
             this.TrustExchangePictureBox.Size = new System.Drawing.Size(350, 500);
+            this.TrustExchangePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.TrustExchangePictureBox.TabIndex = 1;
             this.TrustExchangePictureBox.TabStop = false;
             // 
@@ -250,14 +255,14 @@
             // 
             // ImplicitRecognitionTaskTab
             // 
-            this.ImplicitRecognitionTaskTab.AutoScroll = true;
-            this.ImplicitRecognitionTaskTab.BackColor = System.Drawing.SystemColors.Control;
-            this.ImplicitRecognitionTaskTab.Controls.Add(this.ImpRecogTableLayoutPanel);
-            this.ImplicitRecognitionTaskTab.Location = new System.Drawing.Point(4, 22);
-            this.ImplicitRecognitionTaskTab.Name = "ImplicitRecognitionTaskTab";
-            this.ImplicitRecognitionTaskTab.Size = new System.Drawing.Size(1151, 800);
-            this.ImplicitRecognitionTaskTab.TabIndex = 2;
-            this.ImplicitRecognitionTaskTab.Text = "Choosing";
+            this.ImpRecogTaskTab.AutoScroll = true;
+            this.ImpRecogTaskTab.BackColor = System.Drawing.SystemColors.Control;
+            this.ImpRecogTaskTab.Controls.Add(this.ImpRecogTableLayoutPanel);
+            this.ImpRecogTaskTab.Location = new System.Drawing.Point(4, 22);
+            this.ImpRecogTaskTab.Name = "ImplicitRecognitionTaskTab";
+            this.ImpRecogTaskTab.Size = new System.Drawing.Size(1151, 800);
+            this.ImpRecogTaskTab.TabIndex = 2;
+            this.ImpRecogTaskTab.Text = "Choosing";
             // 
             // ImpRecogTableLayoutPanel
             // 
@@ -270,49 +275,325 @@
             this.ImpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.ImpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.ImpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgA1, 0, 0);
-            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgA2, 1, 0);
-            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgA3, 2, 0);
-            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgA4, 3, 0);
-            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgA5, 4, 0);
-            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgA6, 5, 0);
-            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgA7, 6, 0);
-            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgA8, 7, 0);
-            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgB1, 0, 1);
-            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgB2, 1, 1);
-            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgB3, 2, 1);
-            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgB4, 3, 1);
-            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgB5, 4, 1);
-            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgB6, 5, 1);
-            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgB7, 6, 1);
-            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgB8, 7, 1);
-            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgC1, 0, 2);
-            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgC2, 1, 2);
-            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgC3, 2, 2);
-            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgC4, 3, 2);
-            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgC5, 4, 2);
-            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgC6, 5, 2);
-            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgC7, 6, 2);
-            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgC8, 7, 2);
+            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgA1, 0, 1);
+            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgA2, 1, 1);
+            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgA3, 2, 1);
+            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgA4, 3, 1);
+            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgA5, 4, 1);
+            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgA6, 5, 1);
+            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgA7, 6, 1);
+            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgA8, 7, 1);
+            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgB1, 0, 2);
+            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgB2, 1, 2);
+            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgB3, 2, 2);
+            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgB4, 3, 2);
+            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgB5, 4, 2);
+            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgB6, 5, 2);
+            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgB7, 6, 2);
+            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgB8, 7, 2);
+            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgC1, 0, 3);
+            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgC2, 1, 3);
+            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgC3, 2, 3);
+            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgC4, 3, 3);
+            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgC5, 4, 3);
+            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgC6, 5, 3);
+            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgC7, 6, 3);
+            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogImgC8, 7, 3);
+            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogSubmitButton, 3, 4);
+            this.ImpRecogTableLayoutPanel.Controls.Add(this.ImpRecogStatusButtonAsLabel, 0, 0);
             this.ImpRecogTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ImpRecogTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.ImpRecogTableLayoutPanel.Name = "ImpRecogTableLayoutPanel";
-            this.ImpRecogTableLayoutPanel.RowCount = 3;
+            this.ImpRecogTableLayoutPanel.RowCount = 5;
+            this.ImpRecogTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
             this.ImpRecogTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.ImpRecogTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.ImpRecogTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.ImpRecogTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.ImpRecogTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.ImpRecogTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.ImpRecogTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.ImpRecogTableLayoutPanel.Size = new System.Drawing.Size(1151, 800);
             this.ImpRecogTableLayoutPanel.TabIndex = 0;
             // 
-            // ExplicitRecognitionTaskTab
+            // ImpRecogImgA1
             // 
-            this.ExplicitRecognitionTaskTab.BackColor = System.Drawing.SystemColors.Control;
-            this.ExplicitRecognitionTaskTab.Controls.Add(this.ExpRecogTableLayoutPanel);
-            this.ExplicitRecognitionTaskTab.Location = new System.Drawing.Point(4, 22);
-            this.ExplicitRecognitionTaskTab.Name = "ExplicitRecognitionTaskTab";
-            this.ExplicitRecognitionTaskTab.Size = new System.Drawing.Size(1151, 800);
-            this.ExplicitRecognitionTaskTab.TabIndex = 3;
-            this.ExplicitRecognitionTaskTab.Text = "Matching";
+            this.ImpRecogImgA1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ImpRecogImgA1.Location = new System.Drawing.Point(3, 44);
+            this.ImpRecogImgA1.Name = "ImpRecogImgA1";
+            this.ImpRecogImgA1.Padding = new System.Windows.Forms.Padding(3);
+            this.ImpRecogImgA1.RecognitionRound = null;
+            this.ImpRecogImgA1.Size = new System.Drawing.Size(137, 233);
+            this.ImpRecogImgA1.TabIndex = 0;
+            // 
+            // ImpRecogImgA2
+            // 
+            this.ImpRecogImgA2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ImpRecogImgA2.Location = new System.Drawing.Point(146, 44);
+            this.ImpRecogImgA2.Name = "ImpRecogImgA2";
+            this.ImpRecogImgA2.Padding = new System.Windows.Forms.Padding(3);
+            this.ImpRecogImgA2.RecognitionRound = null;
+            this.ImpRecogImgA2.Size = new System.Drawing.Size(137, 233);
+            this.ImpRecogImgA2.TabIndex = 1;
+            // 
+            // ImpRecogImgA3
+            // 
+            this.ImpRecogImgA3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ImpRecogImgA3.Location = new System.Drawing.Point(289, 44);
+            this.ImpRecogImgA3.Name = "ImpRecogImgA3";
+            this.ImpRecogImgA3.Padding = new System.Windows.Forms.Padding(3);
+            this.ImpRecogImgA3.RecognitionRound = null;
+            this.ImpRecogImgA3.Size = new System.Drawing.Size(137, 233);
+            this.ImpRecogImgA3.TabIndex = 2;
+            // 
+            // ImpRecogImgA4
+            // 
+            this.ImpRecogImgA4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ImpRecogImgA4.Location = new System.Drawing.Point(432, 44);
+            this.ImpRecogImgA4.Name = "ImpRecogImgA4";
+            this.ImpRecogImgA4.Padding = new System.Windows.Forms.Padding(3);
+            this.ImpRecogImgA4.RecognitionRound = null;
+            this.ImpRecogImgA4.Size = new System.Drawing.Size(137, 233);
+            this.ImpRecogImgA4.TabIndex = 3;
+            // 
+            // ImpRecogImgA5
+            // 
+            this.ImpRecogImgA5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ImpRecogImgA5.Location = new System.Drawing.Point(575, 44);
+            this.ImpRecogImgA5.Name = "ImpRecogImgA5";
+            this.ImpRecogImgA5.Padding = new System.Windows.Forms.Padding(3);
+            this.ImpRecogImgA5.RecognitionRound = null;
+            this.ImpRecogImgA5.Size = new System.Drawing.Size(137, 233);
+            this.ImpRecogImgA5.TabIndex = 4;
+            // 
+            // ImpRecogImgA6
+            // 
+            this.ImpRecogImgA6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ImpRecogImgA6.Location = new System.Drawing.Point(718, 44);
+            this.ImpRecogImgA6.Name = "ImpRecogImgA6";
+            this.ImpRecogImgA6.Padding = new System.Windows.Forms.Padding(3);
+            this.ImpRecogImgA6.RecognitionRound = null;
+            this.ImpRecogImgA6.Size = new System.Drawing.Size(137, 233);
+            this.ImpRecogImgA6.TabIndex = 5;
+            // 
+            // ImpRecogImgA7
+            // 
+            this.ImpRecogImgA7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ImpRecogImgA7.Location = new System.Drawing.Point(861, 44);
+            this.ImpRecogImgA7.Name = "ImpRecogImgA7";
+            this.ImpRecogImgA7.Padding = new System.Windows.Forms.Padding(3);
+            this.ImpRecogImgA7.RecognitionRound = null;
+            this.ImpRecogImgA7.Size = new System.Drawing.Size(137, 233);
+            this.ImpRecogImgA7.TabIndex = 6;
+            // 
+            // ImpRecogImgA8
+            // 
+            this.ImpRecogImgA8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ImpRecogImgA8.Location = new System.Drawing.Point(1004, 44);
+            this.ImpRecogImgA8.Name = "ImpRecogImgA8";
+            this.ImpRecogImgA8.Padding = new System.Windows.Forms.Padding(3);
+            this.ImpRecogImgA8.RecognitionRound = null;
+            this.ImpRecogImgA8.Size = new System.Drawing.Size(144, 233);
+            this.ImpRecogImgA8.TabIndex = 7;
+            // 
+            // ImpRecogImgB1
+            // 
+            this.ImpRecogImgB1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ImpRecogImgB1.Location = new System.Drawing.Point(3, 283);
+            this.ImpRecogImgB1.Name = "ImpRecogImgB1";
+            this.ImpRecogImgB1.Padding = new System.Windows.Forms.Padding(3);
+            this.ImpRecogImgB1.RecognitionRound = null;
+            this.ImpRecogImgB1.Size = new System.Drawing.Size(137, 233);
+            this.ImpRecogImgB1.TabIndex = 8;
+            // 
+            // ImpRecogImgB2
+            // 
+            this.ImpRecogImgB2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ImpRecogImgB2.Location = new System.Drawing.Point(146, 283);
+            this.ImpRecogImgB2.Name = "ImpRecogImgB2";
+            this.ImpRecogImgB2.Padding = new System.Windows.Forms.Padding(3);
+            this.ImpRecogImgB2.RecognitionRound = null;
+            this.ImpRecogImgB2.Size = new System.Drawing.Size(137, 233);
+            this.ImpRecogImgB2.TabIndex = 9;
+            // 
+            // ImpRecogImgB3
+            // 
+            this.ImpRecogImgB3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ImpRecogImgB3.Location = new System.Drawing.Point(289, 283);
+            this.ImpRecogImgB3.Name = "ImpRecogImgB3";
+            this.ImpRecogImgB3.Padding = new System.Windows.Forms.Padding(3);
+            this.ImpRecogImgB3.RecognitionRound = null;
+            this.ImpRecogImgB3.Size = new System.Drawing.Size(137, 233);
+            this.ImpRecogImgB3.TabIndex = 10;
+            // 
+            // ImpRecogImgB4
+            // 
+            this.ImpRecogImgB4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ImpRecogImgB4.Location = new System.Drawing.Point(432, 283);
+            this.ImpRecogImgB4.Name = "ImpRecogImgB4";
+            this.ImpRecogImgB4.Padding = new System.Windows.Forms.Padding(3);
+            this.ImpRecogImgB4.RecognitionRound = null;
+            this.ImpRecogImgB4.Size = new System.Drawing.Size(137, 233);
+            this.ImpRecogImgB4.TabIndex = 11;
+            // 
+            // ImpRecogImgB5
+            // 
+            this.ImpRecogImgB5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ImpRecogImgB5.Location = new System.Drawing.Point(575, 283);
+            this.ImpRecogImgB5.Name = "ImpRecogImgB5";
+            this.ImpRecogImgB5.Padding = new System.Windows.Forms.Padding(3);
+            this.ImpRecogImgB5.RecognitionRound = null;
+            this.ImpRecogImgB5.Size = new System.Drawing.Size(137, 233);
+            this.ImpRecogImgB5.TabIndex = 12;
+            // 
+            // ImpRecogImgB6
+            // 
+            this.ImpRecogImgB6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ImpRecogImgB6.Location = new System.Drawing.Point(718, 283);
+            this.ImpRecogImgB6.Name = "ImpRecogImgB6";
+            this.ImpRecogImgB6.Padding = new System.Windows.Forms.Padding(3);
+            this.ImpRecogImgB6.RecognitionRound = null;
+            this.ImpRecogImgB6.Size = new System.Drawing.Size(137, 233);
+            this.ImpRecogImgB6.TabIndex = 13;
+            // 
+            // ImpRecogImgB7
+            // 
+            this.ImpRecogImgB7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ImpRecogImgB7.Location = new System.Drawing.Point(861, 283);
+            this.ImpRecogImgB7.Name = "ImpRecogImgB7";
+            this.ImpRecogImgB7.Padding = new System.Windows.Forms.Padding(3);
+            this.ImpRecogImgB7.RecognitionRound = null;
+            this.ImpRecogImgB7.Size = new System.Drawing.Size(137, 233);
+            this.ImpRecogImgB7.TabIndex = 14;
+            // 
+            // ImpRecogImgB8
+            // 
+            this.ImpRecogImgB8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ImpRecogImgB8.Location = new System.Drawing.Point(1004, 283);
+            this.ImpRecogImgB8.Name = "ImpRecogImgB8";
+            this.ImpRecogImgB8.Padding = new System.Windows.Forms.Padding(3);
+            this.ImpRecogImgB8.RecognitionRound = null;
+            this.ImpRecogImgB8.Size = new System.Drawing.Size(144, 233);
+            this.ImpRecogImgB8.TabIndex = 15;
+            // 
+            // ImpRecogImgC1
+            // 
+            this.ImpRecogImgC1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ImpRecogImgC1.Location = new System.Drawing.Point(3, 522);
+            this.ImpRecogImgC1.Name = "ImpRecogImgC1";
+            this.ImpRecogImgC1.Padding = new System.Windows.Forms.Padding(3);
+            this.ImpRecogImgC1.RecognitionRound = null;
+            this.ImpRecogImgC1.Size = new System.Drawing.Size(137, 233);
+            this.ImpRecogImgC1.TabIndex = 16;
+            // 
+            // ImpRecogImgC2
+            // 
+            this.ImpRecogImgC2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ImpRecogImgC2.Location = new System.Drawing.Point(146, 522);
+            this.ImpRecogImgC2.Name = "ImpRecogImgC2";
+            this.ImpRecogImgC2.Padding = new System.Windows.Forms.Padding(3);
+            this.ImpRecogImgC2.RecognitionRound = null;
+            this.ImpRecogImgC2.Size = new System.Drawing.Size(137, 233);
+            this.ImpRecogImgC2.TabIndex = 17;
+            // 
+            // ImpRecogImgC3
+            // 
+            this.ImpRecogImgC3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ImpRecogImgC3.Location = new System.Drawing.Point(289, 522);
+            this.ImpRecogImgC3.Name = "ImpRecogImgC3";
+            this.ImpRecogImgC3.Padding = new System.Windows.Forms.Padding(3);
+            this.ImpRecogImgC3.RecognitionRound = null;
+            this.ImpRecogImgC3.Size = new System.Drawing.Size(137, 233);
+            this.ImpRecogImgC3.TabIndex = 18;
+            // 
+            // ImpRecogImgC4
+            // 
+            this.ImpRecogImgC4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ImpRecogImgC4.Location = new System.Drawing.Point(432, 522);
+            this.ImpRecogImgC4.Name = "ImpRecogImgC4";
+            this.ImpRecogImgC4.Padding = new System.Windows.Forms.Padding(3);
+            this.ImpRecogImgC4.RecognitionRound = null;
+            this.ImpRecogImgC4.Size = new System.Drawing.Size(137, 233);
+            this.ImpRecogImgC4.TabIndex = 19;
+            // 
+            // ImpRecogImgC5
+            // 
+            this.ImpRecogImgC5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ImpRecogImgC5.Location = new System.Drawing.Point(575, 522);
+            this.ImpRecogImgC5.Name = "ImpRecogImgC5";
+            this.ImpRecogImgC5.Padding = new System.Windows.Forms.Padding(3);
+            this.ImpRecogImgC5.RecognitionRound = null;
+            this.ImpRecogImgC5.Size = new System.Drawing.Size(137, 233);
+            this.ImpRecogImgC5.TabIndex = 20;
+            // 
+            // ImpRecogImgC6
+            // 
+            this.ImpRecogImgC6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ImpRecogImgC6.Location = new System.Drawing.Point(718, 522);
+            this.ImpRecogImgC6.Name = "ImpRecogImgC6";
+            this.ImpRecogImgC6.Padding = new System.Windows.Forms.Padding(3);
+            this.ImpRecogImgC6.RecognitionRound = null;
+            this.ImpRecogImgC6.Size = new System.Drawing.Size(137, 233);
+            this.ImpRecogImgC6.TabIndex = 21;
+            // 
+            // ImpRecogImgC7
+            // 
+            this.ImpRecogImgC7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ImpRecogImgC7.Location = new System.Drawing.Point(861, 522);
+            this.ImpRecogImgC7.Name = "ImpRecogImgC7";
+            this.ImpRecogImgC7.Padding = new System.Windows.Forms.Padding(3);
+            this.ImpRecogImgC7.RecognitionRound = null;
+            this.ImpRecogImgC7.Size = new System.Drawing.Size(137, 233);
+            this.ImpRecogImgC7.TabIndex = 22;
+            // 
+            // ImpRecogImgC8
+            // 
+            this.ImpRecogImgC8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ImpRecogImgC8.Location = new System.Drawing.Point(1004, 522);
+            this.ImpRecogImgC8.Name = "ImpRecogImgC8";
+            this.ImpRecogImgC8.Padding = new System.Windows.Forms.Padding(3);
+            this.ImpRecogImgC8.RecognitionRound = null;
+            this.ImpRecogImgC8.Size = new System.Drawing.Size(144, 233);
+            this.ImpRecogImgC8.TabIndex = 23;
+            // 
+            // ImpRecogSubmitButton
+            // 
+            this.ImpRecogTableLayoutPanel.SetColumnSpan(this.ImpRecogSubmitButton, 2);
+            this.ImpRecogSubmitButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ImpRecogSubmitButton.Enabled = false;
+            this.ImpRecogSubmitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ImpRecogSubmitButton.Location = new System.Drawing.Point(432, 761);
+            this.ImpRecogSubmitButton.Name = "ImpRecogSubmitButton";
+            this.ImpRecogSubmitButton.Size = new System.Drawing.Size(280, 36);
+            this.ImpRecogSubmitButton.TabIndex = 24;
+            this.ImpRecogSubmitButton.Text = "SUBMIT";
+            this.ImpRecogSubmitButton.UseVisualStyleBackColor = true;
+            this.ImpRecogSubmitButton.Click += new System.EventHandler(this.ImpRecogSubmitButton_Click);
+            // 
+            // ImpRecogStatusButtonAsLabel
+            // 
+            this.ImpRecogTableLayoutPanel.SetColumnSpan(this.ImpRecogStatusButtonAsLabel, 8);
+            this.ImpRecogStatusButtonAsLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ImpRecogStatusButtonAsLabel.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.ImpRecogStatusButtonAsLabel.FlatAppearance.BorderSize = 0;
+            this.ImpRecogStatusButtonAsLabel.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.ImpRecogStatusButtonAsLabel.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.ImpRecogStatusButtonAsLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ImpRecogStatusButtonAsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ImpRecogStatusButtonAsLabel.Location = new System.Drawing.Point(3, 3);
+            this.ImpRecogStatusButtonAsLabel.Name = "ImpRecogStatusButtonAsLabel";
+            this.ImpRecogStatusButtonAsLabel.Size = new System.Drawing.Size(1145, 35);
+            this.ImpRecogStatusButtonAsLabel.TabIndex = 25;
+            this.ImpRecogStatusButtonAsLabel.Text = "Choose 12 Players That You Wish To Play Again";
+            this.ImpRecogStatusButtonAsLabel.UseVisualStyleBackColor = true;
+            // 
+            // ExpRecogTaskTab
+            // 
+            this.ExpRecogTaskTab.BackColor = System.Drawing.SystemColors.Control;
+            this.ExpRecogTaskTab.Controls.Add(this.ExpRecogTableLayoutPanel);
+            this.ExpRecogTaskTab.Location = new System.Drawing.Point(4, 22);
+            this.ExpRecogTaskTab.Name = "ExpRecogTaskTab";
+            this.ExpRecogTaskTab.Size = new System.Drawing.Size(1151, 800);
+            this.ExpRecogTaskTab.TabIndex = 3;
+            this.ExpRecogTaskTab.Text = "Matching";
             // 
             // ExpRecogTableLayoutPanel
             // 
@@ -325,39 +606,314 @@
             this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA1, 0, 0);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA2, 1, 0);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA3, 2, 0);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA4, 3, 0);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA5, 4, 0);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA6, 5, 0);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA7, 6, 0);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA8, 7, 0);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB1, 0, 1);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB2, 1, 1);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB3, 2, 1);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB4, 3, 1);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB5, 4, 1);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB6, 5, 1);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB7, 6, 1);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB8, 7, 1);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC1, 0, 2);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC2, 1, 2);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC3, 2, 2);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC4, 3, 2);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC5, 4, 2);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC6, 5, 2);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC7, 6, 2);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC8, 7, 2);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogSubmitButton, 3, 4);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogStatusButtonAsLabel, 0, 0);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA1, 0, 1);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA2, 1, 1);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA3, 2, 1);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA4, 3, 1);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA5, 4, 1);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA6, 5, 1);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA7, 6, 1);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA8, 7, 1);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB1, 0, 2);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB2, 1, 2);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB3, 2, 2);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB4, 3, 2);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB5, 4, 2);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB6, 5, 2);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB7, 6, 2);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB8, 7, 2);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC1, 0, 3);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC2, 1, 3);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC3, 2, 3);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC4, 3, 3);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC5, 4, 3);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC6, 5, 3);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC7, 6, 3);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC8, 7, 3);
             this.ExpRecogTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ExpRecogTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.ExpRecogTableLayoutPanel.Name = "ExpRecogTableLayoutPanel";
-            this.ExpRecogTableLayoutPanel.RowCount = 3;
+            this.ExpRecogTableLayoutPanel.RowCount = 5;
+            this.ExpRecogTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
             this.ExpRecogTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.ExpRecogTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.ExpRecogTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.ExpRecogTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
             this.ExpRecogTableLayoutPanel.Size = new System.Drawing.Size(1151, 800);
             this.ExpRecogTableLayoutPanel.TabIndex = 1;
+            // 
+            // ExpRecogSubmitButton
+            // 
+            this.ExpRecogTableLayoutPanel.SetColumnSpan(this.ExpRecogSubmitButton, 2);
+            this.ExpRecogSubmitButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ExpRecogSubmitButton.Enabled = false;
+            this.ExpRecogSubmitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExpRecogSubmitButton.Location = new System.Drawing.Point(432, 761);
+            this.ExpRecogSubmitButton.Name = "ExpRecogSubmitButton";
+            this.ExpRecogSubmitButton.Size = new System.Drawing.Size(280, 36);
+            this.ExpRecogSubmitButton.TabIndex = 27;
+            this.ExpRecogSubmitButton.Text = "SUBMIT";
+            this.ExpRecogSubmitButton.UseVisualStyleBackColor = true;
+            this.ExpRecogSubmitButton.Click += new System.EventHandler(this.ExpRecogSubmitButton_Click);
+            // 
+            // ExpRecogStatusButtonAsLabel
+            // 
+            this.ExpRecogTableLayoutPanel.SetColumnSpan(this.ExpRecogStatusButtonAsLabel, 8);
+            this.ExpRecogStatusButtonAsLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExpRecogStatusButtonAsLabel.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.ExpRecogStatusButtonAsLabel.FlatAppearance.BorderSize = 0;
+            this.ExpRecogStatusButtonAsLabel.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.ExpRecogStatusButtonAsLabel.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.ExpRecogStatusButtonAsLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExpRecogStatusButtonAsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExpRecogStatusButtonAsLabel.Location = new System.Drawing.Point(3, 3);
+            this.ExpRecogStatusButtonAsLabel.Name = "ExpRecogStatusButtonAsLabel";
+            this.ExpRecogStatusButtonAsLabel.Size = new System.Drawing.Size(1145, 35);
+            this.ExpRecogStatusButtonAsLabel.TabIndex = 26;
+            this.ExpRecogStatusButtonAsLabel.Text = "Choose 6 That Gave Points, 6 That Did Not, And 12 That You Did Not Play";
+            this.ExpRecogStatusButtonAsLabel.UseVisualStyleBackColor = true;
+            // 
+            // ExpRecogImgA1
+            // 
+            this.ExpRecogImgA1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExpRecogImgA1.Location = new System.Drawing.Point(3, 44);
+            this.ExpRecogImgA1.Name = "ExpRecogImgA1";
+            this.ExpRecogImgA1.Padding = new System.Windows.Forms.Padding(3);
+            this.ExpRecogImgA1.RecognitionRound = null;
+            this.ExpRecogImgA1.Size = new System.Drawing.Size(137, 233);
+            this.ExpRecogImgA1.TabIndex = 0;
+            // 
+            // ExpRecogImgA2
+            // 
+            this.ExpRecogImgA2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExpRecogImgA2.Location = new System.Drawing.Point(146, 44);
+            this.ExpRecogImgA2.Name = "ExpRecogImgA2";
+            this.ExpRecogImgA2.Padding = new System.Windows.Forms.Padding(3);
+            this.ExpRecogImgA2.RecognitionRound = null;
+            this.ExpRecogImgA2.Size = new System.Drawing.Size(137, 233);
+            this.ExpRecogImgA2.TabIndex = 1;
+            // 
+            // ExpRecogImgA3
+            // 
+            this.ExpRecogImgA3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExpRecogImgA3.Location = new System.Drawing.Point(289, 44);
+            this.ExpRecogImgA3.Name = "ExpRecogImgA3";
+            this.ExpRecogImgA3.Padding = new System.Windows.Forms.Padding(3);
+            this.ExpRecogImgA3.RecognitionRound = null;
+            this.ExpRecogImgA3.Size = new System.Drawing.Size(137, 233);
+            this.ExpRecogImgA3.TabIndex = 2;
+            // 
+            // ExpRecogImgA4
+            // 
+            this.ExpRecogImgA4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExpRecogImgA4.Location = new System.Drawing.Point(432, 44);
+            this.ExpRecogImgA4.Name = "ExpRecogImgA4";
+            this.ExpRecogImgA4.Padding = new System.Windows.Forms.Padding(3);
+            this.ExpRecogImgA4.RecognitionRound = null;
+            this.ExpRecogImgA4.Size = new System.Drawing.Size(137, 233);
+            this.ExpRecogImgA4.TabIndex = 3;
+            // 
+            // ExpRecogImgA5
+            // 
+            this.ExpRecogImgA5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExpRecogImgA5.Location = new System.Drawing.Point(575, 44);
+            this.ExpRecogImgA5.Name = "ExpRecogImgA5";
+            this.ExpRecogImgA5.Padding = new System.Windows.Forms.Padding(3);
+            this.ExpRecogImgA5.RecognitionRound = null;
+            this.ExpRecogImgA5.Size = new System.Drawing.Size(137, 233);
+            this.ExpRecogImgA5.TabIndex = 4;
+            // 
+            // ExpRecogImgA6
+            // 
+            this.ExpRecogImgA6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExpRecogImgA6.Location = new System.Drawing.Point(718, 44);
+            this.ExpRecogImgA6.Name = "ExpRecogImgA6";
+            this.ExpRecogImgA6.Padding = new System.Windows.Forms.Padding(3);
+            this.ExpRecogImgA6.RecognitionRound = null;
+            this.ExpRecogImgA6.Size = new System.Drawing.Size(137, 233);
+            this.ExpRecogImgA6.TabIndex = 5;
+            // 
+            // ExpRecogImgA7
+            // 
+            this.ExpRecogImgA7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExpRecogImgA7.Location = new System.Drawing.Point(861, 44);
+            this.ExpRecogImgA7.Name = "ExpRecogImgA7";
+            this.ExpRecogImgA7.Padding = new System.Windows.Forms.Padding(3);
+            this.ExpRecogImgA7.RecognitionRound = null;
+            this.ExpRecogImgA7.Size = new System.Drawing.Size(137, 233);
+            this.ExpRecogImgA7.TabIndex = 6;
+            // 
+            // ExpRecogImgA8
+            // 
+            this.ExpRecogImgA8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExpRecogImgA8.Location = new System.Drawing.Point(1004, 44);
+            this.ExpRecogImgA8.Name = "ExpRecogImgA8";
+            this.ExpRecogImgA8.Padding = new System.Windows.Forms.Padding(3);
+            this.ExpRecogImgA8.RecognitionRound = null;
+            this.ExpRecogImgA8.Size = new System.Drawing.Size(144, 233);
+            this.ExpRecogImgA8.TabIndex = 7;
+            // 
+            // ExpRecogImgB1
+            // 
+            this.ExpRecogImgB1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExpRecogImgB1.Location = new System.Drawing.Point(3, 283);
+            this.ExpRecogImgB1.Name = "ExpRecogImgB1";
+            this.ExpRecogImgB1.Padding = new System.Windows.Forms.Padding(3);
+            this.ExpRecogImgB1.RecognitionRound = null;
+            this.ExpRecogImgB1.Size = new System.Drawing.Size(137, 233);
+            this.ExpRecogImgB1.TabIndex = 8;
+            // 
+            // ExpRecogImgB2
+            // 
+            this.ExpRecogImgB2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExpRecogImgB2.Location = new System.Drawing.Point(146, 283);
+            this.ExpRecogImgB2.Name = "ExpRecogImgB2";
+            this.ExpRecogImgB2.Padding = new System.Windows.Forms.Padding(3);
+            this.ExpRecogImgB2.RecognitionRound = null;
+            this.ExpRecogImgB2.Size = new System.Drawing.Size(137, 233);
+            this.ExpRecogImgB2.TabIndex = 9;
+            // 
+            // ExpRecogImgB3
+            // 
+            this.ExpRecogImgB3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExpRecogImgB3.Location = new System.Drawing.Point(289, 283);
+            this.ExpRecogImgB3.Name = "ExpRecogImgB3";
+            this.ExpRecogImgB3.Padding = new System.Windows.Forms.Padding(3);
+            this.ExpRecogImgB3.RecognitionRound = null;
+            this.ExpRecogImgB3.Size = new System.Drawing.Size(137, 233);
+            this.ExpRecogImgB3.TabIndex = 10;
+            // 
+            // ExpRecogImgB4
+            // 
+            this.ExpRecogImgB4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExpRecogImgB4.Location = new System.Drawing.Point(432, 283);
+            this.ExpRecogImgB4.Name = "ExpRecogImgB4";
+            this.ExpRecogImgB4.Padding = new System.Windows.Forms.Padding(3);
+            this.ExpRecogImgB4.RecognitionRound = null;
+            this.ExpRecogImgB4.Size = new System.Drawing.Size(137, 233);
+            this.ExpRecogImgB4.TabIndex = 11;
+            // 
+            // ExpRecogImgB5
+            // 
+            this.ExpRecogImgB5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExpRecogImgB5.Location = new System.Drawing.Point(575, 283);
+            this.ExpRecogImgB5.Name = "ExpRecogImgB5";
+            this.ExpRecogImgB5.Padding = new System.Windows.Forms.Padding(3);
+            this.ExpRecogImgB5.RecognitionRound = null;
+            this.ExpRecogImgB5.Size = new System.Drawing.Size(137, 233);
+            this.ExpRecogImgB5.TabIndex = 12;
+            // 
+            // ExpRecogImgB6
+            // 
+            this.ExpRecogImgB6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExpRecogImgB6.Location = new System.Drawing.Point(718, 283);
+            this.ExpRecogImgB6.Name = "ExpRecogImgB6";
+            this.ExpRecogImgB6.Padding = new System.Windows.Forms.Padding(3);
+            this.ExpRecogImgB6.RecognitionRound = null;
+            this.ExpRecogImgB6.Size = new System.Drawing.Size(137, 233);
+            this.ExpRecogImgB6.TabIndex = 13;
+            // 
+            // ExpRecogImgB7
+            // 
+            this.ExpRecogImgB7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExpRecogImgB7.Location = new System.Drawing.Point(861, 283);
+            this.ExpRecogImgB7.Name = "ExpRecogImgB7";
+            this.ExpRecogImgB7.Padding = new System.Windows.Forms.Padding(3);
+            this.ExpRecogImgB7.RecognitionRound = null;
+            this.ExpRecogImgB7.Size = new System.Drawing.Size(137, 233);
+            this.ExpRecogImgB7.TabIndex = 14;
+            // 
+            // ExpRecogImgB8
+            // 
+            this.ExpRecogImgB8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExpRecogImgB8.Location = new System.Drawing.Point(1004, 283);
+            this.ExpRecogImgB8.Name = "ExpRecogImgB8";
+            this.ExpRecogImgB8.Padding = new System.Windows.Forms.Padding(3);
+            this.ExpRecogImgB8.RecognitionRound = null;
+            this.ExpRecogImgB8.Size = new System.Drawing.Size(144, 233);
+            this.ExpRecogImgB8.TabIndex = 15;
+            // 
+            // ExpRecogImgC1
+            // 
+            this.ExpRecogImgC1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExpRecogImgC1.Location = new System.Drawing.Point(3, 522);
+            this.ExpRecogImgC1.Name = "ExpRecogImgC1";
+            this.ExpRecogImgC1.Padding = new System.Windows.Forms.Padding(3);
+            this.ExpRecogImgC1.RecognitionRound = null;
+            this.ExpRecogImgC1.Size = new System.Drawing.Size(137, 233);
+            this.ExpRecogImgC1.TabIndex = 16;
+            // 
+            // ExpRecogImgC2
+            // 
+            this.ExpRecogImgC2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExpRecogImgC2.Location = new System.Drawing.Point(146, 522);
+            this.ExpRecogImgC2.Name = "ExpRecogImgC2";
+            this.ExpRecogImgC2.Padding = new System.Windows.Forms.Padding(3);
+            this.ExpRecogImgC2.RecognitionRound = null;
+            this.ExpRecogImgC2.Size = new System.Drawing.Size(137, 233);
+            this.ExpRecogImgC2.TabIndex = 17;
+            // 
+            // ExpRecogImgC3
+            // 
+            this.ExpRecogImgC3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExpRecogImgC3.Location = new System.Drawing.Point(289, 522);
+            this.ExpRecogImgC3.Name = "ExpRecogImgC3";
+            this.ExpRecogImgC3.Padding = new System.Windows.Forms.Padding(3);
+            this.ExpRecogImgC3.RecognitionRound = null;
+            this.ExpRecogImgC3.Size = new System.Drawing.Size(137, 233);
+            this.ExpRecogImgC3.TabIndex = 18;
+            // 
+            // ExpRecogImgC4
+            // 
+            this.ExpRecogImgC4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExpRecogImgC4.Location = new System.Drawing.Point(432, 522);
+            this.ExpRecogImgC4.Name = "ExpRecogImgC4";
+            this.ExpRecogImgC4.Padding = new System.Windows.Forms.Padding(3);
+            this.ExpRecogImgC4.RecognitionRound = null;
+            this.ExpRecogImgC4.Size = new System.Drawing.Size(137, 233);
+            this.ExpRecogImgC4.TabIndex = 19;
+            // 
+            // ExpRecogImgC5
+            // 
+            this.ExpRecogImgC5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExpRecogImgC5.Location = new System.Drawing.Point(575, 522);
+            this.ExpRecogImgC5.Name = "ExpRecogImgC5";
+            this.ExpRecogImgC5.Padding = new System.Windows.Forms.Padding(3);
+            this.ExpRecogImgC5.RecognitionRound = null;
+            this.ExpRecogImgC5.Size = new System.Drawing.Size(137, 233);
+            this.ExpRecogImgC5.TabIndex = 20;
+            // 
+            // ExpRecogImgC6
+            // 
+            this.ExpRecogImgC6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExpRecogImgC6.Location = new System.Drawing.Point(718, 522);
+            this.ExpRecogImgC6.Name = "ExpRecogImgC6";
+            this.ExpRecogImgC6.Padding = new System.Windows.Forms.Padding(3);
+            this.ExpRecogImgC6.RecognitionRound = null;
+            this.ExpRecogImgC6.Size = new System.Drawing.Size(137, 233);
+            this.ExpRecogImgC6.TabIndex = 21;
+            // 
+            // ExpRecogImgC7
+            // 
+            this.ExpRecogImgC7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExpRecogImgC7.Location = new System.Drawing.Point(861, 522);
+            this.ExpRecogImgC7.Name = "ExpRecogImgC7";
+            this.ExpRecogImgC7.Padding = new System.Windows.Forms.Padding(3);
+            this.ExpRecogImgC7.RecognitionRound = null;
+            this.ExpRecogImgC7.Size = new System.Drawing.Size(137, 233);
+            this.ExpRecogImgC7.TabIndex = 22;
+            // 
+            // ExpRecogImgC8
+            // 
+            this.ExpRecogImgC8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExpRecogImgC8.Location = new System.Drawing.Point(1004, 522);
+            this.ExpRecogImgC8.Name = "ExpRecogImgC8";
+            this.ExpRecogImgC8.Padding = new System.Windows.Forms.Padding(3);
+            this.ExpRecogImgC8.RecognitionRound = null;
+            this.ExpRecogImgC8.Size = new System.Drawing.Size(144, 233);
+            this.ExpRecogImgC8.TabIndex = 23;
             // 
             // MenuStrip
             // 
@@ -391,443 +947,12 @@
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.saveToolStripMenuItem.Text = "Save";
             // 
-            // ImpRecogImgA1
-            // 
-            this.ImpRecogImgA1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ImpRecogImgA1.Location = new System.Drawing.Point(3, 3);
-            this.ImpRecogImgA1.Name = "ImpRecogImgA1";
-            this.ImpRecogImgA1.Padding = new System.Windows.Forms.Padding(3);
-            this.ImpRecogImgA1.Size = new System.Drawing.Size(137, 260);
-            this.ImpRecogImgA1.TabIndex = 0;
-            // 
-            // ImpRecogImgA2
-            // 
-            this.ImpRecogImgA2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ImpRecogImgA2.Location = new System.Drawing.Point(146, 3);
-            this.ImpRecogImgA2.Name = "ImpRecogImgA2";
-            this.ImpRecogImgA2.Padding = new System.Windows.Forms.Padding(3);
-            this.ImpRecogImgA2.Size = new System.Drawing.Size(137, 260);
-            this.ImpRecogImgA2.TabIndex = 1;
-            // 
-            // ImpRecogImgA3
-            // 
-            this.ImpRecogImgA3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ImpRecogImgA3.Location = new System.Drawing.Point(289, 3);
-            this.ImpRecogImgA3.Name = "ImpRecogImgA3";
-            this.ImpRecogImgA3.Padding = new System.Windows.Forms.Padding(3);
-            this.ImpRecogImgA3.Size = new System.Drawing.Size(137, 260);
-            this.ImpRecogImgA3.TabIndex = 2;
-            // 
-            // ImpRecogImgA4
-            // 
-            this.ImpRecogImgA4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ImpRecogImgA4.Location = new System.Drawing.Point(432, 3);
-            this.ImpRecogImgA4.Name = "ImpRecogImgA4";
-            this.ImpRecogImgA4.Padding = new System.Windows.Forms.Padding(3);
-            this.ImpRecogImgA4.Size = new System.Drawing.Size(137, 260);
-            this.ImpRecogImgA4.TabIndex = 3;
-            // 
-            // ImpRecogImgA5
-            // 
-            this.ImpRecogImgA5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ImpRecogImgA5.Location = new System.Drawing.Point(575, 3);
-            this.ImpRecogImgA5.Name = "ImpRecogImgA5";
-            this.ImpRecogImgA5.Padding = new System.Windows.Forms.Padding(3);
-            this.ImpRecogImgA5.Size = new System.Drawing.Size(137, 260);
-            this.ImpRecogImgA5.TabIndex = 4;
-            // 
-            // ImpRecogImgA6
-            // 
-            this.ImpRecogImgA6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ImpRecogImgA6.Location = new System.Drawing.Point(718, 3);
-            this.ImpRecogImgA6.Name = "ImpRecogImgA6";
-            this.ImpRecogImgA6.Padding = new System.Windows.Forms.Padding(3);
-            this.ImpRecogImgA6.Size = new System.Drawing.Size(137, 260);
-            this.ImpRecogImgA6.TabIndex = 5;
-            // 
-            // ImpRecogImgA7
-            // 
-            this.ImpRecogImgA7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ImpRecogImgA7.Location = new System.Drawing.Point(861, 3);
-            this.ImpRecogImgA7.Name = "ImpRecogImgA7";
-            this.ImpRecogImgA7.Padding = new System.Windows.Forms.Padding(3);
-            this.ImpRecogImgA7.Size = new System.Drawing.Size(137, 260);
-            this.ImpRecogImgA7.TabIndex = 6;
-            // 
-            // ImpRecogImgA8
-            // 
-            this.ImpRecogImgA8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ImpRecogImgA8.Location = new System.Drawing.Point(1004, 3);
-            this.ImpRecogImgA8.Name = "ImpRecogImgA8";
-            this.ImpRecogImgA8.Padding = new System.Windows.Forms.Padding(3);
-            this.ImpRecogImgA8.Size = new System.Drawing.Size(144, 260);
-            this.ImpRecogImgA8.TabIndex = 7;
-            // 
-            // ImpRecogImgB1
-            // 
-            this.ImpRecogImgB1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ImpRecogImgB1.Location = new System.Drawing.Point(3, 269);
-            this.ImpRecogImgB1.Name = "ImpRecogImgB1";
-            this.ImpRecogImgB1.Padding = new System.Windows.Forms.Padding(3);
-            this.ImpRecogImgB1.Size = new System.Drawing.Size(137, 260);
-            this.ImpRecogImgB1.TabIndex = 8;
-            // 
-            // ImpRecogImgB2
-            // 
-            this.ImpRecogImgB2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ImpRecogImgB2.Location = new System.Drawing.Point(146, 269);
-            this.ImpRecogImgB2.Name = "ImpRecogImgB2";
-            this.ImpRecogImgB2.Padding = new System.Windows.Forms.Padding(3);
-            this.ImpRecogImgB2.Size = new System.Drawing.Size(137, 260);
-            this.ImpRecogImgB2.TabIndex = 9;
-            // 
-            // ImpRecogImgB3
-            // 
-            this.ImpRecogImgB3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ImpRecogImgB3.Location = new System.Drawing.Point(289, 269);
-            this.ImpRecogImgB3.Name = "ImpRecogImgB3";
-            this.ImpRecogImgB3.Padding = new System.Windows.Forms.Padding(3);
-            this.ImpRecogImgB3.Size = new System.Drawing.Size(137, 260);
-            this.ImpRecogImgB3.TabIndex = 10;
-            // 
-            // ImpRecogImgB4
-            // 
-            this.ImpRecogImgB4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ImpRecogImgB4.Location = new System.Drawing.Point(432, 269);
-            this.ImpRecogImgB4.Name = "ImpRecogImgB4";
-            this.ImpRecogImgB4.Padding = new System.Windows.Forms.Padding(3);
-            this.ImpRecogImgB4.Size = new System.Drawing.Size(137, 260);
-            this.ImpRecogImgB4.TabIndex = 11;
-            // 
-            // ImpRecogImgB5
-            // 
-            this.ImpRecogImgB5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ImpRecogImgB5.Location = new System.Drawing.Point(575, 269);
-            this.ImpRecogImgB5.Name = "ImpRecogImgB5";
-            this.ImpRecogImgB5.Padding = new System.Windows.Forms.Padding(3);
-            this.ImpRecogImgB5.Size = new System.Drawing.Size(137, 260);
-            this.ImpRecogImgB5.TabIndex = 12;
-            // 
-            // ImpRecogImgB6
-            // 
-            this.ImpRecogImgB6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ImpRecogImgB6.Location = new System.Drawing.Point(718, 269);
-            this.ImpRecogImgB6.Name = "ImpRecogImgB6";
-            this.ImpRecogImgB6.Padding = new System.Windows.Forms.Padding(3);
-            this.ImpRecogImgB6.Size = new System.Drawing.Size(137, 260);
-            this.ImpRecogImgB6.TabIndex = 13;
-            // 
-            // ImpRecogImgB7
-            // 
-            this.ImpRecogImgB7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ImpRecogImgB7.Location = new System.Drawing.Point(861, 269);
-            this.ImpRecogImgB7.Name = "ImpRecogImgB7";
-            this.ImpRecogImgB7.Padding = new System.Windows.Forms.Padding(3);
-            this.ImpRecogImgB7.Size = new System.Drawing.Size(137, 260);
-            this.ImpRecogImgB7.TabIndex = 14;
-            // 
-            // ImpRecogImgB8
-            // 
-            this.ImpRecogImgB8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ImpRecogImgB8.Location = new System.Drawing.Point(1004, 269);
-            this.ImpRecogImgB8.Name = "ImpRecogImgB8";
-            this.ImpRecogImgB8.Padding = new System.Windows.Forms.Padding(3);
-            this.ImpRecogImgB8.Size = new System.Drawing.Size(144, 260);
-            this.ImpRecogImgB8.TabIndex = 15;
-            // 
-            // ImpRecogImgC1
-            // 
-            this.ImpRecogImgC1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ImpRecogImgC1.Location = new System.Drawing.Point(3, 535);
-            this.ImpRecogImgC1.Name = "ImpRecogImgC1";
-            this.ImpRecogImgC1.Padding = new System.Windows.Forms.Padding(3);
-            this.ImpRecogImgC1.Size = new System.Drawing.Size(137, 262);
-            this.ImpRecogImgC1.TabIndex = 16;
-            // 
-            // ImpRecogImgC2
-            // 
-            this.ImpRecogImgC2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ImpRecogImgC2.Location = new System.Drawing.Point(146, 535);
-            this.ImpRecogImgC2.Name = "ImpRecogImgC2";
-            this.ImpRecogImgC2.Padding = new System.Windows.Forms.Padding(3);
-            this.ImpRecogImgC2.Size = new System.Drawing.Size(137, 262);
-            this.ImpRecogImgC2.TabIndex = 17;
-            // 
-            // ImpRecogImgC3
-            // 
-            this.ImpRecogImgC3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ImpRecogImgC3.Location = new System.Drawing.Point(289, 535);
-            this.ImpRecogImgC3.Name = "ImpRecogImgC3";
-            this.ImpRecogImgC3.Padding = new System.Windows.Forms.Padding(3);
-            this.ImpRecogImgC3.Size = new System.Drawing.Size(137, 262);
-            this.ImpRecogImgC3.TabIndex = 18;
-            // 
-            // ImpRecogImgC4
-            // 
-            this.ImpRecogImgC4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ImpRecogImgC4.Location = new System.Drawing.Point(432, 535);
-            this.ImpRecogImgC4.Name = "ImpRecogImgC4";
-            this.ImpRecogImgC4.Padding = new System.Windows.Forms.Padding(3);
-            this.ImpRecogImgC4.Size = new System.Drawing.Size(137, 262);
-            this.ImpRecogImgC4.TabIndex = 19;
-            // 
-            // ImpRecogImgC5
-            // 
-            this.ImpRecogImgC5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ImpRecogImgC5.Location = new System.Drawing.Point(575, 535);
-            this.ImpRecogImgC5.Name = "ImpRecogImgC5";
-            this.ImpRecogImgC5.Padding = new System.Windows.Forms.Padding(3);
-            this.ImpRecogImgC5.Size = new System.Drawing.Size(137, 262);
-            this.ImpRecogImgC5.TabIndex = 20;
-            // 
-            // ImpRecogImgC6
-            // 
-            this.ImpRecogImgC6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ImpRecogImgC6.Location = new System.Drawing.Point(718, 535);
-            this.ImpRecogImgC6.Name = "ImpRecogImgC6";
-            this.ImpRecogImgC6.Padding = new System.Windows.Forms.Padding(3);
-            this.ImpRecogImgC6.Size = new System.Drawing.Size(137, 262);
-            this.ImpRecogImgC6.TabIndex = 21;
-            // 
-            // ImpRecogImgC7
-            // 
-            this.ImpRecogImgC7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ImpRecogImgC7.Location = new System.Drawing.Point(861, 535);
-            this.ImpRecogImgC7.Name = "ImpRecogImgC7";
-            this.ImpRecogImgC7.Padding = new System.Windows.Forms.Padding(3);
-            this.ImpRecogImgC7.Size = new System.Drawing.Size(137, 262);
-            this.ImpRecogImgC7.TabIndex = 22;
-            // 
-            // ImpRecogImgC8
-            // 
-            this.ImpRecogImgC8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ImpRecogImgC8.Location = new System.Drawing.Point(1004, 535);
-            this.ImpRecogImgC8.Name = "ImpRecogImgC8";
-            this.ImpRecogImgC8.Padding = new System.Windows.Forms.Padding(3);
-            this.ImpRecogImgC8.Size = new System.Drawing.Size(144, 262);
-            this.ImpRecogImgC8.TabIndex = 23;
-            // 
-            // ExpRecogImgA1
-            // 
-            this.ExpRecogImgA1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpRecogImgA1.Location = new System.Drawing.Point(3, 3);
-            this.ExpRecogImgA1.Name = "ExpRecogImgA1";
-            this.ExpRecogImgA1.Padding = new System.Windows.Forms.Padding(3);
-            this.ExpRecogImgA1.Size = new System.Drawing.Size(137, 260);
-            this.ExpRecogImgA1.TabIndex = 0;
-            // 
-            // ExpRecogImgA2
-            // 
-            this.ExpRecogImgA2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpRecogImgA2.Location = new System.Drawing.Point(146, 3);
-            this.ExpRecogImgA2.Name = "ExpRecogImgA2";
-            this.ExpRecogImgA2.Padding = new System.Windows.Forms.Padding(3);
-            this.ExpRecogImgA2.Size = new System.Drawing.Size(137, 260);
-            this.ExpRecogImgA2.TabIndex = 1;
-            // 
-            // ExpRecogImgA3
-            // 
-            this.ExpRecogImgA3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpRecogImgA3.Location = new System.Drawing.Point(289, 3);
-            this.ExpRecogImgA3.Name = "ExpRecogImgA3";
-            this.ExpRecogImgA3.Padding = new System.Windows.Forms.Padding(3);
-            this.ExpRecogImgA3.Size = new System.Drawing.Size(137, 260);
-            this.ExpRecogImgA3.TabIndex = 2;
-            // 
-            // ExpRecogImgA4
-            // 
-            this.ExpRecogImgA4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpRecogImgA4.Location = new System.Drawing.Point(432, 3);
-            this.ExpRecogImgA4.Name = "ExpRecogImgA4";
-            this.ExpRecogImgA4.Padding = new System.Windows.Forms.Padding(3);
-            this.ExpRecogImgA4.Size = new System.Drawing.Size(137, 260);
-            this.ExpRecogImgA4.TabIndex = 3;
-            // 
-            // ExpRecogImgA5
-            // 
-            this.ExpRecogImgA5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpRecogImgA5.Location = new System.Drawing.Point(575, 3);
-            this.ExpRecogImgA5.Name = "ExpRecogImgA5";
-            this.ExpRecogImgA5.Padding = new System.Windows.Forms.Padding(3);
-            this.ExpRecogImgA5.Size = new System.Drawing.Size(137, 260);
-            this.ExpRecogImgA5.TabIndex = 4;
-            // 
-            // ExpRecogImgA6
-            // 
-            this.ExpRecogImgA6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpRecogImgA6.Location = new System.Drawing.Point(718, 3);
-            this.ExpRecogImgA6.Name = "ExpRecogImgA6";
-            this.ExpRecogImgA6.Padding = new System.Windows.Forms.Padding(3);
-            this.ExpRecogImgA6.Size = new System.Drawing.Size(137, 260);
-            this.ExpRecogImgA6.TabIndex = 5;
-            // 
-            // ExpRecogImgA7
-            // 
-            this.ExpRecogImgA7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpRecogImgA7.Location = new System.Drawing.Point(861, 3);
-            this.ExpRecogImgA7.Name = "ExpRecogImgA7";
-            this.ExpRecogImgA7.Padding = new System.Windows.Forms.Padding(3);
-            this.ExpRecogImgA7.Size = new System.Drawing.Size(137, 260);
-            this.ExpRecogImgA7.TabIndex = 6;
-            // 
-            // ExpRecogImgA8
-            // 
-            this.ExpRecogImgA8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpRecogImgA8.Location = new System.Drawing.Point(1004, 3);
-            this.ExpRecogImgA8.Name = "ExpRecogImgA8";
-            this.ExpRecogImgA8.Padding = new System.Windows.Forms.Padding(3);
-            this.ExpRecogImgA8.Size = new System.Drawing.Size(144, 260);
-            this.ExpRecogImgA8.TabIndex = 7;
-            // 
-            // ExpRecogImgB1
-            // 
-            this.ExpRecogImgB1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpRecogImgB1.Location = new System.Drawing.Point(3, 269);
-            this.ExpRecogImgB1.Name = "ExpRecogImgB1";
-            this.ExpRecogImgB1.Padding = new System.Windows.Forms.Padding(3);
-            this.ExpRecogImgB1.Size = new System.Drawing.Size(137, 260);
-            this.ExpRecogImgB1.TabIndex = 8;
-            // 
-            // ExpRecogImgB2
-            // 
-            this.ExpRecogImgB2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpRecogImgB2.Location = new System.Drawing.Point(146, 269);
-            this.ExpRecogImgB2.Name = "ExpRecogImgB2";
-            this.ExpRecogImgB2.Padding = new System.Windows.Forms.Padding(3);
-            this.ExpRecogImgB2.Size = new System.Drawing.Size(137, 260);
-            this.ExpRecogImgB2.TabIndex = 9;
-            // 
-            // ExpRecogImgB3
-            // 
-            this.ExpRecogImgB3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpRecogImgB3.Location = new System.Drawing.Point(289, 269);
-            this.ExpRecogImgB3.Name = "ExpRecogImgB3";
-            this.ExpRecogImgB3.Padding = new System.Windows.Forms.Padding(3);
-            this.ExpRecogImgB3.Size = new System.Drawing.Size(137, 260);
-            this.ExpRecogImgB3.TabIndex = 10;
-            // 
-            // ExpRecogImgB4
-            // 
-            this.ExpRecogImgB4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpRecogImgB4.Location = new System.Drawing.Point(432, 269);
-            this.ExpRecogImgB4.Name = "ExpRecogImgB4";
-            this.ExpRecogImgB4.Padding = new System.Windows.Forms.Padding(3);
-            this.ExpRecogImgB4.Size = new System.Drawing.Size(137, 260);
-            this.ExpRecogImgB4.TabIndex = 11;
-            // 
-            // ExpRecogImgB5
-            // 
-            this.ExpRecogImgB5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpRecogImgB5.Location = new System.Drawing.Point(575, 269);
-            this.ExpRecogImgB5.Name = "ExpRecogImgB5";
-            this.ExpRecogImgB5.Padding = new System.Windows.Forms.Padding(3);
-            this.ExpRecogImgB5.Size = new System.Drawing.Size(137, 260);
-            this.ExpRecogImgB5.TabIndex = 12;
-            // 
-            // ExpRecogImgB6
-            // 
-            this.ExpRecogImgB6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpRecogImgB6.Location = new System.Drawing.Point(718, 269);
-            this.ExpRecogImgB6.Name = "ExpRecogImgB6";
-            this.ExpRecogImgB6.Padding = new System.Windows.Forms.Padding(3);
-            this.ExpRecogImgB6.Size = new System.Drawing.Size(137, 260);
-            this.ExpRecogImgB6.TabIndex = 13;
-            // 
-            // ExpRecogImgB7
-            // 
-            this.ExpRecogImgB7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpRecogImgB7.Location = new System.Drawing.Point(861, 269);
-            this.ExpRecogImgB7.Name = "ExpRecogImgB7";
-            this.ExpRecogImgB7.Padding = new System.Windows.Forms.Padding(3);
-            this.ExpRecogImgB7.Size = new System.Drawing.Size(137, 260);
-            this.ExpRecogImgB7.TabIndex = 14;
-            // 
-            // ExpRecogImgB8
-            // 
-            this.ExpRecogImgB8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpRecogImgB8.Location = new System.Drawing.Point(1004, 269);
-            this.ExpRecogImgB8.Name = "ExpRecogImgB8";
-            this.ExpRecogImgB8.Padding = new System.Windows.Forms.Padding(3);
-            this.ExpRecogImgB8.Size = new System.Drawing.Size(144, 260);
-            this.ExpRecogImgB8.TabIndex = 15;
-            // 
-            // ExpRecogImgC1
-            // 
-            this.ExpRecogImgC1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpRecogImgC1.Location = new System.Drawing.Point(3, 535);
-            this.ExpRecogImgC1.Name = "ExpRecogImgC1";
-            this.ExpRecogImgC1.Padding = new System.Windows.Forms.Padding(3);
-            this.ExpRecogImgC1.Size = new System.Drawing.Size(137, 262);
-            this.ExpRecogImgC1.TabIndex = 16;
-            // 
-            // ExpRecogImgC2
-            // 
-            this.ExpRecogImgC2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpRecogImgC2.Location = new System.Drawing.Point(146, 535);
-            this.ExpRecogImgC2.Name = "ExpRecogImgC2";
-            this.ExpRecogImgC2.Padding = new System.Windows.Forms.Padding(3);
-            this.ExpRecogImgC2.Size = new System.Drawing.Size(137, 262);
-            this.ExpRecogImgC2.TabIndex = 17;
-            // 
-            // ExpRecogImgC3
-            // 
-            this.ExpRecogImgC3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpRecogImgC3.Location = new System.Drawing.Point(289, 535);
-            this.ExpRecogImgC3.Name = "ExpRecogImgC3";
-            this.ExpRecogImgC3.Padding = new System.Windows.Forms.Padding(3);
-            this.ExpRecogImgC3.Size = new System.Drawing.Size(137, 262);
-            this.ExpRecogImgC3.TabIndex = 18;
-            // 
-            // ExpRecogImgC4
-            // 
-            this.ExpRecogImgC4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpRecogImgC4.Location = new System.Drawing.Point(432, 535);
-            this.ExpRecogImgC4.Name = "ExpRecogImgC4";
-            this.ExpRecogImgC4.Padding = new System.Windows.Forms.Padding(3);
-            this.ExpRecogImgC4.Size = new System.Drawing.Size(137, 262);
-            this.ExpRecogImgC4.TabIndex = 19;
-            // 
-            // ExpRecogImgC5
-            // 
-            this.ExpRecogImgC5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpRecogImgC5.Location = new System.Drawing.Point(575, 535);
-            this.ExpRecogImgC5.Name = "ExpRecogImgC5";
-            this.ExpRecogImgC5.Padding = new System.Windows.Forms.Padding(3);
-            this.ExpRecogImgC5.Size = new System.Drawing.Size(137, 262);
-            this.ExpRecogImgC5.TabIndex = 20;
-            // 
-            // ExpRecogImgC6
-            // 
-            this.ExpRecogImgC6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpRecogImgC6.Location = new System.Drawing.Point(718, 535);
-            this.ExpRecogImgC6.Name = "ExpRecogImgC6";
-            this.ExpRecogImgC6.Padding = new System.Windows.Forms.Padding(3);
-            this.ExpRecogImgC6.Size = new System.Drawing.Size(137, 262);
-            this.ExpRecogImgC6.TabIndex = 21;
-            // 
-            // ExpRecogImgC7
-            // 
-            this.ExpRecogImgC7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpRecogImgC7.Location = new System.Drawing.Point(861, 535);
-            this.ExpRecogImgC7.Name = "ExpRecogImgC7";
-            this.ExpRecogImgC7.Padding = new System.Windows.Forms.Padding(3);
-            this.ExpRecogImgC7.Size = new System.Drawing.Size(137, 262);
-            this.ExpRecogImgC7.TabIndex = 22;
-            // 
-            // ExpRecogImgC8
-            // 
-            this.ExpRecogImgC8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpRecogImgC8.Location = new System.Drawing.Point(1004, 535);
-            this.ExpRecogImgC8.Name = "ExpRecogImgC8";
-            this.ExpRecogImgC8.Padding = new System.Windows.Forms.Padding(3);
-            this.ExpRecogImgC8.Size = new System.Drawing.Size(144, 262);
-            this.ExpRecogImgC8.TabIndex = 23;
-            // 
             // SocialExchangeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 862);
+            this.ClientSize = new System.Drawing.Size(1184, 884);
+            this.ControlBox = false;
             this.Controls.Add(this.Tabs);
             this.Controls.Add(this.MenuStrip);
             this.MainMenuStrip = this.MenuStrip;
@@ -841,9 +966,9 @@
             this.ImageAndPointsButtonsPanel.ResumeLayout(false);
             this.ImageAndPointsButtonsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TrustExchangePictureBox)).EndInit();
-            this.ImplicitRecognitionTaskTab.ResumeLayout(false);
+            this.ImpRecogTaskTab.ResumeLayout(false);
             this.ImpRecogTableLayoutPanel.ResumeLayout(false);
-            this.ExplicitRecognitionTaskTab.ResumeLayout(false);
+            this.ExpRecogTaskTab.ResumeLayout(false);
             this.ExpRecogTableLayoutPanel.ResumeLayout(false);
             this.MenuStrip.ResumeLayout(false);
             this.MenuStrip.PerformLayout();
@@ -857,8 +982,8 @@
         private System.Windows.Forms.TabControl Tabs;
         private System.Windows.Forms.TabPage TrustExchangeTaskTab;
         private System.Windows.Forms.TabPage DemographicsTaskTab;
-        private System.Windows.Forms.TabPage ImplicitRecognitionTaskTab;
-        private System.Windows.Forms.TabPage ExplicitRecognitionTaskTab;
+        private System.Windows.Forms.TabPage ImpRecogTaskTab;
+        private System.Windows.Forms.TabPage ExpRecogTaskTab;
         private System.Windows.Forms.MenuStrip MenuStrip;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
@@ -921,6 +1046,10 @@
         private RecognitionUserControl ExpRecogImgC7;
         private RecognitionUserControl ExpRecogImgC8;
         private System.Windows.Forms.Button NextRoundButton;
+        private System.Windows.Forms.Button ImpRecogSubmitButton;
+        private System.Windows.Forms.Button ImpRecogStatusButtonAsLabel;
+        private System.Windows.Forms.Button ExpRecogStatusButtonAsLabel;
+        private System.Windows.Forms.Button ExpRecogSubmitButton;
     }
 }
 

@@ -11,14 +11,14 @@ namespace SocialExchange2
         public PersonaClassification Classification { get; set; }
 
         public Bitmap Image { get; protected set; }
-        public string Filename { get; protected set; }
+        public string FileName { get; protected set; }
 
-        public Persona(Bitmap image, string filename)
+        public Persona(Bitmap image, string fileName)
         {
             Classification = PersonaClassifications.Unused;
 
             Image = image;
-            Filename = filename;
+            FileName = fileName;
         }
 
         public override string ToString()
@@ -26,7 +26,7 @@ namespace SocialExchange2
             return 
                 String.Join(", ",
                     "[PERSONA]",
-                    string.Format("{0}",Filename),
+                    string.Format("{0}",FileName),
                     string.Format("{0}",Classification)
                     );
         }

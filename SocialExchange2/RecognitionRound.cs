@@ -27,5 +27,10 @@ namespace SocialExchange2
 
             EndTimestamp = DateTime.Now;
         }
+
+        public override string ToString()
+        {
+            return string.Format(base.ToString(), "RecognitionRound", "", "");
+        }
     }
 }

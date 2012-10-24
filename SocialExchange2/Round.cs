@@ -11,12 +11,27 @@ namespace SocialExchange2
 
         public PlayerInputClassification PlayerInputClassification { get; protected set; }
 
-        public DateTime BeginTimestamp { get; protected set; }
-        public DateTime EndTimestamp { get; protected set; }
+        public DateTime BeginTimestamp { get; set; }
+        public DateTime EndTimestamp { get; set; }
 
         public Round(Persona persona)
         {
             Persona = persona;
+        }
+        
+        public override string ToString()
+        {
+            return
+                String.Join( ", ",
+                    "{0}",
+                    PlayerInputClassification.Value,
+                    Persona.FileName,
+                    Persona.Classification.Value,
+                    BeginTimestamp.ToLongDateString(),
+                    EndTimestamp.ToLongDateString(),
+                    "{1}",
+                    "{2}"
+                );
         }
     }
 
@@ -26,6 +41,21 @@ namespace SocialExchange2
             where T : Round
         {
             return rounds.Where(r => r.Persona.Classification == personaClassification).Count();
+        }
+
+        public static string GetCommaDelimitedColumnNames()
+        {
+            return 
+                String.Join(", ",
+                    "Type",
+                    "PlayerInputClassification.Value",
+                    "Persona.FileName",
+                    "Persona.Classification.Value",
+                    "BeginTimestamp",
+                    "EndTimestamp",
+                    "RawPlayerPointsIn",
+                    "MultipliedPersonaPointsOut"
+                );
         }
     }
 }

@@ -43,5 +43,10 @@ namespace SocialExchange2
                 MultipliedPersonaPointsOut += CalculateMultipliedPersonaPointsOut(points);
             }
         }
+
+        public override string ToString()
+        {
+            return string.Format(base.ToString(), "TrustExchangeRound", RawPlayerPointsIn, MultipliedPersonaPointsOut);
+        }
     }
 }

@@ -213,5 +213,50 @@ namespace SocialExchange2
                 }
             }
         }
+
+        public static void SaveResults(string text, string fileFullPath = null)
+        {
+            DateTime now = DateTime.Now;
+            fileFullPath = 
+                fileFullPath ?? 
+                Directory.GetCurrentDirectory() + 
+                "TrustGame_" +
+                now.Year.ToString("D4") +
+                now.Month.ToString("D2") +
+                now.Day.ToString("D2") + "~" +
+                now.ToString("HH") +
+                now.ToString("mm") +
+                now.Second.ToString("D2") +
+                ".txt";
+
+            FileInfo fileInfo = new FileInfo(fileFullPath);
+            if(fileInfo.Exists)
+            {
+                throw new Exception(string.Format("File with path {0} already exists. Please choose another filename or path.", fileFullPath));
+            }
+            else
+            {
+                StreamWriter writer = null;
+                try
+                {
+                    writer = fileInfo.CreateText();
+                    writer.Write(text);
+                    writer.Flush();
+                }
+                catch(Exception ex)
+                {
+                    throw;
+                }
+                finally
+                {
+                    if(writer != null)
+                    {
+                        writer.Close();
+                        writer = null;
+                    }
+                }
+
+            }
+        }
     }
 }
