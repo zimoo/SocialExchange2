@@ -27,8 +27,8 @@ namespace SocialExchange2
                     PlayerInputClassification.Value,
                     Persona.FileName,
                     Persona.Classification.Value,
-                    BeginTimestamp.ToLongDateString(),
-                    EndTimestamp.ToLongDateString(),
+                    BeginTimestamp.ToChronologicallySortableString(),
+                    EndTimestamp.ToChronologicallySortableString(),
                     "{1}",
                     "{2}"
                 );

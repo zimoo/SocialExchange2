@@ -38,6 +38,16 @@ namespace SocialExchangeWinForms
             InitializeImplicitRecognitionControlList();
             InitializeExplicitRecognitionControlList();
 
+            //StartAtWelcomeTab();
+        }
+
+        private void StartAtWelcomeTab()
+        {
+            Application.DoEvents();
+            ShowTab(WelcomeTab);
+
+            //10000.EmulateTimeDelay();
+
             AdvanceToTrustExchangeTask();
         }
 
@@ -137,6 +147,7 @@ namespace SocialExchangeWinForms
 
         private void AdvanceToDemographicsTask()
         {
+            TrustExchangeTaskTab.RemoveFromAllowedTabs();
             ShowTab(DemographicsTaskTab);
 
             MessageBox.Show("Insert demographics task here.", "Advancing to Next Task", MessageBoxButtons.OK);
@@ -192,6 +203,7 @@ namespace SocialExchangeWinForms
                     }
                 );
 
+            DemographicsTaskTab.RemoveFromAllowedTabs();
             ShowTab(ImpRecogTaskTab);
         }
 
@@ -255,6 +267,7 @@ namespace SocialExchangeWinForms
                     }
                 );
 
+            ImpRecogTaskTab.RemoveFromAllowedTabs();
             ShowTab(ExpRecogTaskTab);
         }
 
@@ -315,7 +328,7 @@ namespace SocialExchangeWinForms
         private void NotifyPlayerOfWaitingOnPersonaResponse()
         {
             Status.SetTextInvoke(STATUS_TEXT__WAITING_ON_PLAYER2_RESPONSE);
-            ProgressBar.StepInvoke(millisMin: 10, millisMax: 500);
+            ProgressBar.StepInvoke(millisMin: 10, millisMax: 350);
         }
 
         private void NotifyPlayerOfPersonaResponse()
@@ -345,6 +358,7 @@ namespace SocialExchangeWinForms
 
         private void ShowTab(TabPage tab)
         {
+            tab.AddToAllowedTabs();
             Tabs.TabPages.Cast<TabPage>().ToList().ForEach(t => t.Hide());
             tab.Show();
             Tabs.SelectedTab = tab;
@@ -381,7 +395,7 @@ namespace SocialExchangeWinForms
                     {
                         control.Radio1.Enabled = false;
                         control.Radio2.Enabled = false;
-                        control.Radio2.Enabled = false;
+                        control.Radio3.Enabled = false;
 
                         control.RecognitionRound.ProcessPlayerInput
                         (
@@ -406,7 +420,7 @@ namespace SocialExchangeWinForms
                     {
                         control.Radio1.Enabled = false;
                         control.Radio2.Enabled = false;
-                        control.Radio2.Enabled = false;
+                        control.Radio3.Enabled = false;
 
                         control.RecognitionRound.ProcessPlayerInput
                         (
@@ -422,28 +436,39 @@ namespace SocialExchangeWinForms
 
             ExpRecogSubmitButton.Enabled = false;
 
-            MessageBox.Show("You have completed all tasks. Please discuss your results with your proctor.", "CONGRATULATIONS!", MessageBoxButtons.OK); 
-            
-            LogicEngine.SaveResults
-            (
-                string.Join
-                (
-                    Environment.NewLine,
-                    new object[] 
-                    {
-                        RoundExtensions.GetCommaDelimitedColumnNames(),
-                        string.Join(Environment.NewLine, LogicEngine.TrustExchangeTask.Rounds.Select<TrustExchangeRound, object>(r => r.ToString()).ToArray()),
-                        string.Join(Environment.NewLine, LogicEngine.ImplicitRecognitionTask.Rounds.Select<RecognitionRound, object>(r => r.ToString()).ToArray()),
-                        string.Join(Environment.NewLine, LogicEngine.ExplicitRecognitionTask.Rounds.Select<RecognitionRound, object>(r => r.ToString()).ToArray())
-                    }
-                )
-            );
+            MessageBox.Show("You have completed all tasks. Please discuss your results with your proctor.", "CONGRATULATIONS!", MessageBoxButtons.OK);
+
+            LogicEngine.SaveResults();
         }
+
+        private void Tabs_Selecting(object sender, System.Windows.Forms.TabControlCancelEventArgs e)
+        {
+            if (!MainFormExtensions.AllowedTabs.Contains(e.TabPage))
+            {
+                if(MainFormExtensions.AllowedTabs.Count == 0)
+                {
+                    WelcomeTab.AddToAllowedTabs();
+                    TrustExchangeTaskTab.AddToAllowedTabs();
+                }
+
+                Tabs.SelectedTab = MainFormExtensions.AllowedTabs.Last();
+            }
+        }
+
+        //private void Tabs_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    if (!MainFormExtensions.AllowedTabs.Contains(Tabs.SelectedTab))
+        //    {
+        //        Tabs.SelectedTab = MainFormExtensions.AllowedTabs.Last();
+        //    }
+        //}
     }
 
-    public static class SocialExchangeExtensions
+
+    public static class MainFormExtensions
     {
         public static bool IsEmulatingTimeDelay = true;
+        public static List<TabPage> AllowedTabs = new List<TabPage>();
 
         public static void EmulateTimeDelay(this int @int)
         {
@@ -457,8 +482,6 @@ namespace SocialExchangeWinForms
         public static void SetTextInvoke(this TextBox textBox, string text, params object[] @params)
         {
             textBox.Invoke(new Action(() => textBox.SetText(text, @params)));
-            //Application.DoEvents();
-            //Thread.Sleep(10);
         }
 
         public static void StepInvoke(this ProgressBar progressBar, int fromPercentage = -1, int toPercentage = 100, int millisMin = 50, int millisMax = 200)
@@ -471,7 +494,6 @@ namespace SocialExchangeWinForms
             textBox.Text = string.Format(text, @params ?? new object[] { text });
             Application.DoEvents();
         }
-
 
         public static void Step(this ProgressBar progressBar, int fromPercentage = -1, int toPercentage = 100, int millisMin = 50, int millisMax = 200)
         {
@@ -492,8 +514,23 @@ namespace SocialExchangeWinForms
 
                 progressBar.Value = toPercentage == 100 ? 0 : fromPercentage;
 
-                //Thread.Sleep(10);
                 Application.DoEvents();
+            }
+        }
+
+        public static void AddToAllowedTabs(this TabPage tab)
+        {
+            if(!AllowedTabs.Contains(tab))
+            {
+                AllowedTabs.Add(tab);
+            }
+        }
+
+        public static void RemoveFromAllowedTabs(this TabPage tab)
+        {
+            if (AllowedTabs.Contains(tab))
+            {
+                AllowedTabs.Remove(tab);
             }
         }
     }

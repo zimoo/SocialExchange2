@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SocialExchangeForm));
             this.Tabs = new System.Windows.Forms.TabControl();
+            this.WelcomeTab = new System.Windows.Forms.TabPage();
             this.TrustExchangeTaskTab = new System.Windows.Forms.TabPage();
             this.ProgressBar = new System.Windows.Forms.ProgressBar();
             this.Score = new System.Windows.Forms.TextBox();
@@ -99,7 +101,9 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.Tabs.SuspendLayout();
+            this.WelcomeTab.SuspendLayout();
             this.TrustExchangeTaskTab.SuspendLayout();
             this.ImageAndPointsButtonsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TrustExchangePictureBox)).BeginInit();
@@ -115,6 +119,7 @@
             this.Tabs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.Tabs.Controls.Add(this.WelcomeTab);
             this.Tabs.Controls.Add(this.TrustExchangeTaskTab);
             this.Tabs.Controls.Add(this.DemographicsTaskTab);
             this.Tabs.Controls.Add(this.ImpRecogTaskTab);
@@ -124,6 +129,18 @@
             this.Tabs.SelectedIndex = 0;
             this.Tabs.Size = new System.Drawing.Size(1159, 826);
             this.Tabs.TabIndex = 0;
+            this.Tabs.Selecting += Tabs_Selecting;
+            // 
+            // WelcomeTab
+            // 
+            this.WelcomeTab.Controls.Add(this.textBox1);
+            this.WelcomeTab.Location = new System.Drawing.Point(4, 22);
+            this.WelcomeTab.Name = "WelcomeTab";
+            this.WelcomeTab.Padding = new System.Windows.Forms.Padding(3);
+            this.WelcomeTab.Size = new System.Drawing.Size(1151, 800);
+            this.WelcomeTab.TabIndex = 4;
+            this.WelcomeTab.Text = "Welcome";
+            this.WelcomeTab.UseVisualStyleBackColor = true;
             // 
             // TrustExchangeTaskTab
             // 
@@ -253,13 +270,13 @@
             this.DemographicsTaskTab.TabIndex = 1;
             this.DemographicsTaskTab.Text = "Q & A";
             // 
-            // ImplicitRecognitionTaskTab
+            // ImpRecogTaskTab
             // 
             this.ImpRecogTaskTab.AutoScroll = true;
             this.ImpRecogTaskTab.BackColor = System.Drawing.SystemColors.Control;
             this.ImpRecogTaskTab.Controls.Add(this.ImpRecogTableLayoutPanel);
             this.ImpRecogTaskTab.Location = new System.Drawing.Point(4, 22);
-            this.ImpRecogTaskTab.Name = "ImplicitRecognitionTaskTab";
+            this.ImpRecogTaskTab.Name = "ImpRecogTaskTab";
             this.ImpRecogTaskTab.Size = new System.Drawing.Size(1151, 800);
             this.ImpRecogTaskTab.TabIndex = 2;
             this.ImpRecogTaskTab.Text = "Choosing";
@@ -947,6 +964,16 @@
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.saveToolStripMenuItem.Text = "Save";
             // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Modern No. 20", 26.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(34, 29);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(1082, 373);
+            this.textBox1.TabIndex = 0;
+            this.textBox1.Text = resources.GetString("textBox1.Text");
+            // 
             // SocialExchangeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -961,6 +988,8 @@
             this.Text = "Trust Game";
             this.SizeChanged += new System.EventHandler(this.SocialExchangeForm_SizeChanged);
             this.Tabs.ResumeLayout(false);
+            this.WelcomeTab.ResumeLayout(false);
+            this.WelcomeTab.PerformLayout();
             this.TrustExchangeTaskTab.ResumeLayout(false);
             this.TrustExchangeTaskTab.PerformLayout();
             this.ImageAndPointsButtonsPanel.ResumeLayout(false);
@@ -1050,6 +1079,8 @@
         private System.Windows.Forms.Button ImpRecogStatusButtonAsLabel;
         private System.Windows.Forms.Button ExpRecogStatusButtonAsLabel;
         private System.Windows.Forms.Button ExpRecogSubmitButton;
+        private System.Windows.Forms.TabPage WelcomeTab;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
