@@ -31,13 +31,24 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SocialExchangeForm));
             this.Tabs = new System.Windows.Forms.TabControl();
             this.WelcomeTab = new System.Windows.Forms.TabPage();
+            this.WelcomeTabStartPracticeButton = new System.Windows.Forms.Button();
+            this.WelcomeTabTextBox = new System.Windows.Forms.TextBox();
+            this.PracticeTrustExchangeTaskTab = new System.Windows.Forms.TabPage();
+            this.PracticeProgressBar = new System.Windows.Forms.ProgressBar();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.PracticeNextRoundButton = new System.Windows.Forms.Button();
+            this.PracticeGive1PointButton = new System.Windows.Forms.Button();
+            this.PracticeStatusButtonAsLabel = new System.Windows.Forms.Button();
+            this.PracticeGive2PointsButton = new System.Windows.Forms.Button();
+            this.PracticePictureBox = new System.Windows.Forms.PictureBox();
+            this.PracticeScoreButtonAsLabel = new System.Windows.Forms.Button();
             this.TrustExchangeTaskTab = new System.Windows.Forms.TabPage();
             this.ProgressBar = new System.Windows.Forms.ProgressBar();
-            this.Score = new System.Windows.Forms.TextBox();
+            this.ScoreButtonAsLabel = new System.Windows.Forms.Button();
             this.ImageAndPointsButtonsPanel = new System.Windows.Forms.Panel();
             this.NextRoundButton = new System.Windows.Forms.Button();
             this.Give1PointButton = new System.Windows.Forms.Button();
-            this.Status = new System.Windows.Forms.TextBox();
+            this.StatusButtonAsLabel = new System.Windows.Forms.Button();
             this.Give2PointsButton = new System.Windows.Forms.Button();
             this.TrustExchangePictureBox = new System.Windows.Forms.PictureBox();
             this.DemographicsTaskTab = new System.Windows.Forms.TabPage();
@@ -101,9 +112,11 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.Tabs.SuspendLayout();
             this.WelcomeTab.SuspendLayout();
+            this.PracticeTrustExchangeTaskTab.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PracticePictureBox)).BeginInit();
             this.TrustExchangeTaskTab.SuspendLayout();
             this.ImageAndPointsButtonsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TrustExchangePictureBox)).BeginInit();
@@ -120,6 +133,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Tabs.Controls.Add(this.WelcomeTab);
+            this.Tabs.Controls.Add(this.PracticeTrustExchangeTaskTab);
             this.Tabs.Controls.Add(this.TrustExchangeTaskTab);
             this.Tabs.Controls.Add(this.DemographicsTaskTab);
             this.Tabs.Controls.Add(this.ImpRecogTaskTab);
@@ -129,11 +143,11 @@
             this.Tabs.SelectedIndex = 0;
             this.Tabs.Size = new System.Drawing.Size(1159, 826);
             this.Tabs.TabIndex = 0;
-            this.Tabs.Selecting += Tabs_Selecting;
             // 
             // WelcomeTab
             // 
-            this.WelcomeTab.Controls.Add(this.textBox1);
+            this.WelcomeTab.Controls.Add(this.WelcomeTabStartPracticeButton);
+            this.WelcomeTab.Controls.Add(this.WelcomeTabTextBox);
             this.WelcomeTab.Location = new System.Drawing.Point(4, 22);
             this.WelcomeTab.Name = "WelcomeTab";
             this.WelcomeTab.Padding = new System.Windows.Forms.Padding(3);
@@ -142,18 +156,154 @@
             this.WelcomeTab.Text = "Welcome";
             this.WelcomeTab.UseVisualStyleBackColor = true;
             // 
+            // WelcomeTabStartPracticeButton
+            // 
+            this.WelcomeTabStartPracticeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WelcomeTabStartPracticeButton.Location = new System.Drawing.Point(1025, 758);
+            this.WelcomeTabStartPracticeButton.Name = "WelcomeTabStartPracticeButton";
+            this.WelcomeTabStartPracticeButton.Size = new System.Drawing.Size(120, 36);
+            this.WelcomeTabStartPracticeButton.TabIndex = 1;
+            this.WelcomeTabStartPracticeButton.Text = "Practice";
+            this.WelcomeTabStartPracticeButton.UseVisualStyleBackColor = true;
+            this.WelcomeTabStartPracticeButton.Click += new System.EventHandler(this.WelcomeTabStartPracticeButton_Click);
+            // 
+            // WelcomeTabTextBox
+            // 
+            this.WelcomeTabTextBox.Font = new System.Drawing.Font("Modern No. 20", 26.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WelcomeTabTextBox.Location = new System.Drawing.Point(34, 29);
+            this.WelcomeTabTextBox.Multiline = true;
+            this.WelcomeTabTextBox.Name = "WelcomeTabTextBox";
+            this.WelcomeTabTextBox.Size = new System.Drawing.Size(1082, 373);
+            this.WelcomeTabTextBox.TabIndex = 0;
+            this.WelcomeTabTextBox.Text = "Please press the \'Start\' button when you are ready to start the practice rounds. " +
+    "Once you are familiar from the practice rounds you may continue to the Investmen" +
+    "t Game.";
+            // 
+            // PracticeTab
+            // 
+            this.PracticeTrustExchangeTaskTab.BackColor = System.Drawing.SystemColors.Control;
+            this.PracticeTrustExchangeTaskTab.Controls.Add(this.PracticeProgressBar);
+            this.PracticeTrustExchangeTaskTab.Controls.Add(this.panel1);
+            this.PracticeTrustExchangeTaskTab.Controls.Add(this.PracticeScoreButtonAsLabel);
+            this.PracticeTrustExchangeTaskTab.Location = new System.Drawing.Point(4, 22);
+            this.PracticeTrustExchangeTaskTab.Name = "PracticeTab";
+            this.PracticeTrustExchangeTaskTab.Size = new System.Drawing.Size(1151, 800);
+            this.PracticeTrustExchangeTaskTab.TabIndex = 5;
+            this.PracticeTrustExchangeTaskTab.Text = "Practice";
+            // 
+            // PracticeProgressBar
+            // 
+            this.PracticeProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PracticeProgressBar.Location = new System.Drawing.Point(7, 750);
+            this.PracticeProgressBar.Name = "PracticeProgressBar";
+            this.PracticeProgressBar.Size = new System.Drawing.Size(1136, 44);
+            this.PracticeProgressBar.TabIndex = 18;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel1.Controls.Add(this.PracticeNextRoundButton);
+            this.panel1.Controls.Add(this.PracticeGive1PointButton);
+            this.panel1.Controls.Add(this.PracticeStatusButtonAsLabel);
+            this.panel1.Controls.Add(this.PracticeGive2PointsButton);
+            this.panel1.Controls.Add(this.PracticePictureBox);
+            this.panel1.Location = new System.Drawing.Point(7, 87);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1136, 615);
+            this.panel1.TabIndex = 17;
+            // 
+            // PracticeNextRoundButton
+            // 
+            this.PracticeNextRoundButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PracticeNextRoundButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PracticeNextRoundButton.Location = new System.Drawing.Point(431, 476);
+            this.PracticeNextRoundButton.Name = "PracticeNextRoundButton";
+            this.PracticeNextRoundButton.Size = new System.Drawing.Size(274, 49);
+            this.PracticeNextRoundButton.TabIndex = 9;
+            this.PracticeNextRoundButton.Text = "Click For Next Round";
+            this.PracticeNextRoundButton.UseVisualStyleBackColor = true;
+            this.PracticeNextRoundButton.Visible = false;
+            // 
+            // PracticeGive1PointButton
+            // 
+            this.PracticeGive1PointButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PracticeGive1PointButton.Location = new System.Drawing.Point(3, 3);
+            this.PracticeGive1PointButton.Name = "PracticeGive1PointButton";
+            this.PracticeGive1PointButton.Size = new System.Drawing.Size(380, 500);
+            this.PracticeGive1PointButton.TabIndex = 2;
+            this.PracticeGive1PointButton.Text = "Give 1 Point";
+            this.PracticeGive1PointButton.UseVisualStyleBackColor = true;
+            this.PracticeGive1PointButton.Click += new System.EventHandler(this.PracticeGive1PointButton_Click);
+            // 
+            // PracticeStatusButtonAsLabel
+            // 
+            this.PracticeStatusButtonAsLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PracticeStatusButtonAsLabel.BackColor = System.Drawing.SystemColors.Control;
+            this.PracticeStatusButtonAsLabel.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.PracticeStatusButtonAsLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PracticeStatusButtonAsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PracticeStatusButtonAsLabel.Location = new System.Drawing.Point(-1, 531);
+            this.PracticeStatusButtonAsLabel.Name = "PracticeStatusButtonAsLabel";
+            this.PracticeStatusButtonAsLabel.Size = new System.Drawing.Size(1136, 81);
+            this.PracticeStatusButtonAsLabel.TabIndex = 5;
+            this.PracticeStatusButtonAsLabel.Text = "STATUS_TEXT_BOX";
+            this.PracticeStatusButtonAsLabel.UseVisualStyleBackColor = false;
+            // 
+            // PracticeGive2PointsButton
+            // 
+            this.PracticeGive2PointsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.PracticeGive2PointsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PracticeGive2PointsButton.Location = new System.Drawing.Point(753, 3);
+            this.PracticeGive2PointsButton.Name = "PracticeGive2PointsButton";
+            this.PracticeGive2PointsButton.Size = new System.Drawing.Size(380, 500);
+            this.PracticeGive2PointsButton.TabIndex = 3;
+            this.PracticeGive2PointsButton.Text = "Give 2 Points";
+            this.PracticeGive2PointsButton.UseVisualStyleBackColor = true;
+            this.PracticeGive2PointsButton.Click += new System.EventHandler(this.PracticeGive2PointsButton_Click);
+            // 
+            // PracticePictureBox
+            // 
+            this.PracticePictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PracticePictureBox.Image = ((System.Drawing.Image)(resources.GetObject("PracticePictureBox.Image")));
+            this.PracticePictureBox.InitialImage = ((System.Drawing.Image)(resources.GetObject("PracticePictureBox.InitialImage")));
+            this.PracticePictureBox.Location = new System.Drawing.Point(393, 3);
+            this.PracticePictureBox.MaximumSize = new System.Drawing.Size(350, 5000);
+            this.PracticePictureBox.MinimumSize = new System.Drawing.Size(350, 500);
+            this.PracticePictureBox.Name = "PracticePictureBox";
+            this.PracticePictureBox.Size = new System.Drawing.Size(350, 500);
+            this.PracticePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PracticePictureBox.TabIndex = 1;
+            this.PracticePictureBox.TabStop = false;
+            // 
+            // PracticeScoreButtonAsLabel
+            // 
+            this.PracticeScoreButtonAsLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PracticeScoreButtonAsLabel.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.PracticeScoreButtonAsLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PracticeScoreButtonAsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PracticeScoreButtonAsLabel.Location = new System.Drawing.Point(10, 34);
+            this.PracticeScoreButtonAsLabel.Name = "PracticeScoreButtonAsLabel";
+            this.PracticeScoreButtonAsLabel.Size = new System.Drawing.Size(1130, 47);
+            this.PracticeScoreButtonAsLabel.TabIndex = 14;
+            this.PracticeScoreButtonAsLabel.Text = "SCORE_TEXT_BOX";
+            // 
             // TrustExchangeTaskTab
             // 
             this.TrustExchangeTaskTab.BackColor = System.Drawing.SystemColors.Control;
             this.TrustExchangeTaskTab.Controls.Add(this.ProgressBar);
-            this.TrustExchangeTaskTab.Controls.Add(this.Score);
+            this.TrustExchangeTaskTab.Controls.Add(this.ScoreButtonAsLabel);
             this.TrustExchangeTaskTab.Controls.Add(this.ImageAndPointsButtonsPanel);
             this.TrustExchangeTaskTab.Location = new System.Drawing.Point(4, 22);
             this.TrustExchangeTaskTab.Name = "TrustExchangeTaskTab";
             this.TrustExchangeTaskTab.Padding = new System.Windows.Forms.Padding(3);
             this.TrustExchangeTaskTab.Size = new System.Drawing.Size(1151, 800);
             this.TrustExchangeTaskTab.TabIndex = 0;
-            this.TrustExchangeTaskTab.Text = "Trust Game";
+            this.TrustExchangeTaskTab.Text = "Investment Game";
             // 
             // ProgressBar
             // 
@@ -164,27 +314,25 @@
             this.ProgressBar.Size = new System.Drawing.Size(1136, 44);
             this.ProgressBar.TabIndex = 7;
             // 
-            // Score
+            // ScoreButtonAsLabel
             // 
-            this.Score.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.ScoreButtonAsLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Score.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Score.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Score.Location = new System.Drawing.Point(10, 34);
-            this.Score.Multiline = true;
-            this.Score.Name = "Score";
-            this.Score.ReadOnly = true;
-            this.Score.Size = new System.Drawing.Size(1130, 47);
-            this.Score.TabIndex = 6;
-            this.Score.Text = "SCORE_TEXT_BOX";
-            this.Score.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ScoreButtonAsLabel.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.ScoreButtonAsLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ScoreButtonAsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ScoreButtonAsLabel.Location = new System.Drawing.Point(10, 34);
+            this.ScoreButtonAsLabel.Name = "ScoreButtonAsLabel";
+            this.ScoreButtonAsLabel.Size = new System.Drawing.Size(1130, 47);
+            this.ScoreButtonAsLabel.TabIndex = 6;
+            this.ScoreButtonAsLabel.Text = "SCORE_TEXT_BOX";
             // 
             // ImageAndPointsButtonsPanel
             // 
             this.ImageAndPointsButtonsPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ImageAndPointsButtonsPanel.Controls.Add(this.NextRoundButton);
             this.ImageAndPointsButtonsPanel.Controls.Add(this.Give1PointButton);
-            this.ImageAndPointsButtonsPanel.Controls.Add(this.Status);
+            this.ImageAndPointsButtonsPanel.Controls.Add(this.StatusButtonAsLabel);
             this.ImageAndPointsButtonsPanel.Controls.Add(this.Give2PointsButton);
             this.ImageAndPointsButtonsPanel.Controls.Add(this.TrustExchangePictureBox);
             this.ImageAndPointsButtonsPanel.Location = new System.Drawing.Point(7, 87);
@@ -217,21 +365,20 @@
             this.Give1PointButton.UseVisualStyleBackColor = true;
             this.Give1PointButton.Click += new System.EventHandler(this.Give1PointButton_Click);
             // 
-            // Status
+            // StatusButtonAsLabel
             // 
-            this.Status.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.StatusButtonAsLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Status.BackColor = System.Drawing.SystemColors.Control;
-            this.Status.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Status.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Status.Location = new System.Drawing.Point(-1, 531);
-            this.Status.Multiline = true;
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
-            this.Status.Size = new System.Drawing.Size(1136, 81);
-            this.Status.TabIndex = 5;
-            this.Status.Text = "STATUS_TEXT_BOX";
-            this.Status.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.StatusButtonAsLabel.BackColor = System.Drawing.SystemColors.Control;
+            this.StatusButtonAsLabel.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.StatusButtonAsLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StatusButtonAsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatusButtonAsLabel.Location = new System.Drawing.Point(-1, 531);
+            this.StatusButtonAsLabel.Name = "StatusButtonAsLabel";
+            this.StatusButtonAsLabel.Size = new System.Drawing.Size(1136, 81);
+            this.StatusButtonAsLabel.TabIndex = 5;
+            this.StatusButtonAsLabel.Text = "STATUS_TEXT_BOX";
+            this.StatusButtonAsLabel.UseVisualStyleBackColor = false;
             // 
             // Give2PointsButton
             // 
@@ -599,7 +746,7 @@
             this.ImpRecogStatusButtonAsLabel.Name = "ImpRecogStatusButtonAsLabel";
             this.ImpRecogStatusButtonAsLabel.Size = new System.Drawing.Size(1145, 35);
             this.ImpRecogStatusButtonAsLabel.TabIndex = 25;
-            this.ImpRecogStatusButtonAsLabel.Text = "Choose 12 Players That You Wish To Play Again";
+            this.ImpRecogStatusButtonAsLabel.Text = "Choose 12 People To Play In The Next Session Of The Investment Game";
             this.ImpRecogStatusButtonAsLabel.UseVisualStyleBackColor = true;
             // 
             // ExpRecogTaskTab
@@ -689,7 +836,8 @@
             this.ExpRecogStatusButtonAsLabel.Name = "ExpRecogStatusButtonAsLabel";
             this.ExpRecogStatusButtonAsLabel.Size = new System.Drawing.Size(1145, 35);
             this.ExpRecogStatusButtonAsLabel.TabIndex = 26;
-            this.ExpRecogStatusButtonAsLabel.Text = "Choose 6 That Gave Points, 6 That Did Not, And 12 That You Did Not Play";
+            this.ExpRecogStatusButtonAsLabel.Text = "You played 12 of these people. Pick out 6 people that gave you points and 6 who d" +
+    "id NOT give you points";
             this.ExpRecogStatusButtonAsLabel.UseVisualStyleBackColor = true;
             // 
             // ExpRecogImgA1
@@ -964,16 +1112,6 @@
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.saveToolStripMenuItem.Text = "Save";
             // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Modern No. 20", 26.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(34, 29);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(1082, 373);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Text = resources.GetString("textBox1.Text");
-            // 
             // SocialExchangeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -990,10 +1128,11 @@
             this.Tabs.ResumeLayout(false);
             this.WelcomeTab.ResumeLayout(false);
             this.WelcomeTab.PerformLayout();
+            this.PracticeTrustExchangeTaskTab.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PracticePictureBox)).EndInit();
             this.TrustExchangeTaskTab.ResumeLayout(false);
-            this.TrustExchangeTaskTab.PerformLayout();
             this.ImageAndPointsButtonsPanel.ResumeLayout(false);
-            this.ImageAndPointsButtonsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TrustExchangePictureBox)).EndInit();
             this.ImpRecogTaskTab.ResumeLayout(false);
             this.ImpRecogTableLayoutPanel.ResumeLayout(false);
@@ -1020,8 +1159,8 @@
         private System.Windows.Forms.PictureBox TrustExchangePictureBox;
         private System.Windows.Forms.Button Give1PointButton;
         private System.Windows.Forms.Button Give2PointsButton;
-        private System.Windows.Forms.TextBox Status;
-        private System.Windows.Forms.TextBox Score;
+        private System.Windows.Forms.Button StatusButtonAsLabel;
+        private System.Windows.Forms.Button ScoreButtonAsLabel;
         private System.Windows.Forms.ProgressBar ProgressBar;
         private System.Windows.Forms.Panel ImageAndPointsButtonsPanel;
         private System.Windows.Forms.TableLayoutPanel ImpRecogTableLayoutPanel;
@@ -1080,7 +1219,17 @@
         private System.Windows.Forms.Button ExpRecogStatusButtonAsLabel;
         private System.Windows.Forms.Button ExpRecogSubmitButton;
         private System.Windows.Forms.TabPage WelcomeTab;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox WelcomeTabTextBox;
+        private System.Windows.Forms.TabPage PracticeTrustExchangeTaskTab;
+        private System.Windows.Forms.Button PracticeScoreButtonAsLabel;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button PracticeNextRoundButton;
+        private System.Windows.Forms.Button PracticeGive1PointButton;
+        private System.Windows.Forms.Button PracticeStatusButtonAsLabel;
+        private System.Windows.Forms.Button PracticeGive2PointsButton;
+        private System.Windows.Forms.PictureBox PracticePictureBox;
+        private System.Windows.Forms.ProgressBar PracticeProgressBar;
+        private System.Windows.Forms.Button WelcomeTabStartPracticeButton;
     }
 }
 

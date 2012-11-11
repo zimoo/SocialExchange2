@@ -38,17 +38,15 @@ namespace SocialExchangeWinForms
             InitializeImplicitRecognitionControlList();
             InitializeExplicitRecognitionControlList();
 
-            //StartAtWelcomeTab();
+            MainFormExtensions.IsEmulatingTimeDelay = false;
+
+            StartAtWelcomeTab();
         }
 
         private void StartAtWelcomeTab()
         {
             Application.DoEvents();
             ShowTab(WelcomeTab);
-
-            //10000.EmulateTimeDelay();
-
-            AdvanceToTrustExchangeTask();
         }
 
         private void InitializeProgressBar()
@@ -130,10 +128,20 @@ namespace SocialExchangeWinForms
             );
         }
 
+        private void AdvanceToPracticeTrustExchangeTask()
+        {
+            PracticeStatusButtonAsLabel.SetText(STATUS_TEXT__GIVE_1_OR_2_POINTS_TO_PLAYER2);
+            PracticeScoreButtonAsLabel.SetText(SCORE_TEXT, LogicEngine.TrustExchangeTask.PlayerScore);
+
+            //SetTrustExchangePictureBoxImageToCurrentRoundPersona();
+
+            ShowTab(PracticeTrustExchangeTaskTab);
+        }
+
         private void AdvanceToTrustExchangeTask()
         {
-            Status.SetText(STATUS_TEXT__GIVE_1_OR_2_POINTS_TO_PLAYER2);
-            Score.SetText(SCORE_TEXT, LogicEngine.TrustExchangeTask.PlayerScore);
+            StatusButtonAsLabel.SetText(STATUS_TEXT__GIVE_1_OR_2_POINTS_TO_PLAYER2);
+            ScoreButtonAsLabel.SetText(SCORE_TEXT, LogicEngine.TrustExchangeTask.PlayerScore);
 
             SetTrustExchangePictureBoxImageToCurrentRoundPersona();
 
@@ -281,6 +289,11 @@ namespace SocialExchangeWinForms
             GivePoints(2);
         }
 
+        private void GivePracticePoints(int points)
+        {
+            SetPracticeControlsEnabledStateTo(false);
+        }
+
         private void GivePoints(int points)
         {
             SetTrustExchangeControlsEnabledStateTo(false);
@@ -306,35 +319,35 @@ namespace SocialExchangeWinForms
             }
             else
             {
-                MessageBox.Show("You have finished the Trust Game.", "Advancing to Q&A Task", MessageBoxButtons.OK);
+                MessageBox.Show(string.Format("You have finished the {0}.", TrustExchangeTaskTab.Text), string.Format("Advancing to {0}", DemographicsTaskTab.Text), MessageBoxButtons.OK);
                 AdvanceToDemographicsTask();
             }
         }
 
         private void NotifyPlayerOfSendingPoints(int points)
         {
-            Score.SetTextInvoke(SCORE_TEXT, LogicEngine.TrustExchangeTask.PlayerScore);
-            Status.SetTextInvoke(STATUS_TEXT__SENDING_PLAYER2_X_POINTS, points);
+            ScoreButtonAsLabel.SetTextInvoke(SCORE_TEXT, LogicEngine.TrustExchangeTask.PlayerScore);
+            StatusButtonAsLabel.SetTextInvoke(STATUS_TEXT__SENDING_PLAYER2_X_POINTS, points);
             ProgressBar.StepInvoke(millisMin: 20, millisMax: 20);
         }
 
         private void NotifyPlayerOfReductionOfScoreBySentPoints(int points)
         {
-            Score.SetTextInvoke(SCORE_TEXT, LogicEngine.TrustExchangeTask.PlayerScore - points);
-            Status.SetTextInvoke(STATUS_TEXT__SCORE_REDUCED_TO_X, LogicEngine.TrustExchangeTask.PlayerScore - points);
+            ScoreButtonAsLabel.SetTextInvoke(SCORE_TEXT, LogicEngine.TrustExchangeTask.PlayerScore - points);
+            StatusButtonAsLabel.SetTextInvoke(STATUS_TEXT__SCORE_REDUCED_TO_X, LogicEngine.TrustExchangeTask.PlayerScore - points);
             1500.EmulateTimeDelay();
         }
 
         private void NotifyPlayerOfWaitingOnPersonaResponse()
         {
-            Status.SetTextInvoke(STATUS_TEXT__WAITING_ON_PLAYER2_RESPONSE);
+            StatusButtonAsLabel.SetTextInvoke(STATUS_TEXT__WAITING_ON_PLAYER2_RESPONSE);
             ProgressBar.StepInvoke(millisMin: 10, millisMax: 350);
         }
 
         private void NotifyPlayerOfPersonaResponse()
         {
-            Score.SetTextInvoke(SCORE_TEXT, LogicEngine.TrustExchangeTask.PlayerScore);
-            Status.SetTextInvoke(STATUS_TEXT__PLAYER2_RESPONDED_WITH_X_POINTS, LogicEngine.TrustExchangeTask.CurrentRound.MultipliedPersonaPointsOut);
+            ScoreButtonAsLabel.SetTextInvoke(SCORE_TEXT, LogicEngine.TrustExchangeTask.PlayerScore);
+            StatusButtonAsLabel.SetTextInvoke(STATUS_TEXT__PLAYER2_RESPONDED_WITH_X_POINTS, LogicEngine.TrustExchangeTask.CurrentRound.MultipliedPersonaPointsOut);
             2500.EmulateTimeDelay();
         }
 
@@ -346,13 +359,13 @@ namespace SocialExchangeWinForms
             string contextualScoringMessage =
                 string.Format
                 (
-                    "You {0} {1} point{2}!",
+                    "You {0} {1} point{2}.",
                     scoreAtRoundStart > finalScore ? "lost" : "gained",
                     diff,
                     diff > 1 ? "s" : ""
                 );
 
-            Status.SetTextInvoke(contextualScoringMessage);
+            StatusButtonAsLabel.SetTextInvoke(contextualScoringMessage);
             2500.EmulateTimeDelay();
         }
 
@@ -363,6 +376,13 @@ namespace SocialExchangeWinForms
             tab.Show();
             Tabs.SelectedTab = tab;
             Application.DoEvents();
+        }
+
+        private void SetPracticeControlsEnabledStateTo(bool state)
+        {
+            PracticeGive1PointButton.Enabled = state;
+            PracticeGive2PointsButton.Enabled = state;
+            PracticePictureBox.Enabled = state;
         }
 
         private void SetTrustExchangeControlsEnabledStateTo(bool state)
@@ -382,7 +402,7 @@ namespace SocialExchangeWinForms
             LogicEngine.TrustExchangeTask.AdvanceToNextRound();
             SetTrustExchangePictureBoxImageToCurrentRoundPersona();
             SetTrustExchangeControlsEnabledStateTo(true);
-            Status.SetTextInvoke(STATUS_TEXT__GIVE_1_OR_2_POINTS_TO_PLAYER2);
+            StatusButtonAsLabel.SetTextInvoke(STATUS_TEXT__GIVE_1_OR_2_POINTS_TO_PLAYER2);
             NextRoundButton.Visible = false;
         }
 
@@ -436,7 +456,7 @@ namespace SocialExchangeWinForms
 
             ExpRecogSubmitButton.Enabled = false;
 
-            MessageBox.Show("You have completed all tasks. Please discuss your results with your proctor.", "CONGRATULATIONS!", MessageBoxButtons.OK);
+            MessageBox.Show("You have completed all tasks. Please see your proctor.", "CONGRATULATIONS!", MessageBoxButtons.OK);
 
             LogicEngine.SaveResults();
         }
@@ -448,20 +468,28 @@ namespace SocialExchangeWinForms
                 if(MainFormExtensions.AllowedTabs.Count == 0)
                 {
                     WelcomeTab.AddToAllowedTabs();
-                    TrustExchangeTaskTab.AddToAllowedTabs();
+                    PracticeTrustExchangeTaskTab.AddToAllowedTabs();
+                    //TrustExchangeTaskTab.AddToAllowedTabs();
                 }
 
                 Tabs.SelectedTab = MainFormExtensions.AllowedTabs.Last();
             }
         }
 
-        //private void Tabs_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    if (!MainFormExtensions.AllowedTabs.Contains(Tabs.SelectedTab))
-        //    {
-        //        Tabs.SelectedTab = MainFormExtensions.AllowedTabs.Last();
-        //    }
-        //}
+        private void PracticeGive1PointButton_Click(object sender, EventArgs e)
+        {
+            GivePracticePoints(1);
+        }
+
+        private void PracticeGive2PointsButton_Click(object sender, EventArgs e)
+        {
+            GivePracticePoints(2);
+        }
+
+        private void WelcomeTabStartPracticeButton_Click(object sender, EventArgs e)
+        {
+            AdvanceToPracticeTrustExchangeTask();
+        }
     }
 
 
@@ -479,6 +507,11 @@ namespace SocialExchangeWinForms
             }
         }
 
+        public static void SetTextInvoke(this Button button, string text, params object[] @params)
+        {
+            button.Invoke(new Action(() => button.SetText(text, @params)));
+        }
+
         public static void SetTextInvoke(this TextBox textBox, string text, params object[] @params)
         {
             textBox.Invoke(new Action(() => textBox.SetText(text, @params)));
@@ -492,6 +525,12 @@ namespace SocialExchangeWinForms
         public static void SetText(this TextBox textBox, string text, params object[] @params)
         {
             textBox.Text = string.Format(text, @params ?? new object[] { text });
+            Application.DoEvents();
+        }
+
+        public static void SetText(this Button button, string text, params object[] @params)
+        {
+            button.Text = string.Format(text, @params ?? new object[] { text });
             Application.DoEvents();
         }
 

@@ -152,8 +152,11 @@ namespace SocialExchange2
         public List<Persona> GetPersonas<T>(PersonaClassification personaClassification, int take = -1, List<T> notInRounds = null)
             where T : Round
         {
+            Random r = new Random();
+
             List<Persona> allMatchingPersonas =
                 Personas
+                .OrderBy(t => r.Next())
                 .Where
                 (
                     persona => 
