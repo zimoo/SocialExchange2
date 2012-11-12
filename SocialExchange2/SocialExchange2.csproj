@@ -105,8 +105,12 @@
     <EmbeddedResource Include="Images\Males\C2_238_M49.jpg" />
     <EmbeddedResource Include="Images\Males\C2_239_M50.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Practice\" />
+    <EmbeddedResource Include="Practice\questionHead_BLACK.png" />
+    <EmbeddedResource Include="Practice\questionHead_BLUE.png" />
+    <EmbeddedResource Include="Practice\questionHead_GREEN.png" />
+    <EmbeddedResource Include="Practice\questionHead_RED.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

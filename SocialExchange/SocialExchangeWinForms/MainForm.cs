@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -29,36 +31,75 @@ namespace SocialExchangeWinForms
         public const string STATUS_TEXT__YOUR_POINTS_X = "Your points {0}.";
         public const string STATUS_TEXT__ADVANCING_TO_NEXT_PLAYER = "Advancing to next player...";
 
+        private int Practice_PlayerScore = 0;
+        private int Practice_CurrentRoundOrdinal = 1;
+        private int Practice_MaximumRoundOrdinal = 3;
+        private int Practice_CurrentRoundRawPointResponse = 0;
+
+        private string closeAppPassword = "closegame1027";
+
         public SocialExchangeForm()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
+            this.FormClosing += SocialExchangeForm_FormClosing;
 
-            InitializeProgressBar();
+            InitializeProgressBars();
 
             InitializeImplicitRecognitionControlList();
             InitializeExplicitRecognitionControlList();
 
             MainFormExtensions.IsEmulatingTimeDelay = false;
 
+            Practice_PlayerScore = LogicEngine.TrustExchangeTask.PlayerScore;
+            UpdatePointsToolStripMenuItemWithPlayerScore();
+
             StartAtWelcomeTab();
+        }
+
+        void SocialExchangeForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+
+            CloseApplicationPasswordForm closeForm = new CloseApplicationPasswordForm();
+            closeForm.ShowDialog();
+            if(string.Equals(closeForm.PasswordTextBox.Text, closeAppPassword))
+            {
+                e.Cancel = false;
+            }
+            else
+            {
+                MessageBox.Show("Invalid password entered. Please try again. You will be returned to the application.", "Invalid Password", MessageBoxButtons.OK);
+            }
         }
 
         private void StartAtWelcomeTab()
         {
             Application.DoEvents();
+            Practice_PictureBox.Image = QuestionHeadBitmapMetaContainers.Red.Bitmap;
             ShowTab(WelcomeTab);
         }
 
-        private void InitializeProgressBar()
+        private void InitializeProgressBars()
         {
             ProgressBar.Minimum = 0;
             ProgressBar.Maximum = 100;
             ProgressBar.Step = 2;
             ProgressBar.Style = ProgressBarStyle.Blocks;
+
+            Practice_ProgressBar.Minimum = 0;
+            Practice_ProgressBar.Maximum = 100;
+            Practice_ProgressBar.Step = 2;
+            Practice_ProgressBar.Style = ProgressBarStyle.Blocks;
         }
 
         private void SocialExchangeForm_SizeChanged(object sender, EventArgs e)
         {
+            if(this.WindowState == FormWindowState.Minimized || this.WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+
             ImageAndPointsButtonsPanel.CenterWithinParent();
         }
 
@@ -130,12 +171,12 @@ namespace SocialExchangeWinForms
 
         private void AdvanceToPracticeTrustExchangeTask()
         {
-            PracticeStatusButtonAsLabel.SetText(STATUS_TEXT__GIVE_1_OR_2_POINTS_TO_PLAYER2);
-            PracticeScoreButtonAsLabel.SetText(SCORE_TEXT, LogicEngine.TrustExchangeTask.PlayerScore);
+            Practice_StatusButtonAsLabel.SetText(STATUS_TEXT__GIVE_1_OR_2_POINTS_TO_PLAYER2);
+            Practice_ScoreButtonAsLabel.SetText(SCORE_TEXT, LogicEngine.TrustExchangeTask.PlayerScore);
 
             //SetTrustExchangePictureBoxImageToCurrentRoundPersona();
 
-            ShowTab(PracticeTrustExchangeTaskTab);
+            ShowTab(Practice_TrustExchangeTaskTab);
         }
 
         private void AdvanceToTrustExchangeTask()
@@ -157,10 +198,6 @@ namespace SocialExchangeWinForms
         {
             TrustExchangeTaskTab.RemoveFromAllowedTabs();
             ShowTab(DemographicsTaskTab);
-
-            MessageBox.Show("Insert demographics task here.", "Advancing to Next Task", MessageBoxButtons.OK);
-
-            AdvanceToImplicitRecognitionTask();
         }
 
         private void AdvanceToImplicitRecognitionTask()
@@ -289,9 +326,32 @@ namespace SocialExchangeWinForms
             GivePoints(2);
         }
 
-        private void GivePracticePoints(int points)
+        private void Practice_GivePoints(int points)
         {
-            SetPracticeControlsEnabledStateTo(false);
+            Practice_SetTrustExchangeControlsEnabledStateTo(false);
+
+            int scoreAtRoundStart = Practice_PlayerScore;
+
+            Practice_NotifyPlayerOfSendingPoints(points);
+            Practice_NotifyPlayerOfReductionOfScoreBySentPoints(points);
+
+            Practice_CurrentRoundRawPointResponse = Practice_CurrentRoundOrdinal % 2 == 0 ? 0 : points;
+
+            Practice_NotifyPlayerOfWaitingOnPersonaResponse();
+            Practice_NotifyPlayerOfPersonaResponse();
+            Practice_NotifyPlayerOfScoringThisRound(scoreAtRoundStart);
+
+            if(Practice_CurrentRoundOrdinal < Practice_MaximumRoundOrdinal)
+            {
+                Practice_CurrentRoundOrdinal++;
+                Practice_NextRoundButton.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show(string.Format("You have finished the Practice {0}.", TrustExchangeTaskTab.Text), string.Format("Advancing to {0}", TrustExchangeTaskTab.Text), MessageBoxButtons.OK);
+                Practice_TrustExchangeTaskTab.RemoveFromAllowedTabs();
+                AdvanceToTrustExchangeTask();
+            }
         }
 
         private void GivePoints(int points)
@@ -308,6 +368,8 @@ namespace SocialExchangeWinForms
             NotifyPlayerOfWaitingOnPersonaResponse();
             NotifyPlayerOfPersonaResponse();
             NotifyPlayerOfScoringThisRound(scoreAtRoundStart);
+
+            UpdatePointsToolStripMenuItemWithPlayerScore();
             
             if
             (
@@ -324,11 +386,31 @@ namespace SocialExchangeWinForms
             }
         }
 
+        private void UpdatePointsToolStripMenuItemWithPlayerScore()
+        {
+            PointsToolStripMenuItem.Text = LogicEngine.TrustExchangeTask.PlayerScore.ToString();
+        }
+
+        private void Practice_NotifyPlayerOfSendingPoints(int points)
+        {
+            Practice_ScoreButtonAsLabel.SetTextInvoke(SCORE_TEXT, Practice_PlayerScore);
+            Practice_StatusButtonAsLabel.SetTextInvoke(STATUS_TEXT__SENDING_PLAYER2_X_POINTS, points);
+            Practice_ProgressBar.StepInvoke(millisMin: 20, millisMax: 20);
+        }
+
         private void NotifyPlayerOfSendingPoints(int points)
         {
             ScoreButtonAsLabel.SetTextInvoke(SCORE_TEXT, LogicEngine.TrustExchangeTask.PlayerScore);
             StatusButtonAsLabel.SetTextInvoke(STATUS_TEXT__SENDING_PLAYER2_X_POINTS, points);
             ProgressBar.StepInvoke(millisMin: 20, millisMax: 20);
+        }
+
+        private void Practice_NotifyPlayerOfReductionOfScoreBySentPoints(int points)
+        {
+            Practice_PlayerScore -= points;
+            Practice_ScoreButtonAsLabel.SetTextInvoke(SCORE_TEXT, Practice_PlayerScore);
+            Practice_StatusButtonAsLabel.SetTextInvoke(STATUS_TEXT__SCORE_REDUCED_TO_X, Practice_PlayerScore);
+            1500.EmulateTimeDelay();
         }
 
         private void NotifyPlayerOfReductionOfScoreBySentPoints(int points)
@@ -338,16 +420,50 @@ namespace SocialExchangeWinForms
             1500.EmulateTimeDelay();
         }
 
+        private void Practice_NotifyPlayerOfWaitingOnPersonaResponse()
+        {
+            Practice_StatusButtonAsLabel.SetTextInvoke(STATUS_TEXT__WAITING_ON_PLAYER2_RESPONSE);
+            Practice_ProgressBar.StepInvoke(millisMin: 10, millisMax: 350);
+        }
+
         private void NotifyPlayerOfWaitingOnPersonaResponse()
         {
             StatusButtonAsLabel.SetTextInvoke(STATUS_TEXT__WAITING_ON_PLAYER2_RESPONSE);
             ProgressBar.StepInvoke(millisMin: 10, millisMax: 350);
         }
 
+        private void Practice_NotifyPlayerOfPersonaResponse()
+        {
+            int pointsBack = LogicEngine.TrustExchangePointsMultiplier * Practice_CurrentRoundRawPointResponse;
+
+            Practice_ScoreButtonAsLabel.SetTextInvoke(SCORE_TEXT, Practice_PlayerScore + pointsBack);
+            Practice_StatusButtonAsLabel.SetTextInvoke(STATUS_TEXT__PLAYER2_RESPONDED_WITH_X_POINTS, pointsBack);
+            2500.EmulateTimeDelay();
+        }
+
         private void NotifyPlayerOfPersonaResponse()
         {
             ScoreButtonAsLabel.SetTextInvoke(SCORE_TEXT, LogicEngine.TrustExchangeTask.PlayerScore);
             StatusButtonAsLabel.SetTextInvoke(STATUS_TEXT__PLAYER2_RESPONDED_WITH_X_POINTS, LogicEngine.TrustExchangeTask.CurrentRound.MultipliedPersonaPointsOut);
+            2500.EmulateTimeDelay();
+        }
+
+        private void Practice_NotifyPlayerOfScoringThisRound(int scoreAtRoundStart)
+        {
+            int pointsBack = LogicEngine.TrustExchangePointsMultiplier * Practice_CurrentRoundRawPointResponse;
+            int finalScore = Practice_PlayerScore + pointsBack;
+
+            int diff = Math.Abs(scoreAtRoundStart - finalScore);
+            string contextualScoringMessage =
+                string.Format
+                (
+                    "You {0} {1} point{2}.",
+                    scoreAtRoundStart > finalScore ? "lost" : "gained",
+                    diff,
+                    diff > 1 ? "s" : ""
+                );
+
+            Practice_StatusButtonAsLabel.SetTextInvoke(contextualScoringMessage);
             2500.EmulateTimeDelay();
         }
 
@@ -378,11 +494,11 @@ namespace SocialExchangeWinForms
             Application.DoEvents();
         }
 
-        private void SetPracticeControlsEnabledStateTo(bool state)
+        private void Practice_SetTrustExchangeControlsEnabledStateTo(bool state)
         {
             PracticeGive1PointButton.Enabled = state;
             PracticeGive2PointsButton.Enabled = state;
-            PracticePictureBox.Enabled = state;
+            Practice_PictureBox.Enabled = state;
         }
 
         private void SetTrustExchangeControlsEnabledStateTo(bool state)
@@ -458,7 +574,7 @@ namespace SocialExchangeWinForms
 
             MessageBox.Show("You have completed all tasks. Please see your proctor.", "CONGRATULATIONS!", MessageBoxButtons.OK);
 
-            LogicEngine.SaveResults();
+            LogicEngine.SaveResults(DemographicsTab_TaskContainer.ToString());
         }
 
         private void Tabs_Selecting(object sender, System.Windows.Forms.TabControlCancelEventArgs e)
@@ -468,30 +584,194 @@ namespace SocialExchangeWinForms
                 if(MainFormExtensions.AllowedTabs.Count == 0)
                 {
                     WelcomeTab.AddToAllowedTabs();
-                    PracticeTrustExchangeTaskTab.AddToAllowedTabs();
+                    Practice_TrustExchangeTaskTab.AddToAllowedTabs();
                     //TrustExchangeTaskTab.AddToAllowedTabs();
                 }
 
                 Tabs.SelectedTab = MainFormExtensions.AllowedTabs.Last();
+                MessageBox.Show
+                (
+                    "You cannot choose tabs directly." + Environment.NewLine + 
+                    "You may proceed only through completing the on-screen instructions.", 
+                    "Not Allowed", 
+                    MessageBoxButtons.OK
+                );
             }
         }
 
-        private void PracticeGive1PointButton_Click(object sender, EventArgs e)
+        private void Practice_Give1PointButton_Click(object sender, EventArgs e)
         {
-            GivePracticePoints(1);
+            Practice_GivePoints(1);
         }
 
-        private void PracticeGive2PointsButton_Click(object sender, EventArgs e)
+        private void Practice_Give2PointsButton_Click(object sender, EventArgs e)
         {
-            GivePracticePoints(2);
+            Practice_GivePoints(2);
         }
 
         private void WelcomeTabStartPracticeButton_Click(object sender, EventArgs e)
         {
             AdvanceToPracticeTrustExchangeTask();
+            WelcomeTab.RemoveFromAllowedTabs();
+        }
+
+        private void Practice_NextRoundButton_Click(object sender, EventArgs e)
+        {
+            if (Practice_CurrentRoundOrdinal == 2)
+            {
+                Practice_PictureBox.Image = QuestionHeadBitmapMetaContainers.Green.Bitmap;
+            }
+            else
+                if (Practice_CurrentRoundOrdinal == 3)
+                {
+                    Practice_PictureBox.Image = QuestionHeadBitmapMetaContainers.Blue.Bitmap;
+                }
+
+            Practice_SetTrustExchangeControlsEnabledStateTo(true);
+            Practice_StatusButtonAsLabel.SetTextInvoke(STATUS_TEXT__GIVE_1_OR_2_POINTS_TO_PLAYER2);
+            Practice_NextRoundButton.Visible = false;
+        }
+
+        private void CloseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void DemographicsStartButton_Click(object sender, EventArgs e)
+        {
+            if
+            (
+                DemographicsTab_Q001_TextBox.Text == "" ||
+                DemographicsTab_Q002_TextBox.Text == "" ||
+                DemographicsTab_Q003_TextBox.Text == "" ||
+                DemographicsTab_Q004_TextBox.Text == "" ||
+                DemographicsTab_Q005_TextBox.Text == "" ||
+                DemographicsTab_Q006_TextBox.Text == "" ||
+                DemographicsTab_Q007_TextBox.Text == "" ||
+                DemographicsTab_Q008_TextBox.Text == "" ||
+                DemographicsTab_Q009_TextBox.Text == "" ||
+                DemographicsTab_Q010_TextBox.Text == "" ||
+                DemographicsTab_Q011_TextBox.Text == "" ||
+                DemographicsTab_Q012_TextBox.Text == "" ||
+                DemographicsTab_Q013_TextBox.Text == "" ||
+                DemographicsTab_Q014_TextBox.Text == ""
+                )
+            {
+                MessageBox.Show("Some answers are missing. Please answer all questions.", "Some Answers Missing", MessageBoxButtons.OK);
+            }
+            else
+            {
+                DemographicsTab_TaskContainer.Q001_Age_Label = DemographicsTab_Q001_Label.Text;
+                DemographicsTab_TaskContainer.Q001_Age = DemographicsTab_Q001_TextBox.Text;
+
+                DemographicsTab_TaskContainer.Q002_Gender_Label = DemographicsTab_Q002_Label.Text;
+                DemographicsTab_TaskContainer.Q002_Gender = DemographicsTab_Q002_TextBox.Text;
+
+                DemographicsTab_TaskContainer.Q003_CurrentCollegeLevel_Label = DemographicsTab_Q003_Label.Text;
+                DemographicsTab_TaskContainer.Q003_CurrentCollegeLevel = DemographicsTab_Q003_TextBox.Text;
+
+                DemographicsTab_TaskContainer.Q004_CollegeMajor_Label = DemographicsTab_Q004_Label.Text;
+                DemographicsTab_TaskContainer.Q004_CollegeMajor = DemographicsTab_Q004_TextBox.Text;
+
+                DemographicsTab_TaskContainer.Q005_StudentTimeStatus_Label = DemographicsTab_Q005_Label.Text;
+                DemographicsTab_TaskContainer.Q005_StudentTimeStatus = DemographicsTab_Q005_TextBox.Text;
+
+                DemographicsTab_TaskContainer.Q006_MaritalStatus_Label = DemographicsTab_Q006_Label.Text;
+                DemographicsTab_TaskContainer.Q006_MaritalStatus = DemographicsTab_Q006_TextBox.Text;
+
+                DemographicsTab_TaskContainer.Q007_WasSanDiegoCountyHighSchoolAttendant_Label = DemographicsTab_Q007_Label.Text;
+                DemographicsTab_TaskContainer.Q007_WasSanDiegoCountyHighSchoolAttendant = DemographicsTab_Q007_TextBox.Text;
+
+                DemographicsTab_TaskContainer.Q008_FreeTimeActivitiesHobbies_Label = DemographicsTab_Q008_Label.Text;
+                DemographicsTab_TaskContainer.Q008_FreeTimeActivitiesHobbies = DemographicsTab_Q008_TextBox.Text;
+
+                DemographicsTab_TaskContainer.Q009_FreeTimeActivitesHobbiesDislike_Label = DemographicsTab_Q009_Label.Text;
+                DemographicsTab_TaskContainer.Q009_FreeTimeActivitesHobbiesDislike = DemographicsTab_Q009_TextBox.Text;
+
+                DemographicsTab_TaskContainer.Q010_HasTraveledOutsideCalifornia_Label = DemographicsTab_Q010_Label.Text;
+                DemographicsTab_TaskContainer.Q010_HasTraveledOutsideCalifornia = DemographicsTab_Q010_TextBox.Text;
+
+                DemographicsTab_TaskContainer.Q011_ListUsStatesVisitedOutsideCalifornia_Label = DemographicsTab_Q011_Label.Text;
+                DemographicsTab_TaskContainer.Q011_ListUsStatesVisitedOutsideCalifornia = DemographicsTab_Q011_TextBox.Text;
+
+                DemographicsTab_TaskContainer.Q012_HasEverTraveledOutsideUnitedStatesBorder_Label = DemographicsTab_Q012_Label.Text;
+                DemographicsTab_TaskContainer.Q012_HasEverTraveledOutsideUnitedStatesBorder = DemographicsTab_Q012_TextBox.Text;
+
+                DemographicsTab_TaskContainer.Q013_ListCountriesVisitedOutsideUnitedStates_Label = DemographicsTab_Q013_Label.Text;
+                DemographicsTab_TaskContainer.Q013_ListCountriesVisitedOutsideUnitedStates = DemographicsTab_Q013_TextBox.Text;
+
+                DemographicsTab_TaskContainer.Q014_Ethnicity_Label = DemographicsTab_Q014_Label.Text;
+                DemographicsTab_TaskContainer.Q014_Ethnicity = DemographicsTab_Q014_TextBox.Text;
+
+                AdvanceToImplicitRecognitionTask();
+            }
         }
     }
 
+    public static class DemographicsTab_TaskContainer
+    {
+        public static string Q001_Age_Label { get; set; }
+        public static string Q001_Age { get; set; }
+        public static string Q002_Gender_Label { get; set; }
+        public static string Q002_Gender { get; set; }
+        public static string Q003_CurrentCollegeLevel_Label { get; set; }
+        public static string Q003_CurrentCollegeLevel { get; set; }
+        public static string Q004_CollegeMajor_Label { get; set; }
+        public static string Q004_CollegeMajor { get; set; }
+        public static string Q005_StudentTimeStatus_Label { get; set; }
+        public static string Q005_StudentTimeStatus { get; set; }
+        public static string Q006_MaritalStatus_Label { get; set; }
+        public static string Q006_MaritalStatus { get; set; }
+        public static string Q007_WasSanDiegoCountyHighSchoolAttendant_Label { get; set; }
+        public static string Q007_WasSanDiegoCountyHighSchoolAttendant { get; set; }
+        public static string Q008_FreeTimeActivitiesHobbies_Label { get; set; }
+        public static string Q008_FreeTimeActivitiesHobbies { get; set; }
+        public static string Q009_FreeTimeActivitesHobbiesDislike_Label { get; set; }
+        public static string Q009_FreeTimeActivitesHobbiesDislike { get; set; }
+        public static string Q010_HasTraveledOutsideCalifornia_Label { get; set; }
+        public static string Q010_HasTraveledOutsideCalifornia { get; set; }
+        public static string Q011_ListUsStatesVisitedOutsideCalifornia_Label { get; set; }
+        public static string Q011_ListUsStatesVisitedOutsideCalifornia { get; set; }
+        public static string Q012_HasEverTraveledOutsideUnitedStatesBorder_Label { get; set; }
+        public static string Q012_HasEverTraveledOutsideUnitedStatesBorder { get; set; }
+        public static string Q013_ListCountriesVisitedOutsideUnitedStates_Label { get; set; }
+        public static string Q013_ListCountriesVisitedOutsideUnitedStates { get; set; }
+        public static string Q014_Ethnicity_Label { get; set; }
+        public static string Q014_Ethnicity { get; set; }
+
+        public new static string ToString()
+        {
+            return
+                "<q>" + Q001_Age_Label + "</q>" + Environment.NewLine +
+                "<a>" + Q001_Age + "</a>" + Environment.NewLine +
+                "<q>" + Q002_Gender_Label + "</q>" + Environment.NewLine +
+                "<a>" + Q002_Gender + "</a>" + Environment.NewLine +
+                "<q>" + Q003_CurrentCollegeLevel_Label + "</q>" + Environment.NewLine +
+                "<a>" + Q003_CurrentCollegeLevel + "</a>" + Environment.NewLine +
+                "<q>" + Q004_CollegeMajor_Label + "</q>" + Environment.NewLine +
+                "<a>" + Q004_CollegeMajor + "</a>" + Environment.NewLine +
+                "<q>" + Q005_StudentTimeStatus_Label + "</q>" + Environment.NewLine +
+                "<a>" + Q005_StudentTimeStatus + "</a>" + Environment.NewLine +
+                "<q>" + Q006_MaritalStatus_Label + "</q>" + Environment.NewLine +
+                "<a>" + Q006_MaritalStatus + "</a>" + Environment.NewLine +
+                "<q>" + Q007_WasSanDiegoCountyHighSchoolAttendant_Label + "</q>" + Environment.NewLine +
+                "<a>" + Q007_WasSanDiegoCountyHighSchoolAttendant + "</a>" + Environment.NewLine +
+                "<q>" + Q008_FreeTimeActivitiesHobbies_Label + "</q>" + Environment.NewLine +
+                "<a>" + Q008_FreeTimeActivitiesHobbies + "</a>" + Environment.NewLine +
+                "<q>" + Q009_FreeTimeActivitesHobbiesDislike_Label + "</q>" + Environment.NewLine +
+                "<a>" + Q009_FreeTimeActivitesHobbiesDislike + "</a>" + Environment.NewLine +
+                "<q>" + Q010_HasTraveledOutsideCalifornia_Label + "</q>" + Environment.NewLine +
+                "<a>" + Q010_HasTraveledOutsideCalifornia + "</a>" + Environment.NewLine +
+                "<q>" + Q011_ListUsStatesVisitedOutsideCalifornia_Label + "</q>" + Environment.NewLine +
+                "<a>" + Q011_ListUsStatesVisitedOutsideCalifornia + "</a>" + Environment.NewLine +
+                "<q>" + Q012_HasEverTraveledOutsideUnitedStatesBorder_Label + "</q>" + Environment.NewLine +
+                "<a>" + Q012_HasEverTraveledOutsideUnitedStatesBorder + "</a>" + Environment.NewLine +
+                "<q>" + Q013_ListCountriesVisitedOutsideUnitedStates_Label + "</q>" + Environment.NewLine +
+                "<a>" + Q013_ListCountriesVisitedOutsideUnitedStates + "</a>" + Environment.NewLine +
+                "<q>" + Q014_Ethnicity_Label + "</q>" + Environment.NewLine + 
+                "<a>" + Q014_Ethnicity + "</a>";
+        }
+    }
 
     public static class MainFormExtensions
     {

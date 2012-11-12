@@ -65,9 +65,14 @@ namespace SocialExchange2
         {
             Assembly assembly = Assembly.GetExecutingAssembly();
 
+            string[] names =
+                assembly
+                .GetManifestResourceNames();
+
             Personas =
                 assembly
                 .GetManifestResourceNames()
+                .Where(s => !s.Contains("questionHead"))
                 .ToList()
                 .Select(
                     s =>
@@ -217,7 +222,7 @@ namespace SocialExchange2
             }
         }
 
-        public void SaveResults()
+        public void SaveResults(string appendText)
         {
             LogicEngineExtensions.SaveText
             (
@@ -229,10 +234,63 @@ namespace SocialExchange2
                         RoundExtensions.GetCommaDelimitedColumnNames(),
                         string.Join(Environment.NewLine, TrustExchangeTask.Rounds.Select<TrustExchangeRound, object>(r => r.ToString()).ToArray()),
                         string.Join(Environment.NewLine, ImplicitRecognitionTask.Rounds.Select<RecognitionRound, object>(r => r.ToString()).ToArray()),
-                        string.Join(Environment.NewLine, ExplicitRecognitionTask.Rounds.Select<RecognitionRound, object>(r => r.ToString()).ToArray())
+                        string.Join(Environment.NewLine, ExplicitRecognitionTask.Rounds.Select<RecognitionRound, object>(r => r.ToString()).ToArray()),
+                        "TOTAL POINTS EARNED: " + TrustExchangeTask.PlayerScore.ToString(), 
+                        appendText
                     }
                 )
             );
+        }
+    }
+    
+    public static class QuestionHeadBitmapMetaContainers
+    {
+        public class BitmapMetaContainer
+        {
+            public Bitmap Bitmap { get; protected set; }
+            public string FileName { get; protected set; }
+
+            public BitmapMetaContainer(Bitmap bitmap, string fileName)
+            {
+                Bitmap = bitmap;
+                FileName = fileName;
+            }
+        }
+
+        public static BitmapMetaContainer Black { get; private set; }
+        public static BitmapMetaContainer Blue { get; private set; }
+        public static BitmapMetaContainer Red { get; private set; }
+        public static BitmapMetaContainer Green { get; private set; }
+
+        static QuestionHeadBitmapMetaContainers()
+        {
+            string[] strings =
+                Assembly
+                .GetExecutingAssembly()
+                .GetManifestResourceNames();
+
+            List<BitmapMetaContainer> bitmapMetaContainers =
+                Assembly
+                .GetExecutingAssembly()
+                .GetManifestResourceNames()
+                .Where(s => s.Contains("questionHead"))
+                .ToList()
+                .Select
+                (
+                    s =>
+                        new BitmapMetaContainer
+                        (
+                            new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream(s)),
+                            s
+                        )
+                )
+                .Cast<BitmapMetaContainer>()
+                .ToList();
+
+            Black = bitmapMetaContainers.Where(bmc => bmc.FileName.Contains("BLACK")).FirstOrDefault();
+            Blue = bitmapMetaContainers.Where(bmc => bmc.FileName.Contains("BLUE")).FirstOrDefault();
+            Red = bitmapMetaContainers.Where(bmc => bmc.FileName.Contains("RED")).FirstOrDefault();
+            Green = bitmapMetaContainers.Where(bmc => bmc.FileName.Contains("GREEN")).FirstOrDefault();
         }
     }
 

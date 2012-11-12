@@ -33,15 +33,15 @@
             this.WelcomeTab = new System.Windows.Forms.TabPage();
             this.WelcomeTabStartPracticeButton = new System.Windows.Forms.Button();
             this.WelcomeTabTextBox = new System.Windows.Forms.TextBox();
-            this.PracticeTrustExchangeTaskTab = new System.Windows.Forms.TabPage();
-            this.PracticeProgressBar = new System.Windows.Forms.ProgressBar();
+            this.Practice_TrustExchangeTaskTab = new System.Windows.Forms.TabPage();
+            this.Practice_ProgressBar = new System.Windows.Forms.ProgressBar();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.PracticeNextRoundButton = new System.Windows.Forms.Button();
+            this.Practice_NextRoundButton = new System.Windows.Forms.Button();
             this.PracticeGive1PointButton = new System.Windows.Forms.Button();
-            this.PracticeStatusButtonAsLabel = new System.Windows.Forms.Button();
+            this.Practice_StatusButtonAsLabel = new System.Windows.Forms.Button();
             this.PracticeGive2PointsButton = new System.Windows.Forms.Button();
-            this.PracticePictureBox = new System.Windows.Forms.PictureBox();
-            this.PracticeScoreButtonAsLabel = new System.Windows.Forms.Button();
+            this.Practice_PictureBox = new System.Windows.Forms.PictureBox();
+            this.Practice_ScoreButtonAsLabel = new System.Windows.Forms.Button();
             this.TrustExchangeTaskTab = new System.Windows.Forms.TabPage();
             this.ProgressBar = new System.Windows.Forms.ProgressBar();
             this.ScoreButtonAsLabel = new System.Windows.Forms.Button();
@@ -52,6 +52,49 @@
             this.Give2PointsButton = new System.Windows.Forms.Button();
             this.TrustExchangePictureBox = new System.Windows.Forms.PictureBox();
             this.DemographicsTaskTab = new System.Windows.Forms.TabPage();
+            this.DemographicsStartButton = new System.Windows.Forms.Button();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.DemographicsTab_Q014_Label = new System.Windows.Forms.Label();
+            this.DemographicsTab_Q014_TextBox = new System.Windows.Forms.TextBox();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.DemographicsTab_Q013_Label = new System.Windows.Forms.Label();
+            this.DemographicsTab_Q013_TextBox = new System.Windows.Forms.TextBox();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.DemographicsTab_Q012_Label = new System.Windows.Forms.Label();
+            this.DemographicsTab_Q012_TextBox = new System.Windows.Forms.TextBox();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.DemographicsTab_Q011_Label = new System.Windows.Forms.Label();
+            this.DemographicsTab_Q011_TextBox = new System.Windows.Forms.TextBox();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.DemographicsTab_Q010_Label = new System.Windows.Forms.Label();
+            this.DemographicsTab_Q010_TextBox = new System.Windows.Forms.TextBox();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.DemographicsTab_Q001_Label = new System.Windows.Forms.Label();
+            this.DemographicsTab_Q001_TextBox = new System.Windows.Forms.TextBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.DemographicsTab_Q002_Label = new System.Windows.Forms.Label();
+            this.DemographicsTab_Q002_TextBox = new System.Windows.Forms.TextBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.DemographicsTab_Q003_Label = new System.Windows.Forms.Label();
+            this.DemographicsTab_Q003_TextBox = new System.Windows.Forms.TextBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.DemographicsTab_Q004_Label = new System.Windows.Forms.Label();
+            this.DemographicsTab_Q004_TextBox = new System.Windows.Forms.TextBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.DemographicsTab_Q005_Label = new System.Windows.Forms.Label();
+            this.DemographicsTab_Q005_TextBox = new System.Windows.Forms.TextBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.DemographicsTab_Q006_Label = new System.Windows.Forms.Label();
+            this.DemographicsTab_Q006_TextBox = new System.Windows.Forms.TextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.DemographicsTab_Q007_Label = new System.Windows.Forms.Label();
+            this.DemographicsTab_Q007_TextBox = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.DemographicsTab_Q008_Label = new System.Windows.Forms.Label();
+            this.DemographicsTab_Q008_TextBox = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.DemographicsTab_Q009_Label = new System.Windows.Forms.Label();
+            this.DemographicsTab_Q009_TextBox = new System.Windows.Forms.TextBox();
             this.ImpRecogTaskTab = new System.Windows.Forms.TabPage();
             this.ImpRecogTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.ImpRecogImgA1 = new SocialExchangeWinForms.RecognitionUserControl();
@@ -109,17 +152,34 @@
             this.ExpRecogImgC7 = new SocialExchangeWinForms.RecognitionUserControl();
             this.ExpRecogImgC8 = new SocialExchangeWinForms.RecognitionUserControl();
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CloseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resultsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PointsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Tabs.SuspendLayout();
             this.WelcomeTab.SuspendLayout();
-            this.PracticeTrustExchangeTaskTab.SuspendLayout();
+            this.Practice_TrustExchangeTaskTab.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PracticePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Practice_PictureBox)).BeginInit();
             this.TrustExchangeTaskTab.SuspendLayout();
             this.ImageAndPointsButtonsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TrustExchangePictureBox)).BeginInit();
+            this.DemographicsTaskTab.SuspendLayout();
+            this.groupBox14.SuspendLayout();
+            this.groupBox13.SuspendLayout();
+            this.groupBox12.SuspendLayout();
+            this.groupBox11.SuspendLayout();
+            this.groupBox10.SuspendLayout();
+            this.groupBox9.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.ImpRecogTaskTab.SuspendLayout();
             this.ImpRecogTableLayoutPanel.SuspendLayout();
             this.ExpRecogTaskTab.SuspendLayout();
@@ -133,7 +193,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Tabs.Controls.Add(this.WelcomeTab);
-            this.Tabs.Controls.Add(this.PracticeTrustExchangeTaskTab);
+            this.Tabs.Controls.Add(this.Practice_TrustExchangeTaskTab);
             this.Tabs.Controls.Add(this.TrustExchangeTaskTab);
             this.Tabs.Controls.Add(this.DemographicsTaskTab);
             this.Tabs.Controls.Add(this.ImpRecogTaskTab);
@@ -143,6 +203,7 @@
             this.Tabs.SelectedIndex = 0;
             this.Tabs.Size = new System.Drawing.Size(1159, 826);
             this.Tabs.TabIndex = 0;
+            this.Tabs.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.Tabs_Selecting);
             // 
             // WelcomeTab
             // 
@@ -158,6 +219,7 @@
             // 
             // WelcomeTabStartPracticeButton
             // 
+            this.WelcomeTabStartPracticeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.WelcomeTabStartPracticeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WelcomeTabStartPracticeButton.Location = new System.Drawing.Point(1025, 758);
             this.WelcomeTabStartPracticeButton.Name = "WelcomeTabStartPracticeButton";
@@ -169,62 +231,63 @@
             // 
             // WelcomeTabTextBox
             // 
+            this.WelcomeTabTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.WelcomeTabTextBox.Font = new System.Drawing.Font("Modern No. 20", 26.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WelcomeTabTextBox.Location = new System.Drawing.Point(34, 29);
             this.WelcomeTabTextBox.Multiline = true;
             this.WelcomeTabTextBox.Name = "WelcomeTabTextBox";
             this.WelcomeTabTextBox.Size = new System.Drawing.Size(1082, 373);
             this.WelcomeTabTextBox.TabIndex = 0;
-            this.WelcomeTabTextBox.Text = "Please press the \'Start\' button when you are ready to start the practice rounds. " +
-    "Once you are familiar from the practice rounds you may continue to the Investmen" +
-    "t Game.";
+            this.WelcomeTabTextBox.Text = resources.GetString("WelcomeTabTextBox.Text");
             // 
-            // PracticeTab
+            // Practice_TrustExchangeTaskTab
             // 
-            this.PracticeTrustExchangeTaskTab.BackColor = System.Drawing.SystemColors.Control;
-            this.PracticeTrustExchangeTaskTab.Controls.Add(this.PracticeProgressBar);
-            this.PracticeTrustExchangeTaskTab.Controls.Add(this.panel1);
-            this.PracticeTrustExchangeTaskTab.Controls.Add(this.PracticeScoreButtonAsLabel);
-            this.PracticeTrustExchangeTaskTab.Location = new System.Drawing.Point(4, 22);
-            this.PracticeTrustExchangeTaskTab.Name = "PracticeTab";
-            this.PracticeTrustExchangeTaskTab.Size = new System.Drawing.Size(1151, 800);
-            this.PracticeTrustExchangeTaskTab.TabIndex = 5;
-            this.PracticeTrustExchangeTaskTab.Text = "Practice";
+            this.Practice_TrustExchangeTaskTab.BackColor = System.Drawing.SystemColors.Control;
+            this.Practice_TrustExchangeTaskTab.Controls.Add(this.Practice_ProgressBar);
+            this.Practice_TrustExchangeTaskTab.Controls.Add(this.panel1);
+            this.Practice_TrustExchangeTaskTab.Controls.Add(this.Practice_ScoreButtonAsLabel);
+            this.Practice_TrustExchangeTaskTab.Location = new System.Drawing.Point(4, 22);
+            this.Practice_TrustExchangeTaskTab.Name = "Practice_TrustExchangeTaskTab";
+            this.Practice_TrustExchangeTaskTab.Size = new System.Drawing.Size(1151, 800);
+            this.Practice_TrustExchangeTaskTab.TabIndex = 5;
+            this.Practice_TrustExchangeTaskTab.Text = "Practice";
             // 
-            // PracticeProgressBar
+            // Practice_ProgressBar
             // 
-            this.PracticeProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.Practice_ProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PracticeProgressBar.Location = new System.Drawing.Point(7, 750);
-            this.PracticeProgressBar.Name = "PracticeProgressBar";
-            this.PracticeProgressBar.Size = new System.Drawing.Size(1136, 44);
-            this.PracticeProgressBar.TabIndex = 18;
+            this.Practice_ProgressBar.Location = new System.Drawing.Point(7, 750);
+            this.Practice_ProgressBar.Name = "Practice_ProgressBar";
+            this.Practice_ProgressBar.Size = new System.Drawing.Size(1136, 44);
+            this.Practice_ProgressBar.TabIndex = 18;
             // 
             // panel1
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel1.Controls.Add(this.PracticeNextRoundButton);
+            this.panel1.Controls.Add(this.Practice_NextRoundButton);
             this.panel1.Controls.Add(this.PracticeGive1PointButton);
-            this.panel1.Controls.Add(this.PracticeStatusButtonAsLabel);
+            this.panel1.Controls.Add(this.Practice_StatusButtonAsLabel);
             this.panel1.Controls.Add(this.PracticeGive2PointsButton);
-            this.panel1.Controls.Add(this.PracticePictureBox);
+            this.panel1.Controls.Add(this.Practice_PictureBox);
             this.panel1.Location = new System.Drawing.Point(7, 87);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1136, 615);
             this.panel1.TabIndex = 17;
             // 
-            // PracticeNextRoundButton
+            // Practice_NextRoundButton
             // 
-            this.PracticeNextRoundButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.Practice_NextRoundButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PracticeNextRoundButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PracticeNextRoundButton.Location = new System.Drawing.Point(431, 476);
-            this.PracticeNextRoundButton.Name = "PracticeNextRoundButton";
-            this.PracticeNextRoundButton.Size = new System.Drawing.Size(274, 49);
-            this.PracticeNextRoundButton.TabIndex = 9;
-            this.PracticeNextRoundButton.Text = "Click For Next Round";
-            this.PracticeNextRoundButton.UseVisualStyleBackColor = true;
-            this.PracticeNextRoundButton.Visible = false;
+            this.Practice_NextRoundButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Practice_NextRoundButton.Location = new System.Drawing.Point(431, 476);
+            this.Practice_NextRoundButton.Name = "Practice_NextRoundButton";
+            this.Practice_NextRoundButton.Size = new System.Drawing.Size(274, 49);
+            this.Practice_NextRoundButton.TabIndex = 9;
+            this.Practice_NextRoundButton.Text = "Click For Next Round";
+            this.Practice_NextRoundButton.UseVisualStyleBackColor = true;
+            this.Practice_NextRoundButton.Visible = false;
+            this.Practice_NextRoundButton.Click += new System.EventHandler(this.Practice_NextRoundButton_Click);
             // 
             // PracticeGive1PointButton
             // 
@@ -235,22 +298,22 @@
             this.PracticeGive1PointButton.TabIndex = 2;
             this.PracticeGive1PointButton.Text = "Give 1 Point";
             this.PracticeGive1PointButton.UseVisualStyleBackColor = true;
-            this.PracticeGive1PointButton.Click += new System.EventHandler(this.PracticeGive1PointButton_Click);
+            this.PracticeGive1PointButton.Click += new System.EventHandler(this.Practice_Give1PointButton_Click);
             // 
-            // PracticeStatusButtonAsLabel
+            // Practice_StatusButtonAsLabel
             // 
-            this.PracticeStatusButtonAsLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.Practice_StatusButtonAsLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PracticeStatusButtonAsLabel.BackColor = System.Drawing.SystemColors.Control;
-            this.PracticeStatusButtonAsLabel.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.PracticeStatusButtonAsLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PracticeStatusButtonAsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PracticeStatusButtonAsLabel.Location = new System.Drawing.Point(-1, 531);
-            this.PracticeStatusButtonAsLabel.Name = "PracticeStatusButtonAsLabel";
-            this.PracticeStatusButtonAsLabel.Size = new System.Drawing.Size(1136, 81);
-            this.PracticeStatusButtonAsLabel.TabIndex = 5;
-            this.PracticeStatusButtonAsLabel.Text = "STATUS_TEXT_BOX";
-            this.PracticeStatusButtonAsLabel.UseVisualStyleBackColor = false;
+            this.Practice_StatusButtonAsLabel.BackColor = System.Drawing.SystemColors.Control;
+            this.Practice_StatusButtonAsLabel.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.Practice_StatusButtonAsLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Practice_StatusButtonAsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Practice_StatusButtonAsLabel.Location = new System.Drawing.Point(-1, 531);
+            this.Practice_StatusButtonAsLabel.Name = "Practice_StatusButtonAsLabel";
+            this.Practice_StatusButtonAsLabel.Size = new System.Drawing.Size(1136, 81);
+            this.Practice_StatusButtonAsLabel.TabIndex = 5;
+            this.Practice_StatusButtonAsLabel.Text = "STATUS_TEXT_BOX";
+            this.Practice_StatusButtonAsLabel.UseVisualStyleBackColor = false;
             // 
             // PracticeGive2PointsButton
             // 
@@ -262,35 +325,35 @@
             this.PracticeGive2PointsButton.TabIndex = 3;
             this.PracticeGive2PointsButton.Text = "Give 2 Points";
             this.PracticeGive2PointsButton.UseVisualStyleBackColor = true;
-            this.PracticeGive2PointsButton.Click += new System.EventHandler(this.PracticeGive2PointsButton_Click);
+            this.PracticeGive2PointsButton.Click += new System.EventHandler(this.Practice_Give2PointsButton_Click);
             // 
-            // PracticePictureBox
+            // Practice_PictureBox
             // 
-            this.PracticePictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.Practice_PictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PracticePictureBox.Image = ((System.Drawing.Image)(resources.GetObject("PracticePictureBox.Image")));
-            this.PracticePictureBox.InitialImage = ((System.Drawing.Image)(resources.GetObject("PracticePictureBox.InitialImage")));
-            this.PracticePictureBox.Location = new System.Drawing.Point(393, 3);
-            this.PracticePictureBox.MaximumSize = new System.Drawing.Size(350, 5000);
-            this.PracticePictureBox.MinimumSize = new System.Drawing.Size(350, 500);
-            this.PracticePictureBox.Name = "PracticePictureBox";
-            this.PracticePictureBox.Size = new System.Drawing.Size(350, 500);
-            this.PracticePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PracticePictureBox.TabIndex = 1;
-            this.PracticePictureBox.TabStop = false;
+            this.Practice_PictureBox.Image = ((System.Drawing.Image)(resources.GetObject("Practice_PictureBox.Image")));
+            this.Practice_PictureBox.InitialImage = ((System.Drawing.Image)(resources.GetObject("Practice_PictureBox.InitialImage")));
+            this.Practice_PictureBox.Location = new System.Drawing.Point(393, 3);
+            this.Practice_PictureBox.MaximumSize = new System.Drawing.Size(350, 5000);
+            this.Practice_PictureBox.MinimumSize = new System.Drawing.Size(350, 500);
+            this.Practice_PictureBox.Name = "Practice_PictureBox";
+            this.Practice_PictureBox.Size = new System.Drawing.Size(350, 500);
+            this.Practice_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Practice_PictureBox.TabIndex = 1;
+            this.Practice_PictureBox.TabStop = false;
             // 
-            // PracticeScoreButtonAsLabel
+            // Practice_ScoreButtonAsLabel
             // 
-            this.PracticeScoreButtonAsLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.Practice_ScoreButtonAsLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PracticeScoreButtonAsLabel.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.PracticeScoreButtonAsLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PracticeScoreButtonAsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PracticeScoreButtonAsLabel.Location = new System.Drawing.Point(10, 34);
-            this.PracticeScoreButtonAsLabel.Name = "PracticeScoreButtonAsLabel";
-            this.PracticeScoreButtonAsLabel.Size = new System.Drawing.Size(1130, 47);
-            this.PracticeScoreButtonAsLabel.TabIndex = 14;
-            this.PracticeScoreButtonAsLabel.Text = "SCORE_TEXT_BOX";
+            this.Practice_ScoreButtonAsLabel.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.Practice_ScoreButtonAsLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Practice_ScoreButtonAsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Practice_ScoreButtonAsLabel.Location = new System.Drawing.Point(10, 34);
+            this.Practice_ScoreButtonAsLabel.Name = "Practice_ScoreButtonAsLabel";
+            this.Practice_ScoreButtonAsLabel.Size = new System.Drawing.Size(1130, 47);
+            this.Practice_ScoreButtonAsLabel.TabIndex = 14;
+            this.Practice_ScoreButtonAsLabel.Text = "SCORE_TEXT_BOX";
             // 
             // TrustExchangeTaskTab
             // 
@@ -396,8 +459,8 @@
             // 
             this.TrustExchangePictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TrustExchangePictureBox.Image = global::SocialExchangeWinForms.Properties.Resources.C2_045_M10;
-            this.TrustExchangePictureBox.InitialImage = global::SocialExchangeWinForms.Properties.Resources.C2_045_M10;
+            this.TrustExchangePictureBox.Image = global::InvestmentGame.Properties.Resources.C2_045_M10;
+            this.TrustExchangePictureBox.InitialImage = global::InvestmentGame.Properties.Resources.C2_045_M10;
             this.TrustExchangePictureBox.Location = new System.Drawing.Point(393, 3);
             this.TrustExchangePictureBox.MaximumSize = new System.Drawing.Size(350, 5000);
             this.TrustExchangePictureBox.MinimumSize = new System.Drawing.Size(350, 500);
@@ -410,12 +473,452 @@
             // DemographicsTaskTab
             // 
             this.DemographicsTaskTab.BackColor = System.Drawing.SystemColors.Control;
+            this.DemographicsTaskTab.Controls.Add(this.DemographicsStartButton);
+            this.DemographicsTaskTab.Controls.Add(this.groupBox14);
+            this.DemographicsTaskTab.Controls.Add(this.groupBox13);
+            this.DemographicsTaskTab.Controls.Add(this.groupBox12);
+            this.DemographicsTaskTab.Controls.Add(this.groupBox11);
+            this.DemographicsTaskTab.Controls.Add(this.groupBox10);
+            this.DemographicsTaskTab.Controls.Add(this.groupBox9);
+            this.DemographicsTaskTab.Controls.Add(this.groupBox8);
+            this.DemographicsTaskTab.Controls.Add(this.groupBox7);
+            this.DemographicsTaskTab.Controls.Add(this.groupBox6);
+            this.DemographicsTaskTab.Controls.Add(this.groupBox5);
+            this.DemographicsTaskTab.Controls.Add(this.groupBox4);
+            this.DemographicsTaskTab.Controls.Add(this.groupBox3);
+            this.DemographicsTaskTab.Controls.Add(this.groupBox2);
+            this.DemographicsTaskTab.Controls.Add(this.groupBox1);
             this.DemographicsTaskTab.Location = new System.Drawing.Point(4, 22);
             this.DemographicsTaskTab.Name = "DemographicsTaskTab";
             this.DemographicsTaskTab.Padding = new System.Windows.Forms.Padding(3);
             this.DemographicsTaskTab.Size = new System.Drawing.Size(1151, 800);
             this.DemographicsTaskTab.TabIndex = 1;
             this.DemographicsTaskTab.Text = "Q & A";
+            // 
+            // DemographicsStartButton
+            // 
+            this.DemographicsStartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DemographicsStartButton.Location = new System.Drawing.Point(1039, 752);
+            this.DemographicsStartButton.Name = "DemographicsStartButton";
+            this.DemographicsStartButton.Size = new System.Drawing.Size(99, 36);
+            this.DemographicsStartButton.TabIndex = 42;
+            this.DemographicsStartButton.Text = "SUBMIT";
+            this.DemographicsStartButton.UseVisualStyleBackColor = true;
+            this.DemographicsStartButton.Click += new System.EventHandler(this.DemographicsStartButton_Click);
+            // 
+            // groupBox14
+            // 
+            this.groupBox14.AutoSize = true;
+            this.groupBox14.Controls.Add(this.DemographicsTab_Q014_Label);
+            this.groupBox14.Controls.Add(this.DemographicsTab_Q014_TextBox);
+            this.groupBox14.Location = new System.Drawing.Point(649, 637);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(499, 84);
+            this.groupBox14.TabIndex = 41;
+            this.groupBox14.TabStop = false;
+            // 
+            // DemographicsTab_Q014_Label
+            // 
+            this.DemographicsTab_Q014_Label.AutoSize = true;
+            this.DemographicsTab_Q014_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DemographicsTab_Q014_Label.Location = new System.Drawing.Point(6, 16);
+            this.DemographicsTab_Q014_Label.Name = "DemographicsTab_Q014_Label";
+            this.DemographicsTab_Q014_Label.Size = new System.Drawing.Size(193, 20);
+            this.DemographicsTab_Q014_Label.TabIndex = 26;
+            this.DemographicsTab_Q014_Label.Text = "14. What is your ethnicity?";
+            // 
+            // DemographicsTab_Q014_TextBox
+            // 
+            this.DemographicsTab_Q014_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DemographicsTab_Q014_TextBox.Location = new System.Drawing.Point(10, 39);
+            this.DemographicsTab_Q014_TextBox.Name = "DemographicsTab_Q014_TextBox";
+            this.DemographicsTab_Q014_TextBox.Size = new System.Drawing.Size(471, 26);
+            this.DemographicsTab_Q014_TextBox.TabIndex = 14;
+            // 
+            // groupBox13
+            // 
+            this.groupBox13.AutoSize = true;
+            this.groupBox13.Controls.Add(this.DemographicsTab_Q013_Label);
+            this.groupBox13.Controls.Add(this.DemographicsTab_Q013_TextBox);
+            this.groupBox13.Location = new System.Drawing.Point(649, 455);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(496, 176);
+            this.groupBox13.TabIndex = 40;
+            this.groupBox13.TabStop = false;
+            // 
+            // DemographicsTab_Q013_Label
+            // 
+            this.DemographicsTab_Q013_Label.AutoSize = true;
+            this.DemographicsTab_Q013_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DemographicsTab_Q013_Label.Location = new System.Drawing.Point(6, 16);
+            this.DemographicsTab_Q013_Label.Name = "DemographicsTab_Q013_Label";
+            this.DemographicsTab_Q013_Label.Size = new System.Drawing.Size(457, 20);
+            this.DemographicsTab_Q013_Label.TabIndex = 24;
+            this.DemographicsTab_Q013_Label.Text = "13. Please list the countries you have visited outside of the U.S.:";
+            // 
+            // DemographicsTab_Q013_TextBox
+            // 
+            this.DemographicsTab_Q013_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DemographicsTab_Q013_TextBox.Location = new System.Drawing.Point(10, 39);
+            this.DemographicsTab_Q013_TextBox.Multiline = true;
+            this.DemographicsTab_Q013_TextBox.Name = "DemographicsTab_Q013_TextBox";
+            this.DemographicsTab_Q013_TextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.DemographicsTab_Q013_TextBox.Size = new System.Drawing.Size(471, 118);
+            this.DemographicsTab_Q013_TextBox.TabIndex = 13;
+            // 
+            // groupBox12
+            // 
+            this.groupBox12.AutoSize = true;
+            this.groupBox12.Controls.Add(this.DemographicsTab_Q012_Label);
+            this.groupBox12.Controls.Add(this.DemographicsTab_Q012_TextBox);
+            this.groupBox12.Location = new System.Drawing.Point(649, 367);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(496, 82);
+            this.groupBox12.TabIndex = 39;
+            this.groupBox12.TabStop = false;
+            // 
+            // DemographicsTab_Q012_Label
+            // 
+            this.DemographicsTab_Q012_Label.AutoSize = true;
+            this.DemographicsTab_Q012_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DemographicsTab_Q012_Label.Location = new System.Drawing.Point(6, 14);
+            this.DemographicsTab_Q012_Label.Name = "DemographicsTab_Q012_Label";
+            this.DemographicsTab_Q012_Label.Size = new System.Drawing.Size(407, 20);
+            this.DemographicsTab_Q012_Label.TabIndex = 22;
+            this.DemographicsTab_Q012_Label.Text = "12. Have you ever traveled outside of the United States?";
+            // 
+            // DemographicsTab_Q012_TextBox
+            // 
+            this.DemographicsTab_Q012_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DemographicsTab_Q012_TextBox.Location = new System.Drawing.Point(10, 37);
+            this.DemographicsTab_Q012_TextBox.Name = "DemographicsTab_Q012_TextBox";
+            this.DemographicsTab_Q012_TextBox.Size = new System.Drawing.Size(471, 26);
+            this.DemographicsTab_Q012_TextBox.TabIndex = 12;
+            // 
+            // groupBox11
+            // 
+            this.groupBox11.AutoSize = true;
+            this.groupBox11.Controls.Add(this.DemographicsTab_Q011_Label);
+            this.groupBox11.Controls.Add(this.DemographicsTab_Q011_TextBox);
+            this.groupBox11.Location = new System.Drawing.Point(649, 235);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(496, 126);
+            this.groupBox11.TabIndex = 38;
+            this.groupBox11.TabStop = false;
+            // 
+            // DemographicsTab_Q011_Label
+            // 
+            this.DemographicsTab_Q011_Label.AutoSize = true;
+            this.DemographicsTab_Q011_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DemographicsTab_Q011_Label.Location = new System.Drawing.Point(6, 16);
+            this.DemographicsTab_Q011_Label.Name = "DemographicsTab_Q011_Label";
+            this.DemographicsTab_Q011_Label.Size = new System.Drawing.Size(444, 20);
+            this.DemographicsTab_Q011_Label.TabIndex = 20;
+            this.DemographicsTab_Q011_Label.Text = "11. Please list the states you have visited outside of California:";
+            // 
+            // DemographicsTab_Q011_TextBox
+            // 
+            this.DemographicsTab_Q011_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DemographicsTab_Q011_TextBox.Location = new System.Drawing.Point(10, 39);
+            this.DemographicsTab_Q011_TextBox.Multiline = true;
+            this.DemographicsTab_Q011_TextBox.Name = "DemographicsTab_Q011_TextBox";
+            this.DemographicsTab_Q011_TextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.DemographicsTab_Q011_TextBox.Size = new System.Drawing.Size(471, 68);
+            this.DemographicsTab_Q011_TextBox.TabIndex = 11;
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.AutoSize = true;
+            this.groupBox10.Controls.Add(this.DemographicsTab_Q010_Label);
+            this.groupBox10.Controls.Add(this.DemographicsTab_Q010_TextBox);
+            this.groupBox10.Location = new System.Drawing.Point(649, 145);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(496, 84);
+            this.groupBox10.TabIndex = 37;
+            this.groupBox10.TabStop = false;
+            // 
+            // DemographicsTab_Q010_Label
+            // 
+            this.DemographicsTab_Q010_Label.AutoSize = true;
+            this.DemographicsTab_Q010_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DemographicsTab_Q010_Label.Location = new System.Drawing.Point(6, 16);
+            this.DemographicsTab_Q010_Label.Name = "DemographicsTab_Q010_Label";
+            this.DemographicsTab_Q010_Label.Size = new System.Drawing.Size(348, 20);
+            this.DemographicsTab_Q010_Label.TabIndex = 18;
+            this.DemographicsTab_Q010_Label.Text = "10. Have you ever traveled outside of California?";
+            // 
+            // DemographicsTab_Q010_TextBox
+            // 
+            this.DemographicsTab_Q010_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DemographicsTab_Q010_TextBox.Location = new System.Drawing.Point(10, 39);
+            this.DemographicsTab_Q010_TextBox.Name = "DemographicsTab_Q010_TextBox";
+            this.DemographicsTab_Q010_TextBox.Size = new System.Drawing.Size(471, 26);
+            this.DemographicsTab_Q010_TextBox.TabIndex = 10;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.AutoSize = true;
+            this.groupBox9.Controls.Add(this.DemographicsTab_Q001_Label);
+            this.groupBox9.Controls.Add(this.DemographicsTab_Q001_TextBox);
+            this.groupBox9.Location = new System.Drawing.Point(6, 7);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(490, 84);
+            this.groupBox9.TabIndex = 36;
+            this.groupBox9.TabStop = false;
+            // 
+            // DemographicsTab_Q001_Label
+            // 
+            this.DemographicsTab_Q001_Label.AutoSize = true;
+            this.DemographicsTab_Q001_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DemographicsTab_Q001_Label.Location = new System.Drawing.Point(6, 16);
+            this.DemographicsTab_Q001_Label.Name = "DemographicsTab_Q001_Label";
+            this.DemographicsTab_Q001_Label.Size = new System.Drawing.Size(153, 20);
+            this.DemographicsTab_Q001_Label.TabIndex = 0;
+            this.DemographicsTab_Q001_Label.Text = "1. What is your age?";
+            // 
+            // DemographicsTab_Q001_TextBox
+            // 
+            this.DemographicsTab_Q001_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DemographicsTab_Q001_TextBox.Location = new System.Drawing.Point(6, 39);
+            this.DemographicsTab_Q001_TextBox.Name = "DemographicsTab_Q001_TextBox";
+            this.DemographicsTab_Q001_TextBox.Size = new System.Drawing.Size(475, 26);
+            this.DemographicsTab_Q001_TextBox.TabIndex = 1;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.AutoSize = true;
+            this.groupBox8.Controls.Add(this.DemographicsTab_Q002_Label);
+            this.groupBox8.Controls.Add(this.DemographicsTab_Q002_TextBox);
+            this.groupBox8.Location = new System.Drawing.Point(6, 97);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(490, 84);
+            this.groupBox8.TabIndex = 35;
+            this.groupBox8.TabStop = false;
+            // 
+            // DemographicsTab_Q002_Label
+            // 
+            this.DemographicsTab_Q002_Label.AutoSize = true;
+            this.DemographicsTab_Q002_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DemographicsTab_Q002_Label.Location = new System.Drawing.Point(6, 16);
+            this.DemographicsTab_Q002_Label.Name = "DemographicsTab_Q002_Label";
+            this.DemographicsTab_Q002_Label.Size = new System.Drawing.Size(240, 20);
+            this.DemographicsTab_Q002_Label.TabIndex = 2;
+            this.DemographicsTab_Q002_Label.Text = "2. Are you: Male, Female, Other?";
+            // 
+            // DemographicsTab_Q002_TextBox
+            // 
+            this.DemographicsTab_Q002_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DemographicsTab_Q002_TextBox.Location = new System.Drawing.Point(6, 39);
+            this.DemographicsTab_Q002_TextBox.Name = "DemographicsTab_Q002_TextBox";
+            this.DemographicsTab_Q002_TextBox.Size = new System.Drawing.Size(475, 26);
+            this.DemographicsTab_Q002_TextBox.TabIndex = 2;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.AutoSize = true;
+            this.groupBox7.Controls.Add(this.DemographicsTab_Q003_Label);
+            this.groupBox7.Controls.Add(this.DemographicsTab_Q003_TextBox);
+            this.groupBox7.Location = new System.Drawing.Point(6, 187);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(490, 84);
+            this.groupBox7.TabIndex = 34;
+            this.groupBox7.TabStop = false;
+            // 
+            // DemographicsTab_Q003_Label
+            // 
+            this.DemographicsTab_Q003_Label.AutoSize = true;
+            this.DemographicsTab_Q003_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DemographicsTab_Q003_Label.Location = new System.Drawing.Point(6, 16);
+            this.DemographicsTab_Q003_Label.Name = "DemographicsTab_Q003_Label";
+            this.DemographicsTab_Q003_Label.Size = new System.Drawing.Size(272, 20);
+            this.DemographicsTab_Q003_Label.TabIndex = 4;
+            this.DemographicsTab_Q003_Label.Text = "3. What is your curent Collegel Level?";
+            // 
+            // DemographicsTab_Q003_TextBox
+            // 
+            this.DemographicsTab_Q003_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DemographicsTab_Q003_TextBox.Location = new System.Drawing.Point(10, 39);
+            this.DemographicsTab_Q003_TextBox.Name = "DemographicsTab_Q003_TextBox";
+            this.DemographicsTab_Q003_TextBox.Size = new System.Drawing.Size(471, 26);
+            this.DemographicsTab_Q003_TextBox.TabIndex = 3;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.AutoSize = true;
+            this.groupBox6.Controls.Add(this.DemographicsTab_Q004_Label);
+            this.groupBox6.Controls.Add(this.DemographicsTab_Q004_TextBox);
+            this.groupBox6.Location = new System.Drawing.Point(6, 277);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(490, 84);
+            this.groupBox6.TabIndex = 33;
+            this.groupBox6.TabStop = false;
+            // 
+            // DemographicsTab_Q004_Label
+            // 
+            this.DemographicsTab_Q004_Label.AutoSize = true;
+            this.DemographicsTab_Q004_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DemographicsTab_Q004_Label.Location = new System.Drawing.Point(6, 16);
+            this.DemographicsTab_Q004_Label.Name = "DemographicsTab_Q004_Label";
+            this.DemographicsTab_Q004_Label.Size = new System.Drawing.Size(222, 20);
+            this.DemographicsTab_Q004_Label.TabIndex = 6;
+            this.DemographicsTab_Q004_Label.Text = "4. What is your College Major?";
+            // 
+            // DemographicsTab_Q004_TextBox
+            // 
+            this.DemographicsTab_Q004_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DemographicsTab_Q004_TextBox.Location = new System.Drawing.Point(6, 39);
+            this.DemographicsTab_Q004_TextBox.Name = "DemographicsTab_Q004_TextBox";
+            this.DemographicsTab_Q004_TextBox.Size = new System.Drawing.Size(475, 26);
+            this.DemographicsTab_Q004_TextBox.TabIndex = 4;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.AutoSize = true;
+            this.groupBox5.Controls.Add(this.DemographicsTab_Q005_Label);
+            this.groupBox5.Controls.Add(this.DemographicsTab_Q005_TextBox);
+            this.groupBox5.Location = new System.Drawing.Point(6, 367);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(490, 87);
+            this.groupBox5.TabIndex = 32;
+            this.groupBox5.TabStop = false;
+            // 
+            // DemographicsTab_Q005_Label
+            // 
+            this.DemographicsTab_Q005_Label.AutoSize = true;
+            this.DemographicsTab_Q005_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DemographicsTab_Q005_Label.Location = new System.Drawing.Point(6, 16);
+            this.DemographicsTab_Q005_Label.Name = "DemographicsTab_Q005_Label";
+            this.DemographicsTab_Q005_Label.Size = new System.Drawing.Size(318, 20);
+            this.DemographicsTab_Q005_Label.TabIndex = 8;
+            this.DemographicsTab_Q005_Label.Text = "5. Are you a Full-Time or Part-Time student?";
+            // 
+            // DemographicsTab_Q005_TextBox
+            // 
+            this.DemographicsTab_Q005_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DemographicsTab_Q005_TextBox.Location = new System.Drawing.Point(10, 42);
+            this.DemographicsTab_Q005_TextBox.Name = "DemographicsTab_Q005_TextBox";
+            this.DemographicsTab_Q005_TextBox.Size = new System.Drawing.Size(471, 26);
+            this.DemographicsTab_Q005_TextBox.TabIndex = 5;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.AutoSize = true;
+            this.groupBox4.Controls.Add(this.DemographicsTab_Q006_Label);
+            this.groupBox4.Controls.Add(this.DemographicsTab_Q006_TextBox);
+            this.groupBox4.Location = new System.Drawing.Point(6, 460);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(490, 84);
+            this.groupBox4.TabIndex = 31;
+            this.groupBox4.TabStop = false;
+            // 
+            // DemographicsTab_Q006_Label
+            // 
+            this.DemographicsTab_Q006_Label.AutoSize = true;
+            this.DemographicsTab_Q006_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DemographicsTab_Q006_Label.Location = new System.Drawing.Point(6, 16);
+            this.DemographicsTab_Q006_Label.Name = "DemographicsTab_Q006_Label";
+            this.DemographicsTab_Q006_Label.Size = new System.Drawing.Size(278, 20);
+            this.DemographicsTab_Q006_Label.TabIndex = 10;
+            this.DemographicsTab_Q006_Label.Text = "6. What is your current Marital Status?";
+            // 
+            // DemographicsTab_Q006_TextBox
+            // 
+            this.DemographicsTab_Q006_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DemographicsTab_Q006_TextBox.Location = new System.Drawing.Point(10, 39);
+            this.DemographicsTab_Q006_TextBox.Name = "DemographicsTab_Q006_TextBox";
+            this.DemographicsTab_Q006_TextBox.Size = new System.Drawing.Size(471, 26);
+            this.DemographicsTab_Q006_TextBox.TabIndex = 6;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.AutoSize = true;
+            this.groupBox3.Controls.Add(this.DemographicsTab_Q007_Label);
+            this.groupBox3.Controls.Add(this.DemographicsTab_Q007_TextBox);
+            this.groupBox3.Location = new System.Drawing.Point(6, 550);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(490, 84);
+            this.groupBox3.TabIndex = 30;
+            this.groupBox3.TabStop = false;
+            // 
+            // DemographicsTab_Q007_Label
+            // 
+            this.DemographicsTab_Q007_Label.AutoSize = true;
+            this.DemographicsTab_Q007_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DemographicsTab_Q007_Label.Location = new System.Drawing.Point(6, 16);
+            this.DemographicsTab_Q007_Label.Name = "DemographicsTab_Q007_Label";
+            this.DemographicsTab_Q007_Label.Size = new System.Drawing.Size(377, 20);
+            this.DemographicsTab_Q007_Label.TabIndex = 12;
+            this.DemographicsTab_Q007_Label.Text = "7. Did you attend High School in San Diego County?";
+            // 
+            // DemographicsTab_Q007_TextBox
+            // 
+            this.DemographicsTab_Q007_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DemographicsTab_Q007_TextBox.Location = new System.Drawing.Point(6, 39);
+            this.DemographicsTab_Q007_TextBox.Name = "DemographicsTab_Q007_TextBox";
+            this.DemographicsTab_Q007_TextBox.Size = new System.Drawing.Size(475, 26);
+            this.DemographicsTab_Q007_TextBox.TabIndex = 7;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.AutoSize = true;
+            this.groupBox2.Controls.Add(this.DemographicsTab_Q008_Label);
+            this.groupBox2.Controls.Add(this.DemographicsTab_Q008_TextBox);
+            this.groupBox2.Location = new System.Drawing.Point(6, 640);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(490, 149);
+            this.groupBox2.TabIndex = 29;
+            this.groupBox2.TabStop = false;
+            // 
+            // DemographicsTab_Q008_Label
+            // 
+            this.DemographicsTab_Q008_Label.AutoSize = true;
+            this.DemographicsTab_Q008_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DemographicsTab_Q008_Label.Location = new System.Drawing.Point(6, 16);
+            this.DemographicsTab_Q008_Label.Name = "DemographicsTab_Q008_Label";
+            this.DemographicsTab_Q008_Label.Size = new System.Drawing.Size(456, 20);
+            this.DemographicsTab_Q008_Label.TabIndex = 14;
+            this.DemographicsTab_Q008_Label.Text = "8. Please list 5 activities/hobbies that you enjoy in your free time:";
+            // 
+            // DemographicsTab_Q008_TextBox
+            // 
+            this.DemographicsTab_Q008_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DemographicsTab_Q008_TextBox.Location = new System.Drawing.Point(10, 39);
+            this.DemographicsTab_Q008_TextBox.Multiline = true;
+            this.DemographicsTab_Q008_TextBox.Name = "DemographicsTab_Q008_TextBox";
+            this.DemographicsTab_Q008_TextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.DemographicsTab_Q008_TextBox.Size = new System.Drawing.Size(471, 91);
+            this.DemographicsTab_Q008_TextBox.TabIndex = 8;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.AutoSize = true;
+            this.groupBox1.Controls.Add(this.DemographicsTab_Q009_Label);
+            this.groupBox1.Controls.Add(this.DemographicsTab_Q009_TextBox);
+            this.groupBox1.Location = new System.Drawing.Point(649, 7);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(496, 132);
+            this.groupBox1.TabIndex = 28;
+            this.groupBox1.TabStop = false;
+            // 
+            // DemographicsTab_Q009_Label
+            // 
+            this.DemographicsTab_Q009_Label.AutoSize = true;
+            this.DemographicsTab_Q009_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DemographicsTab_Q009_Label.Location = new System.Drawing.Point(6, 16);
+            this.DemographicsTab_Q009_Label.Name = "DemographicsTab_Q009_Label";
+            this.DemographicsTab_Q009_Label.Size = new System.Drawing.Size(484, 20);
+            this.DemographicsTab_Q009_Label.TabIndex = 16;
+            this.DemographicsTab_Q009_Label.Text = "9. Please list 5 activities/hobbies that you prefer not to participate in:";
+            // 
+            // DemographicsTab_Q009_TextBox
+            // 
+            this.DemographicsTab_Q009_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DemographicsTab_Q009_TextBox.Location = new System.Drawing.Point(10, 39);
+            this.DemographicsTab_Q009_TextBox.Multiline = true;
+            this.DemographicsTab_Q009_TextBox.Name = "DemographicsTab_Q009_TextBox";
+            this.DemographicsTab_Q009_TextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.DemographicsTab_Q009_TextBox.Size = new System.Drawing.Size(471, 74);
+            this.DemographicsTab_Q009_TextBox.TabIndex = 9;
             // 
             // ImpRecogTaskTab
             // 
@@ -836,8 +1339,8 @@
             this.ExpRecogStatusButtonAsLabel.Name = "ExpRecogStatusButtonAsLabel";
             this.ExpRecogStatusButtonAsLabel.Size = new System.Drawing.Size(1145, 35);
             this.ExpRecogStatusButtonAsLabel.TabIndex = 26;
-            this.ExpRecogStatusButtonAsLabel.Text = "You played 12 of these people. Pick out 6 people that gave you points and 6 who d" +
-    "id NOT give you points";
+            this.ExpRecogStatusButtonAsLabel.Text = "You played 12 of these people. Pick 6 who gave you points and 6 who did NOT give " +
+    "you points.";
             this.ExpRecogStatusButtonAsLabel.UseVisualStyleBackColor = true;
             // 
             // ExpRecogImgA1
@@ -1082,35 +1585,51 @@
             // 
             // MenuStrip
             // 
-            this.MenuStrip.Enabled = false;
             this.MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.FileToolStripMenuItem,
+            this.reToolStripMenuItem});
             this.MenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MenuStrip.Name = "MenuStrip";
             this.MenuStrip.Size = new System.Drawing.Size(1184, 24);
             this.MenuStrip.TabIndex = 1;
             this.MenuStrip.Text = "menuStrip1";
             // 
-            // fileToolStripMenuItem
+            // FileToolStripMenuItem
             // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openToolStripMenuItem,
-            this.saveToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
+            this.FileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CloseToolStripMenuItem});
+            this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
+            this.FileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.FileToolStripMenuItem.Text = "File";
             // 
-            // openToolStripMenuItem
+            // CloseToolStripMenuItem
             // 
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
-            this.openToolStripMenuItem.Text = "Open";
+            this.CloseToolStripMenuItem.Name = "CloseToolStripMenuItem";
+            this.CloseToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.CloseToolStripMenuItem.Text = "Close";
+            this.CloseToolStripMenuItem.Click += new System.EventHandler(this.CloseToolStripMenuItem_Click);
             // 
-            // saveToolStripMenuItem
+            // reToolStripMenuItem
             // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
-            this.saveToolStripMenuItem.Text = "Save";
+            this.reToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.resultsToolStripMenuItem});
+            this.reToolStripMenuItem.Name = "reToolStripMenuItem";
+            this.reToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.reToolStripMenuItem.Text = "Results";
+            // 
+            // resultsToolStripMenuItem
+            // 
+            this.resultsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.PointsToolStripMenuItem});
+            this.resultsToolStripMenuItem.Name = "resultsToolStripMenuItem";
+            this.resultsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.resultsToolStripMenuItem.Text = "Points";
+            // 
+            // pointsToolStripMenuItem
+            // 
+            this.PointsToolStripMenuItem.Name = "pointsToolStripMenuItem";
+            this.PointsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.PointsToolStripMenuItem.Text = "0";
             // 
             // SocialExchangeForm
             // 
@@ -1120,6 +1639,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.Tabs);
             this.Controls.Add(this.MenuStrip);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.MenuStrip;
             this.MinimumSize = new System.Drawing.Size(1200, 900);
             this.Name = "SocialExchangeForm";
@@ -1128,12 +1648,42 @@
             this.Tabs.ResumeLayout(false);
             this.WelcomeTab.ResumeLayout(false);
             this.WelcomeTab.PerformLayout();
-            this.PracticeTrustExchangeTaskTab.ResumeLayout(false);
+            this.Practice_TrustExchangeTaskTab.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PracticePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Practice_PictureBox)).EndInit();
             this.TrustExchangeTaskTab.ResumeLayout(false);
             this.ImageAndPointsButtonsPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TrustExchangePictureBox)).EndInit();
+            this.DemographicsTaskTab.ResumeLayout(false);
+            this.DemographicsTaskTab.PerformLayout();
+            this.groupBox14.ResumeLayout(false);
+            this.groupBox14.PerformLayout();
+            this.groupBox13.ResumeLayout(false);
+            this.groupBox13.PerformLayout();
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox12.PerformLayout();
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ImpRecogTaskTab.ResumeLayout(false);
             this.ImpRecogTableLayoutPanel.ResumeLayout(false);
             this.ExpRecogTaskTab.ResumeLayout(false);
@@ -1153,9 +1703,7 @@
         private System.Windows.Forms.TabPage ImpRecogTaskTab;
         private System.Windows.Forms.TabPage ExpRecogTaskTab;
         private System.Windows.Forms.MenuStrip MenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem FileToolStripMenuItem;
         private System.Windows.Forms.PictureBox TrustExchangePictureBox;
         private System.Windows.Forms.Button Give1PointButton;
         private System.Windows.Forms.Button Give2PointsButton;
@@ -1220,16 +1768,63 @@
         private System.Windows.Forms.Button ExpRecogSubmitButton;
         private System.Windows.Forms.TabPage WelcomeTab;
         private System.Windows.Forms.TextBox WelcomeTabTextBox;
-        private System.Windows.Forms.TabPage PracticeTrustExchangeTaskTab;
-        private System.Windows.Forms.Button PracticeScoreButtonAsLabel;
+        private System.Windows.Forms.TabPage Practice_TrustExchangeTaskTab;
+        private System.Windows.Forms.Button Practice_ScoreButtonAsLabel;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button PracticeNextRoundButton;
+        private System.Windows.Forms.Button Practice_NextRoundButton;
         private System.Windows.Forms.Button PracticeGive1PointButton;
-        private System.Windows.Forms.Button PracticeStatusButtonAsLabel;
+        private System.Windows.Forms.Button Practice_StatusButtonAsLabel;
         private System.Windows.Forms.Button PracticeGive2PointsButton;
-        private System.Windows.Forms.PictureBox PracticePictureBox;
-        private System.Windows.Forms.ProgressBar PracticeProgressBar;
+        private System.Windows.Forms.PictureBox Practice_PictureBox;
+        private System.Windows.Forms.ProgressBar Practice_ProgressBar;
         private System.Windows.Forms.Button WelcomeTabStartPracticeButton;
+        private System.Windows.Forms.ToolStripMenuItem CloseToolStripMenuItem;
+        private System.Windows.Forms.Label DemographicsTab_Q001_Label;
+        private System.Windows.Forms.TextBox DemographicsTab_Q001_TextBox;
+        private System.Windows.Forms.TextBox DemographicsTab_Q002_TextBox;
+        private System.Windows.Forms.Label DemographicsTab_Q002_Label;
+        private System.Windows.Forms.TextBox DemographicsTab_Q003_TextBox;
+        private System.Windows.Forms.Label DemographicsTab_Q003_Label;
+        private System.Windows.Forms.TextBox DemographicsTab_Q014_TextBox;
+        private System.Windows.Forms.Label DemographicsTab_Q014_Label;
+        private System.Windows.Forms.TextBox DemographicsTab_Q013_TextBox;
+        private System.Windows.Forms.Label DemographicsTab_Q013_Label;
+        private System.Windows.Forms.TextBox DemographicsTab_Q012_TextBox;
+        private System.Windows.Forms.Label DemographicsTab_Q012_Label;
+        private System.Windows.Forms.TextBox DemographicsTab_Q011_TextBox;
+        private System.Windows.Forms.Label DemographicsTab_Q011_Label;
+        private System.Windows.Forms.TextBox DemographicsTab_Q010_TextBox;
+        private System.Windows.Forms.Label DemographicsTab_Q010_Label;
+        private System.Windows.Forms.TextBox DemographicsTab_Q009_TextBox;
+        private System.Windows.Forms.Label DemographicsTab_Q009_Label;
+        private System.Windows.Forms.TextBox DemographicsTab_Q008_TextBox;
+        private System.Windows.Forms.Label DemographicsTab_Q008_Label;
+        private System.Windows.Forms.TextBox DemographicsTab_Q007_TextBox;
+        private System.Windows.Forms.Label DemographicsTab_Q007_Label;
+        private System.Windows.Forms.TextBox DemographicsTab_Q006_TextBox;
+        private System.Windows.Forms.Label DemographicsTab_Q006_Label;
+        private System.Windows.Forms.TextBox DemographicsTab_Q005_TextBox;
+        private System.Windows.Forms.Label DemographicsTab_Q005_Label;
+        private System.Windows.Forms.TextBox DemographicsTab_Q004_TextBox;
+        private System.Windows.Forms.Label DemographicsTab_Q004_Label;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.GroupBox groupBox13;
+        private System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.GroupBox groupBox14;
+        private System.Windows.Forms.Button DemographicsStartButton;
+        private System.Windows.Forms.ToolStripMenuItem reToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem resultsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem PointsToolStripMenuItem;
     }
 }
 
