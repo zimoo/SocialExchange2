@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace SocialExchangeWinForms
 {
-    public partial class CloseApplicationPasswordForm : Form
+    public partial class PasswordForm : Form
     {
-        public CloseApplicationPasswordForm()
+        public PasswordForm()
         {
             InitializeComponent();
         }

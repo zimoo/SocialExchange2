@@ -47,13 +47,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CloseApplicationPasswordForm.cs">
+    <Compile Include="PasswordForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CloseApplicationPasswordForm.Designer.cs">
-      <DependentUpon>CloseApplicationPasswordForm.cs</DependentUpon>
+    <Compile Include="PasswordForm.Designer.cs">
+      <DependentUpon>PasswordForm.cs</DependentUpon>
     </Compile>
     <Compile Include="FormExtensions.cs" />
+    <Compile Include="LikabilityRatingUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LikabilityRatingUserControl.Designer.cs">
+      <DependentUpon>LikabilityRatingUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="RecognitionUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -73,8 +79,11 @@
       <DependentUpon>MainForm.Designer.cs</DependentUpon>
       <SubType>Designer</SubType>
     </None>
-    <EmbeddedResource Include="CloseApplicationPasswordForm.resx">
-      <DependentUpon>CloseApplicationPasswordForm.cs</DependentUpon>
+    <EmbeddedResource Include="PasswordForm.resx">
+      <DependentUpon>PasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LikabilityRatingUserControl.resx">
+      <DependentUpon>LikabilityRatingUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RecognitionUserControl.resx">
       <DependentUpon>RecognitionUserControl.cs</DependentUpon>

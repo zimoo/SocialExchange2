@@ -8,7 +8,6 @@ namespace SocialExchangeWinForms
 {
     public static class FormExtensions
     {
-
         public static void CenterWithinParent(this Control control)
         {
             control.Left =
@@ -17,6 +16,8 @@ namespace SocialExchangeWinForms
                     control.Parent.Padding.Left -
                     control.Width
                 ) / 2;
+
+            Application.DoEvents();
         }
     }
 }

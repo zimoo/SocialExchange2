@@ -36,7 +36,7 @@ namespace SocialExchangeWinForms
         private int Practice_MaximumRoundOrdinal = 3;
         private int Practice_CurrentRoundRawPointResponse = 0;
 
-        private string closeAppPassword = "closegame1027";
+        private string adminPassword = "turnonadmin1027";
 
         public SocialExchangeForm()
         {
@@ -49,7 +49,7 @@ namespace SocialExchangeWinForms
             InitializeImplicitRecognitionControlList();
             InitializeExplicitRecognitionControlList();
 
-            MainFormExtensions.IsEmulatingTimeDelay = false;
+            //MainFormExtensions.IsEmulatingTimeDelay = false;
 
             Practice_PlayerScore = LogicEngine.TrustExchangeTask.PlayerScore;
             UpdatePointsToolStripMenuItemWithPlayerScore();
@@ -61,9 +61,9 @@ namespace SocialExchangeWinForms
         {
             e.Cancel = true;
 
-            CloseApplicationPasswordForm closeForm = new CloseApplicationPasswordForm();
+            PasswordForm closeForm = new PasswordForm();
             closeForm.ShowDialog();
-            if(string.Equals(closeForm.PasswordTextBox.Text, closeAppPassword))
+            if(string.Equals(closeForm.PasswordTextBox.Text, adminPassword))
             {
                 e.Cancel = false;
             }
@@ -100,7 +100,7 @@ namespace SocialExchangeWinForms
                 this.WindowState = FormWindowState.Maximized;
             }
 
-            ImageAndPointsButtonsPanel.CenterWithinParent();
+            RecenterControls();
         }
 
         private void InitializeImplicitRecognitionControlList()
@@ -186,6 +186,7 @@ namespace SocialExchangeWinForms
 
             SetTrustExchangePictureBoxImageToCurrentRoundPersona();
 
+            Practice_TrustExchangeTaskTab.RemoveFromAllowedTabs();
             ShowTab(TrustExchangeTaskTab);
         }
 
@@ -395,14 +396,14 @@ namespace SocialExchangeWinForms
         {
             Practice_ScoreButtonAsLabel.SetTextInvoke(SCORE_TEXT, Practice_PlayerScore);
             Practice_StatusButtonAsLabel.SetTextInvoke(STATUS_TEXT__SENDING_PLAYER2_X_POINTS, points);
-            Practice_ProgressBar.StepInvoke(millisMin: 20, millisMax: 20);
+            Practice_ProgressBar.StepInvoke(millisMin: 20, millisMax: 20, isEmulatingTimeDelay: !Admin_RealTimeResponse_ToolStripMenuItem.Checked);
         }
 
         private void NotifyPlayerOfSendingPoints(int points)
         {
             ScoreButtonAsLabel.SetTextInvoke(SCORE_TEXT, LogicEngine.TrustExchangeTask.PlayerScore);
             StatusButtonAsLabel.SetTextInvoke(STATUS_TEXT__SENDING_PLAYER2_X_POINTS, points);
-            ProgressBar.StepInvoke(millisMin: 20, millisMax: 20);
+            ProgressBar.StepInvoke(millisMin: 20, millisMax: 20, isEmulatingTimeDelay: !Admin_RealTimeResponse_ToolStripMenuItem.Checked);
         }
 
         private void Practice_NotifyPlayerOfReductionOfScoreBySentPoints(int points)
@@ -410,26 +411,26 @@ namespace SocialExchangeWinForms
             Practice_PlayerScore -= points;
             Practice_ScoreButtonAsLabel.SetTextInvoke(SCORE_TEXT, Practice_PlayerScore);
             Practice_StatusButtonAsLabel.SetTextInvoke(STATUS_TEXT__SCORE_REDUCED_TO_X, Practice_PlayerScore);
-            1500.EmulateTimeDelay();
+            1500.EmulateTimeDelay(!Admin_RealTimeResponse_ToolStripMenuItem.Checked);
         }
 
         private void NotifyPlayerOfReductionOfScoreBySentPoints(int points)
         {
             ScoreButtonAsLabel.SetTextInvoke(SCORE_TEXT, LogicEngine.TrustExchangeTask.PlayerScore - points);
             StatusButtonAsLabel.SetTextInvoke(STATUS_TEXT__SCORE_REDUCED_TO_X, LogicEngine.TrustExchangeTask.PlayerScore - points);
-            1500.EmulateTimeDelay();
+            1500.EmulateTimeDelay(!Admin_RealTimeResponse_ToolStripMenuItem.Checked);
         }
 
         private void Practice_NotifyPlayerOfWaitingOnPersonaResponse()
         {
             Practice_StatusButtonAsLabel.SetTextInvoke(STATUS_TEXT__WAITING_ON_PLAYER2_RESPONSE);
-            Practice_ProgressBar.StepInvoke(millisMin: 10, millisMax: 350);
+            Practice_ProgressBar.StepInvoke(millisMin: 10, millisMax: 350, isEmulatingTimeDelay: !Admin_RealTimeResponse_ToolStripMenuItem.Checked);
         }
 
         private void NotifyPlayerOfWaitingOnPersonaResponse()
         {
             StatusButtonAsLabel.SetTextInvoke(STATUS_TEXT__WAITING_ON_PLAYER2_RESPONSE);
-            ProgressBar.StepInvoke(millisMin: 10, millisMax: 350);
+            ProgressBar.StepInvoke(millisMin: 10, millisMax: 350, isEmulatingTimeDelay: !Admin_RealTimeResponse_ToolStripMenuItem.Checked);
         }
 
         private void Practice_NotifyPlayerOfPersonaResponse()
@@ -438,14 +439,14 @@ namespace SocialExchangeWinForms
 
             Practice_ScoreButtonAsLabel.SetTextInvoke(SCORE_TEXT, Practice_PlayerScore + pointsBack);
             Practice_StatusButtonAsLabel.SetTextInvoke(STATUS_TEXT__PLAYER2_RESPONDED_WITH_X_POINTS, pointsBack);
-            2500.EmulateTimeDelay();
+            2500.EmulateTimeDelay(!Admin_RealTimeResponse_ToolStripMenuItem.Checked);
         }
 
         private void NotifyPlayerOfPersonaResponse()
         {
             ScoreButtonAsLabel.SetTextInvoke(SCORE_TEXT, LogicEngine.TrustExchangeTask.PlayerScore);
             StatusButtonAsLabel.SetTextInvoke(STATUS_TEXT__PLAYER2_RESPONDED_WITH_X_POINTS, LogicEngine.TrustExchangeTask.CurrentRound.MultipliedPersonaPointsOut);
-            2500.EmulateTimeDelay();
+            2500.EmulateTimeDelay(!Admin_RealTimeResponse_ToolStripMenuItem.Checked);
         }
 
         private void Practice_NotifyPlayerOfScoringThisRound(int scoreAtRoundStart)
@@ -464,7 +465,7 @@ namespace SocialExchangeWinForms
                 );
 
             Practice_StatusButtonAsLabel.SetTextInvoke(contextualScoringMessage);
-            2500.EmulateTimeDelay();
+            2500.EmulateTimeDelay(!Admin_RealTimeResponse_ToolStripMenuItem.Checked);
         }
 
         private void NotifyPlayerOfScoringThisRound(int scoreAtRoundStart)
@@ -482,7 +483,7 @@ namespace SocialExchangeWinForms
                 );
 
             StatusButtonAsLabel.SetTextInvoke(contextualScoringMessage);
-            2500.EmulateTimeDelay();
+            2500.EmulateTimeDelay(!Admin_RealTimeResponse_ToolStripMenuItem.Checked);
         }
 
         private void ShowTab(TabPage tab)
@@ -571,15 +572,25 @@ namespace SocialExchangeWinForms
                 );
 
             ExpRecogSubmitButton.Enabled = false;
+            AdvanceToLikabilityRatingTask();
+        }
 
-            MessageBox.Show("You have completed all tasks. Please see your proctor.", "CONGRATULATIONS!", MessageBoxButtons.OK);
+        private void AdvanceToLikabilityRatingTask()
+        {
+            ReadyLikabilityUserControl();
 
-            LogicEngine.SaveResults(DemographicsTab_TaskContainer.ToString());
+            ExpRecogTaskTab.RemoveFromAllowedTabs();
+            ShowTab(LikabilityRatingTab);
+        }
+
+        private void ReadyLikabilityUserControl()
+        {
+            LikabilityRatingUserControl.TrustExchangePictureBox.Image = LogicEngine.LikabilityRatingTask.GetCurrentRound().Persona.Image;
         }
 
         private void Tabs_Selecting(object sender, System.Windows.Forms.TabControlCancelEventArgs e)
         {
-            if (!MainFormExtensions.AllowedTabs.Contains(e.TabPage))
+            if (!MainFormExtensions.AllowedTabs.Contains(e.TabPage) && !Admin_AllowTabSelection_ToolStripMenuItem.Checked)
             {
                 if(MainFormExtensions.AllowedTabs.Count == 0)
                 {
@@ -706,6 +717,94 @@ namespace SocialExchangeWinForms
                 AdvanceToImplicitRecognitionTask();
             }
         }
+
+        private void LikabilityRatingUserControl_Load(object sender, EventArgs e)
+        {
+            LikabilityRatingUserControl.SubmitButtonClickEventAction = LikabilityRatingUserControlSubmitButtonClickEventAction;
+        }
+
+        private void LikabilityRatingUserControlSubmitButtonClickEventAction(object obj, EventArgs e)
+        {
+            LogicEngine.LikabilityRatingTask.GetCurrentRound().LikabilityRatingIndex = LikabilityRatingUserControl.LikabilityRatingIndex;
+
+            if(LogicEngine.LikabilityRatingTask.CanAdvanceToNextRound())
+            {
+                LogicEngine.LikabilityRatingTask.AdvanceToNextRound();
+                ReadyLikabilityUserControl();
+            }
+            else
+            {
+                LikabilityRatingUserControl.Enabled = false;
+
+                MessageBox.Show("You have completed all tasks. Please see your proctor.", "CONGRATULATIONS!", MessageBoxButtons.OK);
+
+                LogicEngine.SaveResults(DemographicsTab_TaskContainer.ToString());
+            }
+
+        }
+
+        private void Admin_Enabled_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(this.Admin_Enabled_ToolStripMenuItem.Checked == true)
+            {
+                this.Admin_Enabled_ToolStripMenuItem.Checked = false;
+
+                Admin_AllowTabSelection_ToolStripMenuItem.Visible = false;
+                Admin_AllowTabSelection_ToolStripMenuItem.Checked = false;
+
+                Admin_RealTimeResponse_ToolStripMenuItem.Visible = false;
+                Admin_RealTimeResponse_ToolStripMenuItem.Checked = false;
+            }
+            else
+            {
+                PasswordForm enableAdminForm = new PasswordForm();
+                enableAdminForm.ShowDialog();
+
+                if (string.Equals(enableAdminForm.PasswordTextBox.Text, adminPassword))
+                {
+                    this.Admin_Enabled_ToolStripMenuItem.Checked = true;
+
+                    Admin_AllowTabSelection_ToolStripMenuItem.Visible = true;
+                    Admin_AllowTabSelection_ToolStripMenuItem.Checked = true;
+
+                    Admin_RealTimeResponse_ToolStripMenuItem.Visible = true;
+                    Admin_RealTimeResponse_ToolStripMenuItem.Checked = true;
+                }
+            }
+
+        }
+
+        private void SocialExchangeForm_Resize(object sender, EventArgs e)
+        {
+            RecenterControls();
+        }
+
+        private void SocialExchangeForm_ResizeBegin(object sender, EventArgs e)
+        {
+            RecenterControls();
+        }
+
+        private void SocialExchangeForm_ResizeEnd(object sender, EventArgs e)
+        {
+            RecenterControls();
+        }
+
+        private void SocialExchangeForm_Shown(object sender, EventArgs e)
+        {
+            RecenterControls();
+        }
+
+        private void SocialExchangeForm_StyleChanged(object sender, EventArgs e)
+        {
+            RecenterControls();
+        }
+
+        private void RecenterControls()
+        {
+            ImageAndPointsButtonsPanel.CenterWithinParent();
+            LikabilityRatingUserControlPanel.CenterWithinParent();
+            Application.DoEvents();
+        }
     }
 
     public static class DemographicsTab_TaskContainer
@@ -775,12 +874,11 @@ namespace SocialExchangeWinForms
 
     public static class MainFormExtensions
     {
-        public static bool IsEmulatingTimeDelay = true;
         public static List<TabPage> AllowedTabs = new List<TabPage>();
 
-        public static void EmulateTimeDelay(this int @int)
+        public static void EmulateTimeDelay(this int @int, bool isEmulatingTimeDelay = true)
         {
-            if (IsEmulatingTimeDelay)
+            if (isEmulatingTimeDelay)
             {
                 Thread.Sleep(@int);
                 Application.DoEvents();
@@ -797,9 +895,9 @@ namespace SocialExchangeWinForms
             textBox.Invoke(new Action(() => textBox.SetText(text, @params)));
         }
 
-        public static void StepInvoke(this ProgressBar progressBar, int fromPercentage = -1, int toPercentage = 100, int millisMin = 50, int millisMax = 200)
+        public static void StepInvoke(this ProgressBar progressBar, int fromPercentage = -1, int toPercentage = 100, int millisMin = 50, int millisMax = 200, bool isEmulatingTimeDelay = true)
         {
-            progressBar.Invoke(new Action(() => progressBar.Step(fromPercentage, toPercentage, millisMin, millisMax)));
+            progressBar.Invoke(new Action(() => progressBar.Step(fromPercentage, toPercentage, millisMin, millisMax, isEmulatingTimeDelay)));
         }
 
         public static void SetText(this TextBox textBox, string text, params object[] @params)
@@ -814,9 +912,9 @@ namespace SocialExchangeWinForms
             Application.DoEvents();
         }
 
-        public static void Step(this ProgressBar progressBar, int fromPercentage = -1, int toPercentage = 100, int millisMin = 50, int millisMax = 200)
+        public static void Step(this ProgressBar progressBar, int fromPercentage = -1, int toPercentage = 100, int millisMin = 50, int millisMax = 200, bool isEmulatingTimeDelay = true)
         {
-            if(IsEmulatingTimeDelay)
+            if(isEmulatingTimeDelay)
             {
                 progressBar.Visible = true;
 

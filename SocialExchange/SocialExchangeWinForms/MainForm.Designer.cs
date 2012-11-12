@@ -151,12 +151,19 @@
             this.ExpRecogImgC6 = new SocialExchangeWinForms.RecognitionUserControl();
             this.ExpRecogImgC7 = new SocialExchangeWinForms.RecognitionUserControl();
             this.ExpRecogImgC8 = new SocialExchangeWinForms.RecognitionUserControl();
+            this.LikabilityRatingTab = new System.Windows.Forms.TabPage();
+            this.LikabilityRatingUserControlPanel = new System.Windows.Forms.Panel();
+            this.LikabilityRatingUserControl = new InvestmentGame.LikabilityRatingUserControl();
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
-            this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.CloseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.resultsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.File_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.File_Close_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Results_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Results_Points_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PointsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Admin_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Admin_Enabled_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Admin_AllowTabSelection_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Admin_RealTimeResponse_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Tabs.SuspendLayout();
             this.WelcomeTab.SuspendLayout();
             this.Practice_TrustExchangeTaskTab.SuspendLayout();
@@ -184,6 +191,8 @@
             this.ImpRecogTableLayoutPanel.SuspendLayout();
             this.ExpRecogTaskTab.SuspendLayout();
             this.ExpRecogTableLayoutPanel.SuspendLayout();
+            this.LikabilityRatingTab.SuspendLayout();
+            this.LikabilityRatingUserControlPanel.SuspendLayout();
             this.MenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -198,6 +207,7 @@
             this.Tabs.Controls.Add(this.DemographicsTaskTab);
             this.Tabs.Controls.Add(this.ImpRecogTaskTab);
             this.Tabs.Controls.Add(this.ExpRecogTaskTab);
+            this.Tabs.Controls.Add(this.LikabilityRatingTab);
             this.Tabs.Location = new System.Drawing.Point(13, 24);
             this.Tabs.Name = "Tabs";
             this.Tabs.SelectedIndex = 0;
@@ -237,6 +247,7 @@
             this.WelcomeTabTextBox.Location = new System.Drawing.Point(34, 29);
             this.WelcomeTabTextBox.Multiline = true;
             this.WelcomeTabTextBox.Name = "WelcomeTabTextBox";
+            this.WelcomeTabTextBox.ReadOnly = true;
             this.WelcomeTabTextBox.Size = new System.Drawing.Size(1082, 373);
             this.WelcomeTabTextBox.TabIndex = 0;
             this.WelcomeTabTextBox.Text = resources.GetString("WelcomeTabTextBox.Text");
@@ -1583,53 +1594,113 @@
             this.ExpRecogImgC8.Size = new System.Drawing.Size(144, 233);
             this.ExpRecogImgC8.TabIndex = 23;
             // 
+            // LikabilityRatingTab
+            // 
+            this.LikabilityRatingTab.Controls.Add(this.LikabilityRatingUserControlPanel);
+            this.LikabilityRatingTab.Location = new System.Drawing.Point(4, 22);
+            this.LikabilityRatingTab.Name = "LikabilityRatingTab";
+            this.LikabilityRatingTab.Size = new System.Drawing.Size(1151, 800);
+            this.LikabilityRatingTab.TabIndex = 6;
+            this.LikabilityRatingTab.Text = "Rating";
+            this.LikabilityRatingTab.UseVisualStyleBackColor = true;
+            // 
+            // LikabilityRatingUserControlPanel
+            // 
+            this.LikabilityRatingUserControlPanel.AutoSize = true;
+            this.LikabilityRatingUserControlPanel.Controls.Add(this.LikabilityRatingUserControl);
+            this.LikabilityRatingUserControlPanel.Location = new System.Drawing.Point(269, 47);
+            this.LikabilityRatingUserControlPanel.Name = "LikabilityRatingUserControlPanel";
+            this.LikabilityRatingUserControlPanel.Size = new System.Drawing.Size(612, 706);
+            this.LikabilityRatingUserControlPanel.TabIndex = 0;
+            // 
+            // LikabilityRatingUserControl
+            // 
+            this.LikabilityRatingUserControl.Location = new System.Drawing.Point(3, 3);
+            this.LikabilityRatingUserControl.Name = "LikabilityRatingUserControl";
+            this.LikabilityRatingUserControl.Size = new System.Drawing.Size(606, 700);
+            this.LikabilityRatingUserControl.SubmitButtonClickEventAction = null;
+            this.LikabilityRatingUserControl.TabIndex = 0;
+            this.LikabilityRatingUserControl.Load += new System.EventHandler(this.LikabilityRatingUserControl_Load);
+            // 
             // MenuStrip
             // 
             this.MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.FileToolStripMenuItem,
-            this.reToolStripMenuItem});
+            this.File_ToolStripMenuItem,
+            this.Results_ToolStripMenuItem,
+            this.Admin_ToolStripMenuItem});
             this.MenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MenuStrip.Name = "MenuStrip";
             this.MenuStrip.Size = new System.Drawing.Size(1184, 24);
             this.MenuStrip.TabIndex = 1;
             this.MenuStrip.Text = "menuStrip1";
             // 
-            // FileToolStripMenuItem
+            // File_ToolStripMenuItem
             // 
-            this.FileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CloseToolStripMenuItem});
-            this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
-            this.FileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.FileToolStripMenuItem.Text = "File";
+            this.File_ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.File_Close_ToolStripMenuItem});
+            this.File_ToolStripMenuItem.Name = "File_ToolStripMenuItem";
+            this.File_ToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.File_ToolStripMenuItem.Text = "File";
             // 
-            // CloseToolStripMenuItem
+            // File_Close_ToolStripMenuItem
             // 
-            this.CloseToolStripMenuItem.Name = "CloseToolStripMenuItem";
-            this.CloseToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
-            this.CloseToolStripMenuItem.Text = "Close";
-            this.CloseToolStripMenuItem.Click += new System.EventHandler(this.CloseToolStripMenuItem_Click);
+            this.File_Close_ToolStripMenuItem.Name = "File_Close_ToolStripMenuItem";
+            this.File_Close_ToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.File_Close_ToolStripMenuItem.Text = "Close";
+            this.File_Close_ToolStripMenuItem.Click += new System.EventHandler(this.CloseToolStripMenuItem_Click);
             // 
-            // reToolStripMenuItem
+            // Results_ToolStripMenuItem
             // 
-            this.reToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.resultsToolStripMenuItem});
-            this.reToolStripMenuItem.Name = "reToolStripMenuItem";
-            this.reToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
-            this.reToolStripMenuItem.Text = "Results";
+            this.Results_ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Results_Points_ToolStripMenuItem});
+            this.Results_ToolStripMenuItem.Name = "Results_ToolStripMenuItem";
+            this.Results_ToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.Results_ToolStripMenuItem.Text = "Results";
             // 
-            // resultsToolStripMenuItem
+            // Results_Points_ToolStripMenuItem
             // 
-            this.resultsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Results_Points_ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.PointsToolStripMenuItem});
-            this.resultsToolStripMenuItem.Name = "resultsToolStripMenuItem";
-            this.resultsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.resultsToolStripMenuItem.Text = "Points";
+            this.Results_Points_ToolStripMenuItem.Name = "Results_Points_ToolStripMenuItem";
+            this.Results_Points_ToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.Results_Points_ToolStripMenuItem.Text = "Points";
             // 
-            // pointsToolStripMenuItem
+            // PointsToolStripMenuItem
             // 
-            this.PointsToolStripMenuItem.Name = "pointsToolStripMenuItem";
-            this.PointsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.PointsToolStripMenuItem.Name = "PointsToolStripMenuItem";
+            this.PointsToolStripMenuItem.Size = new System.Drawing.Size(80, 22);
             this.PointsToolStripMenuItem.Text = "0";
+            // 
+            // Admin_ToolStripMenuItem
+            // 
+            this.Admin_ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Admin_Enabled_ToolStripMenuItem,
+            this.Admin_AllowTabSelection_ToolStripMenuItem,
+            this.Admin_RealTimeResponse_ToolStripMenuItem});
+            this.Admin_ToolStripMenuItem.Name = "Admin_ToolStripMenuItem";
+            this.Admin_ToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.Admin_ToolStripMenuItem.Text = "Admin";
+            // 
+            // Admin_Enabled_ToolStripMenuItem
+            // 
+            this.Admin_Enabled_ToolStripMenuItem.Name = "Admin_Enabled_ToolStripMenuItem";
+            this.Admin_Enabled_ToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.Admin_Enabled_ToolStripMenuItem.Text = "Enabled";
+            this.Admin_Enabled_ToolStripMenuItem.Click += new System.EventHandler(this.Admin_Enabled_ToolStripMenuItem_Click);
+            // 
+            // Admin_AllowTabSelection_ToolStripMenuItem
+            // 
+            this.Admin_AllowTabSelection_ToolStripMenuItem.Name = "Admin_AllowTabSelection_ToolStripMenuItem";
+            this.Admin_AllowTabSelection_ToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.Admin_AllowTabSelection_ToolStripMenuItem.Text = "Allow Tab Selection";
+            this.Admin_AllowTabSelection_ToolStripMenuItem.Visible = false;
+            // 
+            // Admin_RealTimeResponse_ToolStripMenuItem
+            // 
+            this.Admin_RealTimeResponse_ToolStripMenuItem.Name = "Admin_RealTimeResponse_ToolStripMenuItem";
+            this.Admin_RealTimeResponse_ToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.Admin_RealTimeResponse_ToolStripMenuItem.Text = "Real Time Response";
+            this.Admin_RealTimeResponse_ToolStripMenuItem.Visible = false;
             // 
             // SocialExchangeForm
             // 
@@ -1643,8 +1714,13 @@
             this.MainMenuStrip = this.MenuStrip;
             this.MinimumSize = new System.Drawing.Size(1200, 900);
             this.Name = "SocialExchangeForm";
-            this.Text = "Trust Game";
+            this.Text = "Investment Game Application";
+            this.Shown += new System.EventHandler(this.SocialExchangeForm_Shown);
+            this.ResizeBegin += new System.EventHandler(this.SocialExchangeForm_ResizeBegin);
+            this.ResizeEnd += new System.EventHandler(this.SocialExchangeForm_ResizeEnd);
             this.SizeChanged += new System.EventHandler(this.SocialExchangeForm_SizeChanged);
+            this.Resize += new System.EventHandler(this.SocialExchangeForm_Resize);
+            this.StyleChanged += new System.EventHandler(this.SocialExchangeForm_StyleChanged);
             this.Tabs.ResumeLayout(false);
             this.WelcomeTab.ResumeLayout(false);
             this.WelcomeTab.PerformLayout();
@@ -1688,6 +1764,9 @@
             this.ImpRecogTableLayoutPanel.ResumeLayout(false);
             this.ExpRecogTaskTab.ResumeLayout(false);
             this.ExpRecogTableLayoutPanel.ResumeLayout(false);
+            this.LikabilityRatingTab.ResumeLayout(false);
+            this.LikabilityRatingTab.PerformLayout();
+            this.LikabilityRatingUserControlPanel.ResumeLayout(false);
             this.MenuStrip.ResumeLayout(false);
             this.MenuStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -1703,7 +1782,7 @@
         private System.Windows.Forms.TabPage ImpRecogTaskTab;
         private System.Windows.Forms.TabPage ExpRecogTaskTab;
         private System.Windows.Forms.MenuStrip MenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem FileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem File_ToolStripMenuItem;
         private System.Windows.Forms.PictureBox TrustExchangePictureBox;
         private System.Windows.Forms.Button Give1PointButton;
         private System.Windows.Forms.Button Give2PointsButton;
@@ -1778,7 +1857,7 @@
         private System.Windows.Forms.PictureBox Practice_PictureBox;
         private System.Windows.Forms.ProgressBar Practice_ProgressBar;
         private System.Windows.Forms.Button WelcomeTabStartPracticeButton;
-        private System.Windows.Forms.ToolStripMenuItem CloseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem File_Close_ToolStripMenuItem;
         private System.Windows.Forms.Label DemographicsTab_Q001_Label;
         private System.Windows.Forms.TextBox DemographicsTab_Q001_TextBox;
         private System.Windows.Forms.TextBox DemographicsTab_Q002_TextBox;
@@ -1822,9 +1901,16 @@
         private System.Windows.Forms.GroupBox groupBox12;
         private System.Windows.Forms.GroupBox groupBox14;
         private System.Windows.Forms.Button DemographicsStartButton;
-        private System.Windows.Forms.ToolStripMenuItem reToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem resultsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Results_ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Results_Points_ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem PointsToolStripMenuItem;
+        private System.Windows.Forms.TabPage LikabilityRatingTab;
+        private System.Windows.Forms.Panel LikabilityRatingUserControlPanel;
+        private InvestmentGame.LikabilityRatingUserControl LikabilityRatingUserControl;
+        private System.Windows.Forms.ToolStripMenuItem Admin_ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Admin_Enabled_ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Admin_AllowTabSelection_ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Admin_RealTimeResponse_ToolStripMenuItem;
     }
 }
 

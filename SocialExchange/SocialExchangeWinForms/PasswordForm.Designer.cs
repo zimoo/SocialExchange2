@@ -1,6 +1,6 @@
 ﻿namespace SocialExchangeWinForms
 {
-    partial class CloseApplicationPasswordForm
+    partial class PasswordForm
     {
         /// <summary>
         /// Required designer variable.
@@ -75,20 +75,19 @@
             this.OKButton.Text = "OK";
             this.OKButton.UseVisualStyleBackColor = true;
             // 
-            // CloseApplicationPasswordForm
+            // OverridePasswordForm
             // 
             this.AcceptButton = this.OKButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.CancelButton;
             this.ClientSize = new System.Drawing.Size(320, 93);
             this.ControlBox = false;
             this.Controls.Add(this.OKButton);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.PasswordTextBox);
             this.Controls.Add(this.PasswordLabel);
-            this.Name = "CloseApplicationPasswordForm";
-            this.Text = "Enter Password To Force Close Application";
+            this.Name = "OverridePasswordForm";
+            this.Text = "Enter Override Password";
             this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -51,23 +51,21 @@ namespace SocialExchange2
             }
         }
 
+        public LikabilityRatingTask LikabilityRatingTask { get; protected set; }
+
         public int TrustExchangePointsMultiplier = 2;
         public int TrustExchangeStartingPoints = 24;
         public int RoundCountPerTask = 24;
 
         public LogicEngine()
         {
-            InitializePersonas();
+            InitializePersonasAndLikabilityRatingTask();
             InitializeTrustExchangeTask();
         }
 
-        private void InitializePersonas()
+        private void InitializePersonasAndLikabilityRatingTask()
         {
             Assembly assembly = Assembly.GetExecutingAssembly();
-
-            string[] names =
-                assembly
-                .GetManifestResourceNames();
 
             Personas =
                 assembly
@@ -83,6 +81,8 @@ namespace SocialExchange2
                     )
                 .Cast<Persona>()
                 .ToList();
+
+            LikabilityRatingTask = new LikabilityRatingTask(Personas);
         }
 
         private void InitializeTrustExchangeTask()
@@ -235,6 +235,7 @@ namespace SocialExchange2
                         string.Join(Environment.NewLine, TrustExchangeTask.Rounds.Select<TrustExchangeRound, object>(r => r.ToString()).ToArray()),
                         string.Join(Environment.NewLine, ImplicitRecognitionTask.Rounds.Select<RecognitionRound, object>(r => r.ToString()).ToArray()),
                         string.Join(Environment.NewLine, ExplicitRecognitionTask.Rounds.Select<RecognitionRound, object>(r => r.ToString()).ToArray()),
+                        string.Join(Environment.NewLine, LikabilityRatingTask.Rounds.Select<LikabilityRatingTask.LikabilityRatingRound, object>(r => r.ToString()).ToArray()),
                         "TOTAL POINTS EARNED: " + TrustExchangeTask.PlayerScore.ToString(), 
                         appendText
                     }
