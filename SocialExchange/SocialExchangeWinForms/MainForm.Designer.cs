@@ -35,7 +35,7 @@
             this.WelcomeTabTextBox = new System.Windows.Forms.TextBox();
             this.Practice_TrustExchangeTaskTab = new System.Windows.Forms.TabPage();
             this.Practice_ProgressBar = new System.Windows.Forms.ProgressBar();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.Practice_Panel = new System.Windows.Forms.Panel();
             this.Practice_NextRoundButton = new System.Windows.Forms.Button();
             this.PracticeGive1PointButton = new System.Windows.Forms.Button();
             this.Practice_StatusButtonAsLabel = new System.Windows.Forms.Button();
@@ -167,7 +167,7 @@
             this.Tabs.SuspendLayout();
             this.WelcomeTab.SuspendLayout();
             this.Practice_TrustExchangeTaskTab.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.Practice_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Practice_PictureBox)).BeginInit();
             this.TrustExchangeTaskTab.SuspendLayout();
             this.ImageAndPointsButtonsPanel.SuspendLayout();
@@ -256,7 +256,7 @@
             // 
             this.Practice_TrustExchangeTaskTab.BackColor = System.Drawing.SystemColors.Control;
             this.Practice_TrustExchangeTaskTab.Controls.Add(this.Practice_ProgressBar);
-            this.Practice_TrustExchangeTaskTab.Controls.Add(this.panel1);
+            this.Practice_TrustExchangeTaskTab.Controls.Add(this.Practice_Panel);
             this.Practice_TrustExchangeTaskTab.Controls.Add(this.Practice_ScoreButtonAsLabel);
             this.Practice_TrustExchangeTaskTab.Location = new System.Drawing.Point(4, 22);
             this.Practice_TrustExchangeTaskTab.Name = "Practice_TrustExchangeTaskTab";
@@ -273,18 +273,18 @@
             this.Practice_ProgressBar.Size = new System.Drawing.Size(1136, 44);
             this.Practice_ProgressBar.TabIndex = 18;
             // 
-            // panel1
+            // Practice_Panel
             // 
-            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel1.Controls.Add(this.Practice_NextRoundButton);
-            this.panel1.Controls.Add(this.PracticeGive1PointButton);
-            this.panel1.Controls.Add(this.Practice_StatusButtonAsLabel);
-            this.panel1.Controls.Add(this.PracticeGive2PointsButton);
-            this.panel1.Controls.Add(this.Practice_PictureBox);
-            this.panel1.Location = new System.Drawing.Point(7, 87);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1136, 615);
-            this.panel1.TabIndex = 17;
+            this.Practice_Panel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Practice_Panel.Controls.Add(this.Practice_NextRoundButton);
+            this.Practice_Panel.Controls.Add(this.PracticeGive1PointButton);
+            this.Practice_Panel.Controls.Add(this.Practice_StatusButtonAsLabel);
+            this.Practice_Panel.Controls.Add(this.PracticeGive2PointsButton);
+            this.Practice_Panel.Controls.Add(this.Practice_PictureBox);
+            this.Practice_Panel.Location = new System.Drawing.Point(7, 87);
+            this.Practice_Panel.Name = "Practice_Panel";
+            this.Practice_Panel.Size = new System.Drawing.Size(1136, 615);
+            this.Practice_Panel.TabIndex = 17;
             // 
             // Practice_NextRoundButton
             // 
@@ -317,6 +317,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Practice_StatusButtonAsLabel.BackColor = System.Drawing.SystemColors.Control;
             this.Practice_StatusButtonAsLabel.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.Practice_StatusButtonAsLabel.FlatAppearance.BorderSize = 0;
+            this.Practice_StatusButtonAsLabel.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.Practice_StatusButtonAsLabel.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
             this.Practice_StatusButtonAsLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Practice_StatusButtonAsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Practice_StatusButtonAsLabel.Location = new System.Drawing.Point(-1, 531);
@@ -358,6 +361,9 @@
             this.Practice_ScoreButtonAsLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Practice_ScoreButtonAsLabel.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.Practice_ScoreButtonAsLabel.FlatAppearance.BorderSize = 0;
+            this.Practice_ScoreButtonAsLabel.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.Practice_ScoreButtonAsLabel.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
             this.Practice_ScoreButtonAsLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Practice_ScoreButtonAsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Practice_ScoreButtonAsLabel.Location = new System.Drawing.Point(10, 34);
@@ -393,6 +399,9 @@
             this.ScoreButtonAsLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ScoreButtonAsLabel.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.ScoreButtonAsLabel.FlatAppearance.BorderSize = 0;
+            this.ScoreButtonAsLabel.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.ScoreButtonAsLabel.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
             this.ScoreButtonAsLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ScoreButtonAsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ScoreButtonAsLabel.Location = new System.Drawing.Point(10, 34);
@@ -445,11 +454,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.StatusButtonAsLabel.BackColor = System.Drawing.SystemColors.Control;
             this.StatusButtonAsLabel.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.StatusButtonAsLabel.FlatAppearance.BorderSize = 0;
+            this.StatusButtonAsLabel.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.StatusButtonAsLabel.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
             this.StatusButtonAsLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.StatusButtonAsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StatusButtonAsLabel.Location = new System.Drawing.Point(-1, 531);
             this.StatusButtonAsLabel.Name = "StatusButtonAsLabel";
-            this.StatusButtonAsLabel.Size = new System.Drawing.Size(1136, 81);
+            this.StatusButtonAsLabel.Size = new System.Drawing.Size(1136, 94);
             this.StatusButtonAsLabel.TabIndex = 5;
             this.StatusButtonAsLabel.Text = "STATUS_TEXT_BOX";
             this.StatusButtonAsLabel.UseVisualStyleBackColor = false;
@@ -512,7 +524,7 @@
             this.DemographicsStartButton.Location = new System.Drawing.Point(1039, 752);
             this.DemographicsStartButton.Name = "DemographicsStartButton";
             this.DemographicsStartButton.Size = new System.Drawing.Size(99, 36);
-            this.DemographicsStartButton.TabIndex = 42;
+            this.DemographicsStartButton.TabIndex = 415;
             this.DemographicsStartButton.Text = "SUBMIT";
             this.DemographicsStartButton.UseVisualStyleBackColor = true;
             this.DemographicsStartButton.Click += new System.EventHandler(this.DemographicsStartButton_Click);
@@ -525,7 +537,7 @@
             this.groupBox14.Location = new System.Drawing.Point(649, 637);
             this.groupBox14.Name = "groupBox14";
             this.groupBox14.Size = new System.Drawing.Size(499, 84);
-            this.groupBox14.TabIndex = 41;
+            this.groupBox14.TabIndex = 114;
             this.groupBox14.TabStop = false;
             // 
             // DemographicsTab_Q014_Label
@@ -544,7 +556,7 @@
             this.DemographicsTab_Q014_TextBox.Location = new System.Drawing.Point(10, 39);
             this.DemographicsTab_Q014_TextBox.Name = "DemographicsTab_Q014_TextBox";
             this.DemographicsTab_Q014_TextBox.Size = new System.Drawing.Size(471, 26);
-            this.DemographicsTab_Q014_TextBox.TabIndex = 14;
+            this.DemographicsTab_Q014_TextBox.TabIndex = 414;
             // 
             // groupBox13
             // 
@@ -554,7 +566,7 @@
             this.groupBox13.Location = new System.Drawing.Point(649, 455);
             this.groupBox13.Name = "groupBox13";
             this.groupBox13.Size = new System.Drawing.Size(496, 176);
-            this.groupBox13.TabIndex = 40;
+            this.groupBox13.TabIndex = 113;
             this.groupBox13.TabStop = false;
             // 
             // DemographicsTab_Q013_Label
@@ -575,7 +587,7 @@
             this.DemographicsTab_Q013_TextBox.Name = "DemographicsTab_Q013_TextBox";
             this.DemographicsTab_Q013_TextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.DemographicsTab_Q013_TextBox.Size = new System.Drawing.Size(471, 118);
-            this.DemographicsTab_Q013_TextBox.TabIndex = 13;
+            this.DemographicsTab_Q013_TextBox.TabIndex = 413;
             // 
             // groupBox12
             // 
@@ -585,7 +597,7 @@
             this.groupBox12.Location = new System.Drawing.Point(649, 367);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(496, 82);
-            this.groupBox12.TabIndex = 39;
+            this.groupBox12.TabIndex = 112;
             this.groupBox12.TabStop = false;
             // 
             // DemographicsTab_Q012_Label
@@ -604,7 +616,7 @@
             this.DemographicsTab_Q012_TextBox.Location = new System.Drawing.Point(10, 37);
             this.DemographicsTab_Q012_TextBox.Name = "DemographicsTab_Q012_TextBox";
             this.DemographicsTab_Q012_TextBox.Size = new System.Drawing.Size(471, 26);
-            this.DemographicsTab_Q012_TextBox.TabIndex = 12;
+            this.DemographicsTab_Q012_TextBox.TabIndex = 412;
             // 
             // groupBox11
             // 
@@ -614,7 +626,7 @@
             this.groupBox11.Location = new System.Drawing.Point(649, 235);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(496, 126);
-            this.groupBox11.TabIndex = 38;
+            this.groupBox11.TabIndex = 111;
             this.groupBox11.TabStop = false;
             // 
             // DemographicsTab_Q011_Label
@@ -635,7 +647,7 @@
             this.DemographicsTab_Q011_TextBox.Name = "DemographicsTab_Q011_TextBox";
             this.DemographicsTab_Q011_TextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.DemographicsTab_Q011_TextBox.Size = new System.Drawing.Size(471, 68);
-            this.DemographicsTab_Q011_TextBox.TabIndex = 11;
+            this.DemographicsTab_Q011_TextBox.TabIndex = 411;
             // 
             // groupBox10
             // 
@@ -645,7 +657,7 @@
             this.groupBox10.Location = new System.Drawing.Point(649, 145);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(496, 84);
-            this.groupBox10.TabIndex = 37;
+            this.groupBox10.TabIndex = 110;
             this.groupBox10.TabStop = false;
             // 
             // DemographicsTab_Q010_Label
@@ -664,7 +676,7 @@
             this.DemographicsTab_Q010_TextBox.Location = new System.Drawing.Point(10, 39);
             this.DemographicsTab_Q010_TextBox.Name = "DemographicsTab_Q010_TextBox";
             this.DemographicsTab_Q010_TextBox.Size = new System.Drawing.Size(471, 26);
-            this.DemographicsTab_Q010_TextBox.TabIndex = 10;
+            this.DemographicsTab_Q010_TextBox.TabIndex = 410;
             // 
             // groupBox9
             // 
@@ -674,7 +686,7 @@
             this.groupBox9.Location = new System.Drawing.Point(6, 7);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(490, 84);
-            this.groupBox9.TabIndex = 36;
+            this.groupBox9.TabIndex = 101;
             this.groupBox9.TabStop = false;
             // 
             // DemographicsTab_Q001_Label
@@ -693,7 +705,7 @@
             this.DemographicsTab_Q001_TextBox.Location = new System.Drawing.Point(6, 39);
             this.DemographicsTab_Q001_TextBox.Name = "DemographicsTab_Q001_TextBox";
             this.DemographicsTab_Q001_TextBox.Size = new System.Drawing.Size(475, 26);
-            this.DemographicsTab_Q001_TextBox.TabIndex = 1;
+            this.DemographicsTab_Q001_TextBox.TabIndex = 401;
             // 
             // groupBox8
             // 
@@ -703,7 +715,7 @@
             this.groupBox8.Location = new System.Drawing.Point(6, 97);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(490, 84);
-            this.groupBox8.TabIndex = 35;
+            this.groupBox8.TabIndex = 102;
             this.groupBox8.TabStop = false;
             // 
             // DemographicsTab_Q002_Label
@@ -722,7 +734,7 @@
             this.DemographicsTab_Q002_TextBox.Location = new System.Drawing.Point(6, 39);
             this.DemographicsTab_Q002_TextBox.Name = "DemographicsTab_Q002_TextBox";
             this.DemographicsTab_Q002_TextBox.Size = new System.Drawing.Size(475, 26);
-            this.DemographicsTab_Q002_TextBox.TabIndex = 2;
+            this.DemographicsTab_Q002_TextBox.TabIndex = 402;
             // 
             // groupBox7
             // 
@@ -732,7 +744,7 @@
             this.groupBox7.Location = new System.Drawing.Point(6, 187);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(490, 84);
-            this.groupBox7.TabIndex = 34;
+            this.groupBox7.TabIndex = 103;
             this.groupBox7.TabStop = false;
             // 
             // DemographicsTab_Q003_Label
@@ -751,7 +763,7 @@
             this.DemographicsTab_Q003_TextBox.Location = new System.Drawing.Point(10, 39);
             this.DemographicsTab_Q003_TextBox.Name = "DemographicsTab_Q003_TextBox";
             this.DemographicsTab_Q003_TextBox.Size = new System.Drawing.Size(471, 26);
-            this.DemographicsTab_Q003_TextBox.TabIndex = 3;
+            this.DemographicsTab_Q003_TextBox.TabIndex = 403;
             // 
             // groupBox6
             // 
@@ -761,7 +773,7 @@
             this.groupBox6.Location = new System.Drawing.Point(6, 277);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(490, 84);
-            this.groupBox6.TabIndex = 33;
+            this.groupBox6.TabIndex = 104;
             this.groupBox6.TabStop = false;
             // 
             // DemographicsTab_Q004_Label
@@ -780,7 +792,7 @@
             this.DemographicsTab_Q004_TextBox.Location = new System.Drawing.Point(6, 39);
             this.DemographicsTab_Q004_TextBox.Name = "DemographicsTab_Q004_TextBox";
             this.DemographicsTab_Q004_TextBox.Size = new System.Drawing.Size(475, 26);
-            this.DemographicsTab_Q004_TextBox.TabIndex = 4;
+            this.DemographicsTab_Q004_TextBox.TabIndex = 404;
             // 
             // groupBox5
             // 
@@ -790,7 +802,7 @@
             this.groupBox5.Location = new System.Drawing.Point(6, 367);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(490, 87);
-            this.groupBox5.TabIndex = 32;
+            this.groupBox5.TabIndex = 105;
             this.groupBox5.TabStop = false;
             // 
             // DemographicsTab_Q005_Label
@@ -809,7 +821,7 @@
             this.DemographicsTab_Q005_TextBox.Location = new System.Drawing.Point(10, 42);
             this.DemographicsTab_Q005_TextBox.Name = "DemographicsTab_Q005_TextBox";
             this.DemographicsTab_Q005_TextBox.Size = new System.Drawing.Size(471, 26);
-            this.DemographicsTab_Q005_TextBox.TabIndex = 5;
+            this.DemographicsTab_Q005_TextBox.TabIndex = 405;
             // 
             // groupBox4
             // 
@@ -819,7 +831,7 @@
             this.groupBox4.Location = new System.Drawing.Point(6, 460);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(490, 84);
-            this.groupBox4.TabIndex = 31;
+            this.groupBox4.TabIndex = 106;
             this.groupBox4.TabStop = false;
             // 
             // DemographicsTab_Q006_Label
@@ -838,7 +850,7 @@
             this.DemographicsTab_Q006_TextBox.Location = new System.Drawing.Point(10, 39);
             this.DemographicsTab_Q006_TextBox.Name = "DemographicsTab_Q006_TextBox";
             this.DemographicsTab_Q006_TextBox.Size = new System.Drawing.Size(471, 26);
-            this.DemographicsTab_Q006_TextBox.TabIndex = 6;
+            this.DemographicsTab_Q006_TextBox.TabIndex = 406;
             // 
             // groupBox3
             // 
@@ -848,7 +860,7 @@
             this.groupBox3.Location = new System.Drawing.Point(6, 550);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(490, 84);
-            this.groupBox3.TabIndex = 30;
+            this.groupBox3.TabIndex = 107;
             this.groupBox3.TabStop = false;
             // 
             // DemographicsTab_Q007_Label
@@ -867,7 +879,7 @@
             this.DemographicsTab_Q007_TextBox.Location = new System.Drawing.Point(6, 39);
             this.DemographicsTab_Q007_TextBox.Name = "DemographicsTab_Q007_TextBox";
             this.DemographicsTab_Q007_TextBox.Size = new System.Drawing.Size(475, 26);
-            this.DemographicsTab_Q007_TextBox.TabIndex = 7;
+            this.DemographicsTab_Q007_TextBox.TabIndex = 407;
             // 
             // groupBox2
             // 
@@ -877,7 +889,7 @@
             this.groupBox2.Location = new System.Drawing.Point(6, 640);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(490, 149);
-            this.groupBox2.TabIndex = 29;
+            this.groupBox2.TabIndex = 108;
             this.groupBox2.TabStop = false;
             // 
             // DemographicsTab_Q008_Label
@@ -898,7 +910,7 @@
             this.DemographicsTab_Q008_TextBox.Name = "DemographicsTab_Q008_TextBox";
             this.DemographicsTab_Q008_TextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.DemographicsTab_Q008_TextBox.Size = new System.Drawing.Size(471, 91);
-            this.DemographicsTab_Q008_TextBox.TabIndex = 8;
+            this.DemographicsTab_Q008_TextBox.TabIndex = 408;
             // 
             // groupBox1
             // 
@@ -908,7 +920,7 @@
             this.groupBox1.Location = new System.Drawing.Point(649, 7);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(496, 132);
-            this.groupBox1.TabIndex = 28;
+            this.groupBox1.TabIndex = 109;
             this.groupBox1.TabStop = false;
             // 
             // DemographicsTab_Q009_Label
@@ -929,7 +941,7 @@
             this.DemographicsTab_Q009_TextBox.Name = "DemographicsTab_Q009_TextBox";
             this.DemographicsTab_Q009_TextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.DemographicsTab_Q009_TextBox.Size = new System.Drawing.Size(471, 74);
-            this.DemographicsTab_Q009_TextBox.TabIndex = 9;
+            this.DemographicsTab_Q009_TextBox.TabIndex = 409;
             // 
             // ImpRecogTaskTab
             // 
@@ -1621,6 +1633,9 @@
             this.LikabilityRatingUserControl.SubmitButtonClickEventAction = null;
             this.LikabilityRatingUserControl.TabIndex = 0;
             this.LikabilityRatingUserControl.Load += new System.EventHandler(this.LikabilityRatingUserControl_Load);
+            this.LikabilityRatingUserControl.SizeChanged += new System.EventHandler(this.LikabilityRatingUserControl_SizeChanged);
+            this.LikabilityRatingUserControl.Resize += new System.EventHandler(this.LikabilityRatingUserControl_Resize);
+            this.LikabilityRatingUserControl.StyleChanged += new System.EventHandler(this.LikabilityRatingUserControl_StyleChanged);
             // 
             // MenuStrip
             // 
@@ -1715,6 +1730,7 @@
             this.MinimumSize = new System.Drawing.Size(1200, 900);
             this.Name = "SocialExchangeForm";
             this.Text = "Investment Game Application";
+            this.Load += new System.EventHandler(this.SocialExchangeForm_Load);
             this.Shown += new System.EventHandler(this.SocialExchangeForm_Shown);
             this.ResizeBegin += new System.EventHandler(this.SocialExchangeForm_ResizeBegin);
             this.ResizeEnd += new System.EventHandler(this.SocialExchangeForm_ResizeEnd);
@@ -1725,7 +1741,7 @@
             this.WelcomeTab.ResumeLayout(false);
             this.WelcomeTab.PerformLayout();
             this.Practice_TrustExchangeTaskTab.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
+            this.Practice_Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Practice_PictureBox)).EndInit();
             this.TrustExchangeTaskTab.ResumeLayout(false);
             this.ImageAndPointsButtonsPanel.ResumeLayout(false);
@@ -1849,7 +1865,7 @@
         private System.Windows.Forms.TextBox WelcomeTabTextBox;
         private System.Windows.Forms.TabPage Practice_TrustExchangeTaskTab;
         private System.Windows.Forms.Button Practice_ScoreButtonAsLabel;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel Practice_Panel;
         private System.Windows.Forms.Button Practice_NextRoundButton;
         private System.Windows.Forms.Button PracticeGive1PointButton;
         private System.Windows.Forms.Button Practice_StatusButtonAsLabel;

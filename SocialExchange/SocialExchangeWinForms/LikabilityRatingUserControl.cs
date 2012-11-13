@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SocialExchange2;
 
 namespace InvestmentGame
 {
@@ -67,13 +68,16 @@ namespace InvestmentGame
         private void SubmitButton_Click(object sender, EventArgs e)
         {
             SubmitButtonClickEventAction(sender, e);
-            ResetControl();
+            ResetControls();
         }
 
-        private void ResetControl()
+        private void ResetControls()
         {
-            SubmitButton.Enabled = false;
+            Application.DoEvents();
             RadioButtons.ForEach(rb => rb.Checked = false);
+            Application.DoEvents();
+            SubmitButton.Enabled = false;
+            Application.DoEvents();
         }
 
     }

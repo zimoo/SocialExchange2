@@ -108,7 +108,10 @@
             this.Name = "RecognitionUserControl";
             this.Padding = new System.Windows.Forms.Padding(3);
             this.Size = new System.Drawing.Size(350, 350);
+            this.ClientSizeChanged += new System.EventHandler(this.RecognitionUserControl_ClientSizeChanged);
+            this.SizeChanged += new System.EventHandler(this.RecognitionUserControl_SizeChanged);
             this.Resize += new System.EventHandler(this.RecognitionUserControl_Resize);
+            this.StyleChanged += new System.EventHandler(this.RecognitionUserControl_StyleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.Image)).EndInit();
             this.Panel.ResumeLayout(false);
             this.Panel.PerformLayout();

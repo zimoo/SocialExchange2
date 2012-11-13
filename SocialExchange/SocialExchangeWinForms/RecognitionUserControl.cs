@@ -24,11 +24,31 @@ namespace SocialExchangeWinForms
             InitializeComponent();
         }
 
-        private void RecognitionUserControl_Resize(object sender, EventArgs e)
+        private void RecenterAllRadioButtons()
         {
             RadioButton1.CenterWithinParent();
             RadioButton2.CenterWithinParent();
             RadioButton3.CenterWithinParent();
+        }
+
+        private void RecognitionUserControl_Resize(object sender, EventArgs e)
+        {
+            RecenterAllRadioButtons();
+        }
+
+        private void RecognitionUserControl_SizeChanged(object sender, EventArgs e)
+        {
+            RecenterAllRadioButtons();
+        }
+
+        private void RecognitionUserControl_StyleChanged(object sender, EventArgs e)
+        {
+            RecenterAllRadioButtons();
+        }
+
+        private void RecognitionUserControl_ClientSizeChanged(object sender, EventArgs e)
+        {
+            RecenterAllRadioButtons();
         }
     }
 }

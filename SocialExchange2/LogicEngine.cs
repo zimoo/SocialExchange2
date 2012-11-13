@@ -82,7 +82,7 @@ namespace SocialExchange2
                 .Cast<Persona>()
                 .ToList();
 
-            LikabilityRatingTask = new LikabilityRatingTask(Personas);
+            LikabilityRatingTask = new LikabilityRatingTask(Personas.Shuffle());
         }
 
         private void InitializeTrustExchangeTask()
@@ -99,7 +99,7 @@ namespace SocialExchange2
                         new TrustExchangeRound
                         (
                             persona,
-                            (points) => points * TrustExchangePointsMultiplier,
+                            (points) => points * TrustExchangePointsMultiplier + 1,
                             GetNextTrustExchangePersonaClassification
                         )
             );
@@ -297,7 +297,6 @@ namespace SocialExchange2
 
     public static class LogicEngineExtensions
     {
-
         public static void SaveText(string text, string fileFullPath = null)
         {
             DateTime now = DateTime.Now;
@@ -354,6 +353,32 @@ namespace SocialExchange2
                 dateTime.ToString("HH") +
                 dateTime.ToString("mm") +
                 dateTime.Second.ToString("D2");
+        }
+
+        public static List<T> Shuffle<T>(this List<T> list, int iterations = 3)
+        {
+            List<T> shuffledList = new List<T>(list);
+
+            Enumerable.Range(0, iterations)
+                .ToList()
+                .ForEach
+                (
+                    x =>
+                    {
+                        Random r = new Random();
+                        int n = 0;
+                        while (n < shuffledList.Count)
+                        {
+                            int i = r.Next(0, n + 1);
+                            T value = shuffledList[i];
+                            shuffledList[i] = shuffledList[n];
+                            shuffledList[n] = value;
+                            n++;
+                        }
+                    }
+                );
+
+            return shuffledList;
         }
     }
 }

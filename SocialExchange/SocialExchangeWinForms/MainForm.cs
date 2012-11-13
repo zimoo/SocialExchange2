@@ -36,11 +36,12 @@ namespace SocialExchangeWinForms
         private int Practice_MaximumRoundOrdinal = 3;
         private int Practice_CurrentRoundRawPointResponse = 0;
 
-        private string adminPassword = "turnonadmin1027";
+        private string adminPassword = "admin1027";
 
         public SocialExchangeForm()
         {
             InitializeComponent();
+            HideExtendedTaskTabs();
             this.WindowState = FormWindowState.Maximized;
             this.FormClosing += SocialExchangeForm_FormClosing;
 
@@ -57,13 +58,22 @@ namespace SocialExchangeWinForms
             StartAtWelcomeTab();
         }
 
-        void SocialExchangeForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void HideExtendedTaskTabs()
+        {
+            this.Tabs.Controls.Remove(this.DemographicsTaskTab);
+            this.Tabs.Controls.Remove(this.ImpRecogTaskTab);
+            this.Tabs.Controls.Remove(this.ExpRecogTaskTab);
+            this.Tabs.Controls.Remove(this.LikabilityRatingTab);
+        }
+
+        private void SocialExchangeForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
 
             PasswordForm closeForm = new PasswordForm();
             closeForm.ShowDialog();
-            if(string.Equals(closeForm.PasswordTextBox.Text, adminPassword))
+
+            if(string.Equals(closeForm.PasswordTextBox.Text, adminPassword) && closeForm.DialogResult == System.Windows.Forms.DialogResult.OK)
             {
                 e.Cancel = false;
             }
@@ -89,7 +99,7 @@ namespace SocialExchangeWinForms
 
             Practice_ProgressBar.Minimum = 0;
             Practice_ProgressBar.Maximum = 100;
-            Practice_ProgressBar.Step = 2;
+            Practice_ProgressBar.Step = 8;
             Practice_ProgressBar.Style = ProgressBarStyle.Blocks;
         }
 
@@ -174,8 +184,6 @@ namespace SocialExchangeWinForms
             Practice_StatusButtonAsLabel.SetText(STATUS_TEXT__GIVE_1_OR_2_POINTS_TO_PLAYER2);
             Practice_ScoreButtonAsLabel.SetText(SCORE_TEXT, LogicEngine.TrustExchangeTask.PlayerScore);
 
-            //SetTrustExchangePictureBoxImageToCurrentRoundPersona();
-
             ShowTab(Practice_TrustExchangeTaskTab);
         }
 
@@ -197,12 +205,15 @@ namespace SocialExchangeWinForms
 
         private void AdvanceToDemographicsTask()
         {
+            this.Tabs.Controls.Add(this.DemographicsTaskTab);
             TrustExchangeTaskTab.RemoveFromAllowedTabs();
             ShowTab(DemographicsTaskTab);
         }
 
         private void AdvanceToImplicitRecognitionTask()
         {
+            this.Tabs.Controls.Add(this.ImpRecogTaskTab);
+
             LogicEngine.InitializeImplicitRecognitionTask();
 
             ImpRecogControls
@@ -237,13 +248,7 @@ namespace SocialExchangeWinForms
                                         {
                                             ImpRecogSubmitButton.Enabled = false;
 
-                                            MessageBox.Show
-                                            (
-                                                string.Format("You have chosen {0} too many. ", countChecked - 12) +
-                                                "Please discard those you would NOT want to play again until you reach twelve chosen players.",
-                                                string.Format("Please Discard {0}", countChecked - 12),
-                                                MessageBoxButtons.OK
-                                            );
+                                            ShowMessageBoxForImplicitRecognitionTaskImproperSelectionsFeedback(countChecked);
                                         }
                             };
                     }
@@ -255,6 +260,8 @@ namespace SocialExchangeWinForms
 
         private void AdvanceToExplicitRecognitionTask()
         {
+            this.Tabs.Controls.Add(this.ExpRecogTaskTab);
+
             LogicEngine.InitializeExplicitRecognitionTask();
 
             ExpRecogControls
@@ -296,13 +303,7 @@ namespace SocialExchangeWinForms
                                         {
                                             ExpRecogSubmitButton.Enabled = false;
 
-                                            MessageBox.Show
-                                            (
-                                                string.Format("There are incorrect amounts of certain selections. ", countRadio1Checked - 6) +
-                                                "Please choose exactly 6 players that gave you points, exactly 6 that did not, and exactly 12 that you did not play.",
-                                                string.Format("Choose Exactly 6 And 6", countRadio1Checked - 6),
-                                                MessageBoxButtons.OK
-                                            );
+                                            ShowMessageBoxForExplicitRecognitionTaskImproperSelectionsFeedback(countRadio1Checked);
                                         }
                             };
 
@@ -349,7 +350,7 @@ namespace SocialExchangeWinForms
             }
             else
             {
-                MessageBox.Show(string.Format("You have finished the Practice {0}.", TrustExchangeTaskTab.Text), string.Format("Advancing to {0}", TrustExchangeTaskTab.Text), MessageBoxButtons.OK);
+                ShowMessageBoxForTransitioningFromPracticeTaskToTrustExchangeTask();
                 Practice_TrustExchangeTaskTab.RemoveFromAllowedTabs();
                 AdvanceToTrustExchangeTask();
             }
@@ -382,7 +383,7 @@ namespace SocialExchangeWinForms
             }
             else
             {
-                MessageBox.Show(string.Format("You have finished the {0}.", TrustExchangeTaskTab.Text), string.Format("Advancing to {0}", DemographicsTaskTab.Text), MessageBoxButtons.OK);
+                ShowMessageBoxForTransitioningFromTrustExchangeTaskToDemographicsTask();
                 AdvanceToDemographicsTask();
             }
         }
@@ -435,11 +436,14 @@ namespace SocialExchangeWinForms
 
         private void Practice_NotifyPlayerOfPersonaResponse()
         {
-            int pointsBack = LogicEngine.TrustExchangePointsMultiplier * Practice_CurrentRoundRawPointResponse;
-
-            Practice_ScoreButtonAsLabel.SetTextInvoke(SCORE_TEXT, Practice_PlayerScore + pointsBack);
-            Practice_StatusButtonAsLabel.SetTextInvoke(STATUS_TEXT__PLAYER2_RESPONDED_WITH_X_POINTS, pointsBack);
+            Practice_ScoreButtonAsLabel.SetTextInvoke(SCORE_TEXT, Practice_PlayerScore + GetPracticeCurrentRoundCalculatedPointResponse());
+            Practice_StatusButtonAsLabel.SetTextInvoke(STATUS_TEXT__PLAYER2_RESPONDED_WITH_X_POINTS, GetPracticeCurrentRoundCalculatedPointResponse());
             2500.EmulateTimeDelay(!Admin_RealTimeResponse_ToolStripMenuItem.Checked);
+        }
+
+        private int GetPracticeCurrentRoundCalculatedPointResponse()
+        {
+            return LogicEngine.TrustExchangePointsMultiplier * Practice_CurrentRoundRawPointResponse + (Practice_CurrentRoundRawPointResponse == 0 ? 0 : 1);
         }
 
         private void NotifyPlayerOfPersonaResponse()
@@ -451,17 +455,17 @@ namespace SocialExchangeWinForms
 
         private void Practice_NotifyPlayerOfScoringThisRound(int scoreAtRoundStart)
         {
-            int pointsBack = LogicEngine.TrustExchangePointsMultiplier * Practice_CurrentRoundRawPointResponse;
-            int finalScore = Practice_PlayerScore + pointsBack;
+            Practice_PlayerScore += GetPracticeCurrentRoundCalculatedPointResponse();
 
-            int diff = Math.Abs(scoreAtRoundStart - finalScore);
+            int diff = Math.Abs(scoreAtRoundStart - Practice_PlayerScore);
             string contextualScoringMessage =
                 string.Format
                 (
-                    "You {0} {1} point{2}.",
-                    scoreAtRoundStart > finalScore ? "lost" : "gained",
+                    "You {0} {1} point{2} {3} this player.",
+                    scoreAtRoundStart > Practice_PlayerScore ? "lost" : "gained",
                     diff,
-                    diff > 1 ? "s" : ""
+                    diff > 1 ? "s" : "",
+                    scoreAtRoundStart > Practice_PlayerScore ? "to" : "from"
                 );
 
             Practice_StatusButtonAsLabel.SetTextInvoke(contextualScoringMessage);
@@ -476,10 +480,11 @@ namespace SocialExchangeWinForms
             string contextualScoringMessage =
                 string.Format
                 (
-                    "You {0} {1} point{2}.",
+                    "You {0} {1} point{2} {3} this player.",
                     scoreAtRoundStart > finalScore ? "lost" : "gained",
                     diff,
-                    diff > 1 ? "s" : ""
+                    diff > 1 ? "s" : "",
+                    scoreAtRoundStart > Practice_PlayerScore ? "to" : "from"
                 );
 
             StatusButtonAsLabel.SetTextInvoke(contextualScoringMessage);
@@ -545,6 +550,8 @@ namespace SocialExchangeWinForms
 
             ImpRecogSubmitButton.Enabled = false;
 
+            ShowMessageBoxForTransitioningFromImplicitRecognitionTaskToExplicitRecognitionTask();
+
             AdvanceToExplicitRecognitionTask();
         }
 
@@ -572,11 +579,16 @@ namespace SocialExchangeWinForms
                 );
 
             ExpRecogSubmitButton.Enabled = false;
+
+            ShowMessageBoxForTransitioningFromExplicitRecognitionTaskToLikabilityratingTask();
+
             AdvanceToLikabilityRatingTask();
         }
 
         private void AdvanceToLikabilityRatingTask()
         {
+            this.Tabs.Controls.Add(this.LikabilityRatingTab);
+
             ReadyLikabilityUserControl();
 
             ExpRecogTaskTab.RemoveFromAllowedTabs();
@@ -586,6 +598,7 @@ namespace SocialExchangeWinForms
         private void ReadyLikabilityUserControl()
         {
             LikabilityRatingUserControl.TrustExchangePictureBox.Image = LogicEngine.LikabilityRatingTask.GetCurrentRound().Persona.Image;
+            LikabilityRatingUserControl.SubmitButton.Enabled = false;
         }
 
         private void Tabs_Selecting(object sender, System.Windows.Forms.TabControlCancelEventArgs e)
@@ -668,7 +681,7 @@ namespace SocialExchangeWinForms
                 DemographicsTab_Q014_TextBox.Text == ""
                 )
             {
-                MessageBox.Show("Some answers are missing. Please answer all questions.", "Some Answers Missing", MessageBoxButtons.OK);
+                ShowMessageBoxForDemographicsTaskSomeAnswersMissingFeedback();
             }
             else
             {
@@ -714,13 +727,10 @@ namespace SocialExchangeWinForms
                 DemographicsTab_TaskContainer.Q014_Ethnicity_Label = DemographicsTab_Q014_Label.Text;
                 DemographicsTab_TaskContainer.Q014_Ethnicity = DemographicsTab_Q014_TextBox.Text;
 
+                ShowMessageBoxForTransitioningFromDemographicsTaskToImplicitRecognitionTask();
+
                 AdvanceToImplicitRecognitionTask();
             }
-        }
-
-        private void LikabilityRatingUserControl_Load(object sender, EventArgs e)
-        {
-            LikabilityRatingUserControl.SubmitButtonClickEventAction = LikabilityRatingUserControlSubmitButtonClickEventAction;
         }
 
         private void LikabilityRatingUserControlSubmitButtonClickEventAction(object obj, EventArgs e)
@@ -736,7 +746,7 @@ namespace SocialExchangeWinForms
             {
                 LikabilityRatingUserControl.Enabled = false;
 
-                MessageBox.Show("You have completed all tasks. Please see your proctor.", "CONGRATULATIONS!", MessageBoxButtons.OK);
+                ShowMessageBoxForFinishingAllTasks();
 
                 LogicEngine.SaveResults(DemographicsTab_TaskContainer.ToString());
             }
@@ -801,9 +811,131 @@ namespace SocialExchangeWinForms
 
         private void RecenterControls()
         {
+            Practice_Panel.CenterWithinParent();
             ImageAndPointsButtonsPanel.CenterWithinParent();
+            ImpRecogControls.ForEach(c => c.CenterWithinParent());
+            ExpRecogControls.ForEach(c => c.CenterWithinParent());
             LikabilityRatingUserControlPanel.CenterWithinParent();
             Application.DoEvents();
+        }
+
+        private void ShowMessageBoxForDemographicsTaskSomeAnswersMissingFeedback()
+        {
+            MessageBox.Show("Some answers are missing. Please answer all questions.", "Some Answers Missing", MessageBoxButtons.OK);
+        }
+
+        private void ShowMessageBoxForTransitioningFromTrustExchangeTaskToDemographicsTask()
+        {
+            MessageBox.Show
+            (
+                string.Format
+                (
+                    "You have finished the {0}." + Environment.NewLine + 
+                    "You have been chosen to participate further." + Environment.NewLine + 
+                    "Please, provide some information about yourself in the next task.", 
+                    TrustExchangeTaskTab.Text
+                ), 
+                string.Format
+                (
+                    "Advancing to {0}", 
+                    DemographicsTaskTab.Text
+                ), 
+                MessageBoxButtons.OK
+            );
+        }
+
+        private void ShowMessageBoxForImplicitRecognitionTaskImproperSelectionsFeedback(int countChecked)
+        {
+            MessageBox.Show
+            (
+                string.Format("You have chosen {0} too many. ", countChecked - 12) +
+                "Please discard those you would NOT want to play again until you reach twelve chosen players.",
+                string.Format("Please Discard {0}", countChecked - 12),
+                MessageBoxButtons.OK
+            );
+        }
+
+        private void ShowMessageBoxForExplicitRecognitionTaskImproperSelectionsFeedback(int countRadio1Checked)
+        {
+            MessageBox.Show
+            (
+                string.Format("There are incorrect amounts of certain selections. ", countRadio1Checked - 6) +
+                "Please choose exactly 6 players that gave you points, exactly 6 that did not, and exactly 12 that you did not play.",
+                string.Format("Choose Exactly 6 And 6", countRadio1Checked - 6),
+                MessageBoxButtons.OK
+            );
+        }
+
+        private void ShowMessageBoxForTransitioningFromPracticeTaskToTrustExchangeTask()
+        {
+            MessageBox.Show(string.Format("You have finished the Practice {0}.", TrustExchangeTaskTab.Text), string.Format("Advancing to {0}", TrustExchangeTaskTab.Text), MessageBoxButtons.OK);
+        }
+
+        private void ShowMessageBoxForFinishingAllTasks()
+        {
+            MessageBox.Show("You have completed all tasks. Please see your proctor.", "CONGRATULATIONS!", MessageBoxButtons.OK);
+        }
+
+        private void ShowMessageBoxForTransitioningFromDemographicsTaskToImplicitRecognitionTask()
+        {
+            MessageBox.Show
+            (
+                "Thank you for providing that information." + Environment.NewLine +
+                "You have been chosen to provide some basic feedback about the other players." + Environment.NewLine +
+                "Please, see the instructions in the next task.",
+                string.Format("Advancing to {0} Task.", ImpRecogTaskTab.Text),
+                MessageBoxButtons.OK
+            );
+        }
+
+        private void ShowMessageBoxForTransitioningFromImplicitRecognitionTaskToExplicitRecognitionTask()
+        {
+            MessageBox.Show
+            (
+                "Thank you for providing that information." + Environment.NewLine +
+                "You have been chosen to provide further advanced feedback about the other players." + Environment.NewLine +
+                "Please, see the instructions in the next task.",
+                string.Format("Advancing to {0} Task.", ExpRecogTaskTab.Text),
+                MessageBoxButtons.OK
+            );
+        }
+
+        private void ShowMessageBoxForTransitioningFromExplicitRecognitionTaskToLikabilityratingTask()
+        {
+            MessageBox.Show
+            (
+                "Thank you for providing that information." + Environment.NewLine +
+                "The high accuracy of your feedback qualifies you for a final task." + Environment.NewLine +
+                "Please, see the instructions in the final task.",
+                string.Format("Advancing to {0} Task.", LikabilityRatingTab.Text),
+                MessageBoxButtons.OK
+            );
+        }
+
+        private void LikabilityRatingUserControl_Load(object sender, EventArgs e)
+        {
+            LikabilityRatingUserControl.SubmitButtonClickEventAction = LikabilityRatingUserControlSubmitButtonClickEventAction;
+            LikabilityRatingUserControl.CenterWithinParent();
+        }
+
+        private void LikabilityRatingUserControl_Resize(object sender, EventArgs e)
+        {
+            LikabilityRatingUserControl.CenterWithinParent();
+        }
+
+        private void LikabilityRatingUserControl_SizeChanged(object sender, EventArgs e)
+        {
+            LikabilityRatingUserControl.CenterWithinParent();
+        }
+
+        private void LikabilityRatingUserControl_StyleChanged(object sender, EventArgs e)
+        {
+            LikabilityRatingUserControl.CenterWithinParent();
+        }
+
+        private void SocialExchangeForm_Load(object sender, EventArgs e)
+        {
+            RecenterControls();
         }
     }
 
