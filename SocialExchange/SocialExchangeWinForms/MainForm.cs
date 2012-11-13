@@ -41,7 +41,7 @@ namespace SocialExchangeWinForms
         public SocialExchangeForm()
         {
             InitializeComponent();
-            HideExtendedTaskTabs();
+            ToggleExtendedTaskTabs(TabAction.Remove);
             this.WindowState = FormWindowState.Maximized;
             this.FormClosing += SocialExchangeForm_FormClosing;
 
@@ -58,12 +58,39 @@ namespace SocialExchangeWinForms
             StartAtWelcomeTab();
         }
 
-        private void HideExtendedTaskTabs()
+        private enum TabAction
         {
-            this.Tabs.Controls.Remove(this.DemographicsTaskTab);
-            this.Tabs.Controls.Remove(this.ImpRecogTaskTab);
-            this.Tabs.Controls.Remove(this.ExpRecogTaskTab);
-            this.Tabs.Controls.Remove(this.LikabilityRatingTab);
+            Remove,
+            Add
+        }
+
+        private void ToggleExtendedTaskTabs(TabAction tabAction)
+        {
+            switch(tabAction)
+            {
+                case TabAction.Remove:
+                    SafelyRemoveTab(this.DemographicsTaskTab);
+                    SafelyRemoveTab(this.ImpRecogTaskTab);
+                    SafelyRemoveTab(this.ExpRecogTaskTab);
+                    SafelyRemoveTab(this.LikabilityRatingTab);
+                    break;
+                case TabAction.Add:
+                    SafelyAddTab(this.DemographicsTaskTab);
+                    SafelyAddTab(this.ImpRecogTaskTab);
+                    SafelyAddTab(this.ExpRecogTaskTab);
+                    SafelyAddTab(this.LikabilityRatingTab);
+                    break;
+            }
+        }
+
+        private void SafelyRemoveTab(TabPage tab)
+        {
+            if (this.Tabs.Controls.Contains(tab)) { this.Tabs.Controls.Remove(tab); }
+        }
+
+        private void SafelyAddTab(TabPage tab)
+        {
+            if (!this.Tabs.Controls.Contains(tab)) { this.Tabs.Controls.Add(tab); }
         }
 
         private void SocialExchangeForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -443,7 +470,8 @@ namespace SocialExchangeWinForms
 
         private int GetPracticeCurrentRoundCalculatedPointResponse()
         {
-            return LogicEngine.TrustExchangePointsMultiplier * Practice_CurrentRoundRawPointResponse + (Practice_CurrentRoundRawPointResponse == 0 ? 0 : 1);
+            //return LogicEngine.TrustExchangePointsMultiplier * Practice_CurrentRoundRawPointResponse + (Practice_CurrentRoundRawPointResponse == 0 ? 0 : 1);
+            return LogicEngine.TrustExchangePointsMultiplier * Practice_CurrentRoundRawPointResponse;
         }
 
         private void NotifyPlayerOfPersonaResponse()
@@ -484,7 +512,7 @@ namespace SocialExchangeWinForms
                     scoreAtRoundStart > finalScore ? "lost" : "gained",
                     diff,
                     diff > 1 ? "s" : "",
-                    scoreAtRoundStart > Practice_PlayerScore ? "to" : "from"
+                    scoreAtRoundStart > finalScore ? "to" : "from"
                 );
 
             StatusButtonAsLabel.SetTextInvoke(contextualScoringMessage);
@@ -779,6 +807,8 @@ namespace SocialExchangeWinForms
 
                     Admin_RealTimeResponse_ToolStripMenuItem.Visible = true;
                     Admin_RealTimeResponse_ToolStripMenuItem.Checked = true;
+
+                    //ToggleExtendedTaskTabs(TabAction.Add);
                 }
             }
 
@@ -905,7 +935,7 @@ namespace SocialExchangeWinForms
             MessageBox.Show
             (
                 "Thank you for providing that information." + Environment.NewLine +
-                "The high accuracy of your feedback qualifies you for a final task." + Environment.NewLine +
+                "You qualified for a final task." + Environment.NewLine +
                 "Please, see the instructions in the final task.",
                 string.Format("Advancing to {0} Task.", LikabilityRatingTab.Text),
                 MessageBoxButtons.OK

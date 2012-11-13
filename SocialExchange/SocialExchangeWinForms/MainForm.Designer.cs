@@ -97,6 +97,24 @@
             this.DemographicsTab_Q009_TextBox = new System.Windows.Forms.TextBox();
             this.ImpRecogTaskTab = new System.Windows.Forms.TabPage();
             this.ImpRecogTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.ImpRecogSubmitButton = new System.Windows.Forms.Button();
+            this.ImpRecogStatusButtonAsLabel = new System.Windows.Forms.Button();
+            this.ExpRecogTaskTab = new System.Windows.Forms.TabPage();
+            this.ExpRecogTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.ExpRecogSubmitButton = new System.Windows.Forms.Button();
+            this.ExpRecogStatusButtonAsLabel = new System.Windows.Forms.Button();
+            this.LikabilityRatingTab = new System.Windows.Forms.TabPage();
+            this.LikabilityRatingUserControlPanel = new System.Windows.Forms.Panel();
+            this.MenuStrip = new System.Windows.Forms.MenuStrip();
+            this.File_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.File_Close_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Results_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Results_Points_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PointsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Admin_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Admin_Enabled_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Admin_AllowTabSelection_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Admin_RealTimeResponse_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ImpRecogImgA1 = new SocialExchangeWinForms.RecognitionUserControl();
             this.ImpRecogImgA2 = new SocialExchangeWinForms.RecognitionUserControl();
             this.ImpRecogImgA3 = new SocialExchangeWinForms.RecognitionUserControl();
@@ -121,12 +139,6 @@
             this.ImpRecogImgC6 = new SocialExchangeWinForms.RecognitionUserControl();
             this.ImpRecogImgC7 = new SocialExchangeWinForms.RecognitionUserControl();
             this.ImpRecogImgC8 = new SocialExchangeWinForms.RecognitionUserControl();
-            this.ImpRecogSubmitButton = new System.Windows.Forms.Button();
-            this.ImpRecogStatusButtonAsLabel = new System.Windows.Forms.Button();
-            this.ExpRecogTaskTab = new System.Windows.Forms.TabPage();
-            this.ExpRecogTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.ExpRecogSubmitButton = new System.Windows.Forms.Button();
-            this.ExpRecogStatusButtonAsLabel = new System.Windows.Forms.Button();
             this.ExpRecogImgA1 = new SocialExchangeWinForms.RecognitionUserControl();
             this.ExpRecogImgA2 = new SocialExchangeWinForms.RecognitionUserControl();
             this.ExpRecogImgA3 = new SocialExchangeWinForms.RecognitionUserControl();
@@ -151,19 +163,7 @@
             this.ExpRecogImgC6 = new SocialExchangeWinForms.RecognitionUserControl();
             this.ExpRecogImgC7 = new SocialExchangeWinForms.RecognitionUserControl();
             this.ExpRecogImgC8 = new SocialExchangeWinForms.RecognitionUserControl();
-            this.LikabilityRatingTab = new System.Windows.Forms.TabPage();
-            this.LikabilityRatingUserControlPanel = new System.Windows.Forms.Panel();
             this.LikabilityRatingUserControl = new InvestmentGame.LikabilityRatingUserControl();
-            this.MenuStrip = new System.Windows.Forms.MenuStrip();
-            this.File_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.File_Close_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Results_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Results_Points_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.PointsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Admin_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Admin_Enabled_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Admin_AllowTabSelection_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Admin_RealTimeResponse_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Tabs.SuspendLayout();
             this.WelcomeTab.SuspendLayout();
             this.Practice_TrustExchangeTaskTab.SuspendLayout();
@@ -217,6 +217,7 @@
             // 
             // WelcomeTab
             // 
+            this.WelcomeTab.AutoScroll = true;
             this.WelcomeTab.Controls.Add(this.WelcomeTabStartPracticeButton);
             this.WelcomeTab.Controls.Add(this.WelcomeTabTextBox);
             this.WelcomeTab.Location = new System.Drawing.Point(4, 22);
@@ -254,6 +255,7 @@
             // 
             // Practice_TrustExchangeTaskTab
             // 
+            this.Practice_TrustExchangeTaskTab.AutoScroll = true;
             this.Practice_TrustExchangeTaskTab.BackColor = System.Drawing.SystemColors.Control;
             this.Practice_TrustExchangeTaskTab.Controls.Add(this.Practice_ProgressBar);
             this.Practice_TrustExchangeTaskTab.Controls.Add(this.Practice_Panel);
@@ -374,6 +376,7 @@
             // 
             // TrustExchangeTaskTab
             // 
+            this.TrustExchangeTaskTab.AutoScroll = true;
             this.TrustExchangeTaskTab.BackColor = System.Drawing.SystemColors.Control;
             this.TrustExchangeTaskTab.Controls.Add(this.ProgressBar);
             this.TrustExchangeTaskTab.Controls.Add(this.ScoreButtonAsLabel);
@@ -495,6 +498,7 @@
             // 
             // DemographicsTaskTab
             // 
+            this.DemographicsTaskTab.AutoScroll = true;
             this.DemographicsTaskTab.BackColor = System.Drawing.SystemColors.Control;
             this.DemographicsTaskTab.Controls.Add(this.DemographicsStartButton);
             this.DemographicsTaskTab.Controls.Add(this.groupBox14);
@@ -1004,6 +1008,229 @@
             this.ImpRecogTableLayoutPanel.Size = new System.Drawing.Size(1151, 800);
             this.ImpRecogTableLayoutPanel.TabIndex = 0;
             // 
+            // ImpRecogSubmitButton
+            // 
+            this.ImpRecogTableLayoutPanel.SetColumnSpan(this.ImpRecogSubmitButton, 2);
+            this.ImpRecogSubmitButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ImpRecogSubmitButton.Enabled = false;
+            this.ImpRecogSubmitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ImpRecogSubmitButton.Location = new System.Drawing.Point(432, 761);
+            this.ImpRecogSubmitButton.Name = "ImpRecogSubmitButton";
+            this.ImpRecogSubmitButton.Size = new System.Drawing.Size(280, 36);
+            this.ImpRecogSubmitButton.TabIndex = 24;
+            this.ImpRecogSubmitButton.Text = "SUBMIT";
+            this.ImpRecogSubmitButton.UseVisualStyleBackColor = true;
+            this.ImpRecogSubmitButton.Click += new System.EventHandler(this.ImpRecogSubmitButton_Click);
+            // 
+            // ImpRecogStatusButtonAsLabel
+            // 
+            this.ImpRecogTableLayoutPanel.SetColumnSpan(this.ImpRecogStatusButtonAsLabel, 8);
+            this.ImpRecogStatusButtonAsLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ImpRecogStatusButtonAsLabel.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.ImpRecogStatusButtonAsLabel.FlatAppearance.BorderSize = 0;
+            this.ImpRecogStatusButtonAsLabel.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.ImpRecogStatusButtonAsLabel.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.ImpRecogStatusButtonAsLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ImpRecogStatusButtonAsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ImpRecogStatusButtonAsLabel.Location = new System.Drawing.Point(3, 3);
+            this.ImpRecogStatusButtonAsLabel.Name = "ImpRecogStatusButtonAsLabel";
+            this.ImpRecogStatusButtonAsLabel.Size = new System.Drawing.Size(1145, 35);
+            this.ImpRecogStatusButtonAsLabel.TabIndex = 25;
+            this.ImpRecogStatusButtonAsLabel.Text = "Choose 12 People To Play In The Next Session Of The Investment Game";
+            this.ImpRecogStatusButtonAsLabel.UseVisualStyleBackColor = true;
+            // 
+            // ExpRecogTaskTab
+            // 
+            this.ExpRecogTaskTab.AutoScroll = true;
+            this.ExpRecogTaskTab.BackColor = System.Drawing.SystemColors.Control;
+            this.ExpRecogTaskTab.Controls.Add(this.ExpRecogTableLayoutPanel);
+            this.ExpRecogTaskTab.Location = new System.Drawing.Point(4, 22);
+            this.ExpRecogTaskTab.Name = "ExpRecogTaskTab";
+            this.ExpRecogTaskTab.Size = new System.Drawing.Size(1151, 800);
+            this.ExpRecogTaskTab.TabIndex = 3;
+            this.ExpRecogTaskTab.Text = "Matching";
+            // 
+            // ExpRecogTableLayoutPanel
+            // 
+            this.ExpRecogTableLayoutPanel.ColumnCount = 8;
+            this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogSubmitButton, 3, 4);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogStatusButtonAsLabel, 0, 0);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA1, 0, 1);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA2, 1, 1);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA3, 2, 1);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA4, 3, 1);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA5, 4, 1);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA6, 5, 1);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA7, 6, 1);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA8, 7, 1);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB1, 0, 2);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB2, 1, 2);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB3, 2, 2);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB4, 3, 2);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB5, 4, 2);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB6, 5, 2);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB7, 6, 2);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB8, 7, 2);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC1, 0, 3);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC2, 1, 3);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC3, 2, 3);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC4, 3, 3);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC5, 4, 3);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC6, 5, 3);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC7, 6, 3);
+            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC8, 7, 3);
+            this.ExpRecogTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExpRecogTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.ExpRecogTableLayoutPanel.Name = "ExpRecogTableLayoutPanel";
+            this.ExpRecogTableLayoutPanel.RowCount = 5;
+            this.ExpRecogTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.ExpRecogTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.ExpRecogTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.ExpRecogTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.ExpRecogTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.ExpRecogTableLayoutPanel.Size = new System.Drawing.Size(1151, 800);
+            this.ExpRecogTableLayoutPanel.TabIndex = 1;
+            // 
+            // ExpRecogSubmitButton
+            // 
+            this.ExpRecogTableLayoutPanel.SetColumnSpan(this.ExpRecogSubmitButton, 2);
+            this.ExpRecogSubmitButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ExpRecogSubmitButton.Enabled = false;
+            this.ExpRecogSubmitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExpRecogSubmitButton.Location = new System.Drawing.Point(432, 761);
+            this.ExpRecogSubmitButton.Name = "ExpRecogSubmitButton";
+            this.ExpRecogSubmitButton.Size = new System.Drawing.Size(280, 36);
+            this.ExpRecogSubmitButton.TabIndex = 27;
+            this.ExpRecogSubmitButton.Text = "SUBMIT";
+            this.ExpRecogSubmitButton.UseVisualStyleBackColor = true;
+            this.ExpRecogSubmitButton.Click += new System.EventHandler(this.ExpRecogSubmitButton_Click);
+            // 
+            // ExpRecogStatusButtonAsLabel
+            // 
+            this.ExpRecogTableLayoutPanel.SetColumnSpan(this.ExpRecogStatusButtonAsLabel, 8);
+            this.ExpRecogStatusButtonAsLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExpRecogStatusButtonAsLabel.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.ExpRecogStatusButtonAsLabel.FlatAppearance.BorderSize = 0;
+            this.ExpRecogStatusButtonAsLabel.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.ExpRecogStatusButtonAsLabel.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.ExpRecogStatusButtonAsLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExpRecogStatusButtonAsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExpRecogStatusButtonAsLabel.Location = new System.Drawing.Point(3, 3);
+            this.ExpRecogStatusButtonAsLabel.Name = "ExpRecogStatusButtonAsLabel";
+            this.ExpRecogStatusButtonAsLabel.Size = new System.Drawing.Size(1145, 35);
+            this.ExpRecogStatusButtonAsLabel.TabIndex = 26;
+            this.ExpRecogStatusButtonAsLabel.Text = "You played 12 of these people. Pick 6 who gave you points and 6 who did NOT give " +
+    "you points.";
+            this.ExpRecogStatusButtonAsLabel.UseVisualStyleBackColor = true;
+            // 
+            // LikabilityRatingTab
+            // 
+            this.LikabilityRatingTab.AutoScroll = true;
+            this.LikabilityRatingTab.Controls.Add(this.LikabilityRatingUserControlPanel);
+            this.LikabilityRatingTab.Location = new System.Drawing.Point(4, 22);
+            this.LikabilityRatingTab.Name = "LikabilityRatingTab";
+            this.LikabilityRatingTab.Size = new System.Drawing.Size(1151, 800);
+            this.LikabilityRatingTab.TabIndex = 6;
+            this.LikabilityRatingTab.Text = "Rating";
+            this.LikabilityRatingTab.UseVisualStyleBackColor = true;
+            // 
+            // LikabilityRatingUserControlPanel
+            // 
+            this.LikabilityRatingUserControlPanel.AutoSize = true;
+            this.LikabilityRatingUserControlPanel.Controls.Add(this.LikabilityRatingUserControl);
+            this.LikabilityRatingUserControlPanel.Location = new System.Drawing.Point(269, 47);
+            this.LikabilityRatingUserControlPanel.Name = "LikabilityRatingUserControlPanel";
+            this.LikabilityRatingUserControlPanel.Size = new System.Drawing.Size(612, 706);
+            this.LikabilityRatingUserControlPanel.TabIndex = 0;
+            // 
+            // MenuStrip
+            // 
+            this.MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.File_ToolStripMenuItem,
+            this.Results_ToolStripMenuItem,
+            this.Admin_ToolStripMenuItem});
+            this.MenuStrip.Location = new System.Drawing.Point(0, 0);
+            this.MenuStrip.Name = "MenuStrip";
+            this.MenuStrip.Size = new System.Drawing.Size(1184, 24);
+            this.MenuStrip.TabIndex = 1;
+            this.MenuStrip.Text = "menuStrip1";
+            // 
+            // File_ToolStripMenuItem
+            // 
+            this.File_ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.File_Close_ToolStripMenuItem});
+            this.File_ToolStripMenuItem.Name = "File_ToolStripMenuItem";
+            this.File_ToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.File_ToolStripMenuItem.Text = "File";
+            // 
+            // File_Close_ToolStripMenuItem
+            // 
+            this.File_Close_ToolStripMenuItem.Name = "File_Close_ToolStripMenuItem";
+            this.File_Close_ToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.File_Close_ToolStripMenuItem.Text = "Close";
+            this.File_Close_ToolStripMenuItem.Click += new System.EventHandler(this.CloseToolStripMenuItem_Click);
+            // 
+            // Results_ToolStripMenuItem
+            // 
+            this.Results_ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Results_Points_ToolStripMenuItem});
+            this.Results_ToolStripMenuItem.Name = "Results_ToolStripMenuItem";
+            this.Results_ToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.Results_ToolStripMenuItem.Text = "Results";
+            // 
+            // Results_Points_ToolStripMenuItem
+            // 
+            this.Results_Points_ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.PointsToolStripMenuItem});
+            this.Results_Points_ToolStripMenuItem.Name = "Results_Points_ToolStripMenuItem";
+            this.Results_Points_ToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.Results_Points_ToolStripMenuItem.Text = "Points";
+            // 
+            // PointsToolStripMenuItem
+            // 
+            this.PointsToolStripMenuItem.Name = "PointsToolStripMenuItem";
+            this.PointsToolStripMenuItem.Size = new System.Drawing.Size(80, 22);
+            this.PointsToolStripMenuItem.Text = "0";
+            // 
+            // Admin_ToolStripMenuItem
+            // 
+            this.Admin_ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Admin_Enabled_ToolStripMenuItem,
+            this.Admin_AllowTabSelection_ToolStripMenuItem,
+            this.Admin_RealTimeResponse_ToolStripMenuItem});
+            this.Admin_ToolStripMenuItem.Name = "Admin_ToolStripMenuItem";
+            this.Admin_ToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.Admin_ToolStripMenuItem.Text = "Admin";
+            // 
+            // Admin_Enabled_ToolStripMenuItem
+            // 
+            this.Admin_Enabled_ToolStripMenuItem.Name = "Admin_Enabled_ToolStripMenuItem";
+            this.Admin_Enabled_ToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.Admin_Enabled_ToolStripMenuItem.Text = "Enabled";
+            this.Admin_Enabled_ToolStripMenuItem.Click += new System.EventHandler(this.Admin_Enabled_ToolStripMenuItem_Click);
+            // 
+            // Admin_AllowTabSelection_ToolStripMenuItem
+            // 
+            this.Admin_AllowTabSelection_ToolStripMenuItem.Name = "Admin_AllowTabSelection_ToolStripMenuItem";
+            this.Admin_AllowTabSelection_ToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.Admin_AllowTabSelection_ToolStripMenuItem.Text = "Allow Tab Selection";
+            this.Admin_AllowTabSelection_ToolStripMenuItem.Visible = false;
+            // 
+            // Admin_RealTimeResponse_ToolStripMenuItem
+            // 
+            this.Admin_RealTimeResponse_ToolStripMenuItem.Name = "Admin_RealTimeResponse_ToolStripMenuItem";
+            this.Admin_RealTimeResponse_ToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.Admin_RealTimeResponse_ToolStripMenuItem.Text = "Real Time Response";
+            this.Admin_RealTimeResponse_ToolStripMenuItem.Visible = false;
+            // 
             // ImpRecogImgA1
             // 
             this.ImpRecogImgA1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1243,128 +1470,6 @@
             this.ImpRecogImgC8.RecognitionRound = null;
             this.ImpRecogImgC8.Size = new System.Drawing.Size(144, 233);
             this.ImpRecogImgC8.TabIndex = 23;
-            // 
-            // ImpRecogSubmitButton
-            // 
-            this.ImpRecogTableLayoutPanel.SetColumnSpan(this.ImpRecogSubmitButton, 2);
-            this.ImpRecogSubmitButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ImpRecogSubmitButton.Enabled = false;
-            this.ImpRecogSubmitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ImpRecogSubmitButton.Location = new System.Drawing.Point(432, 761);
-            this.ImpRecogSubmitButton.Name = "ImpRecogSubmitButton";
-            this.ImpRecogSubmitButton.Size = new System.Drawing.Size(280, 36);
-            this.ImpRecogSubmitButton.TabIndex = 24;
-            this.ImpRecogSubmitButton.Text = "SUBMIT";
-            this.ImpRecogSubmitButton.UseVisualStyleBackColor = true;
-            this.ImpRecogSubmitButton.Click += new System.EventHandler(this.ImpRecogSubmitButton_Click);
-            // 
-            // ImpRecogStatusButtonAsLabel
-            // 
-            this.ImpRecogTableLayoutPanel.SetColumnSpan(this.ImpRecogStatusButtonAsLabel, 8);
-            this.ImpRecogStatusButtonAsLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ImpRecogStatusButtonAsLabel.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.ImpRecogStatusButtonAsLabel.FlatAppearance.BorderSize = 0;
-            this.ImpRecogStatusButtonAsLabel.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-            this.ImpRecogStatusButtonAsLabel.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            this.ImpRecogStatusButtonAsLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ImpRecogStatusButtonAsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ImpRecogStatusButtonAsLabel.Location = new System.Drawing.Point(3, 3);
-            this.ImpRecogStatusButtonAsLabel.Name = "ImpRecogStatusButtonAsLabel";
-            this.ImpRecogStatusButtonAsLabel.Size = new System.Drawing.Size(1145, 35);
-            this.ImpRecogStatusButtonAsLabel.TabIndex = 25;
-            this.ImpRecogStatusButtonAsLabel.Text = "Choose 12 People To Play In The Next Session Of The Investment Game";
-            this.ImpRecogStatusButtonAsLabel.UseVisualStyleBackColor = true;
-            // 
-            // ExpRecogTaskTab
-            // 
-            this.ExpRecogTaskTab.BackColor = System.Drawing.SystemColors.Control;
-            this.ExpRecogTaskTab.Controls.Add(this.ExpRecogTableLayoutPanel);
-            this.ExpRecogTaskTab.Location = new System.Drawing.Point(4, 22);
-            this.ExpRecogTaskTab.Name = "ExpRecogTaskTab";
-            this.ExpRecogTaskTab.Size = new System.Drawing.Size(1151, 800);
-            this.ExpRecogTaskTab.TabIndex = 3;
-            this.ExpRecogTaskTab.Text = "Matching";
-            // 
-            // ExpRecogTableLayoutPanel
-            // 
-            this.ExpRecogTableLayoutPanel.ColumnCount = 8;
-            this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.ExpRecogTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogSubmitButton, 3, 4);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogStatusButtonAsLabel, 0, 0);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA1, 0, 1);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA2, 1, 1);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA3, 2, 1);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA4, 3, 1);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA5, 4, 1);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA6, 5, 1);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA7, 6, 1);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgA8, 7, 1);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB1, 0, 2);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB2, 1, 2);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB3, 2, 2);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB4, 3, 2);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB5, 4, 2);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB6, 5, 2);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB7, 6, 2);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgB8, 7, 2);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC1, 0, 3);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC2, 1, 3);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC3, 2, 3);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC4, 3, 3);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC5, 4, 3);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC6, 5, 3);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC7, 6, 3);
-            this.ExpRecogTableLayoutPanel.Controls.Add(this.ExpRecogImgC8, 7, 3);
-            this.ExpRecogTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpRecogTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
-            this.ExpRecogTableLayoutPanel.Name = "ExpRecogTableLayoutPanel";
-            this.ExpRecogTableLayoutPanel.RowCount = 5;
-            this.ExpRecogTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
-            this.ExpRecogTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.ExpRecogTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.ExpRecogTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.ExpRecogTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
-            this.ExpRecogTableLayoutPanel.Size = new System.Drawing.Size(1151, 800);
-            this.ExpRecogTableLayoutPanel.TabIndex = 1;
-            // 
-            // ExpRecogSubmitButton
-            // 
-            this.ExpRecogTableLayoutPanel.SetColumnSpan(this.ExpRecogSubmitButton, 2);
-            this.ExpRecogSubmitButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ExpRecogSubmitButton.Enabled = false;
-            this.ExpRecogSubmitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExpRecogSubmitButton.Location = new System.Drawing.Point(432, 761);
-            this.ExpRecogSubmitButton.Name = "ExpRecogSubmitButton";
-            this.ExpRecogSubmitButton.Size = new System.Drawing.Size(280, 36);
-            this.ExpRecogSubmitButton.TabIndex = 27;
-            this.ExpRecogSubmitButton.Text = "SUBMIT";
-            this.ExpRecogSubmitButton.UseVisualStyleBackColor = true;
-            this.ExpRecogSubmitButton.Click += new System.EventHandler(this.ExpRecogSubmitButton_Click);
-            // 
-            // ExpRecogStatusButtonAsLabel
-            // 
-            this.ExpRecogTableLayoutPanel.SetColumnSpan(this.ExpRecogStatusButtonAsLabel, 8);
-            this.ExpRecogStatusButtonAsLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpRecogStatusButtonAsLabel.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.ExpRecogStatusButtonAsLabel.FlatAppearance.BorderSize = 0;
-            this.ExpRecogStatusButtonAsLabel.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-            this.ExpRecogStatusButtonAsLabel.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            this.ExpRecogStatusButtonAsLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ExpRecogStatusButtonAsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExpRecogStatusButtonAsLabel.Location = new System.Drawing.Point(3, 3);
-            this.ExpRecogStatusButtonAsLabel.Name = "ExpRecogStatusButtonAsLabel";
-            this.ExpRecogStatusButtonAsLabel.Size = new System.Drawing.Size(1145, 35);
-            this.ExpRecogStatusButtonAsLabel.TabIndex = 26;
-            this.ExpRecogStatusButtonAsLabel.Text = "You played 12 of these people. Pick 6 who gave you points and 6 who did NOT give " +
-    "you points.";
-            this.ExpRecogStatusButtonAsLabel.UseVisualStyleBackColor = true;
             // 
             // ExpRecogImgA1
             // 
@@ -1606,25 +1711,6 @@
             this.ExpRecogImgC8.Size = new System.Drawing.Size(144, 233);
             this.ExpRecogImgC8.TabIndex = 23;
             // 
-            // LikabilityRatingTab
-            // 
-            this.LikabilityRatingTab.Controls.Add(this.LikabilityRatingUserControlPanel);
-            this.LikabilityRatingTab.Location = new System.Drawing.Point(4, 22);
-            this.LikabilityRatingTab.Name = "LikabilityRatingTab";
-            this.LikabilityRatingTab.Size = new System.Drawing.Size(1151, 800);
-            this.LikabilityRatingTab.TabIndex = 6;
-            this.LikabilityRatingTab.Text = "Rating";
-            this.LikabilityRatingTab.UseVisualStyleBackColor = true;
-            // 
-            // LikabilityRatingUserControlPanel
-            // 
-            this.LikabilityRatingUserControlPanel.AutoSize = true;
-            this.LikabilityRatingUserControlPanel.Controls.Add(this.LikabilityRatingUserControl);
-            this.LikabilityRatingUserControlPanel.Location = new System.Drawing.Point(269, 47);
-            this.LikabilityRatingUserControlPanel.Name = "LikabilityRatingUserControlPanel";
-            this.LikabilityRatingUserControlPanel.Size = new System.Drawing.Size(612, 706);
-            this.LikabilityRatingUserControlPanel.TabIndex = 0;
-            // 
             // LikabilityRatingUserControl
             // 
             this.LikabilityRatingUserControl.Location = new System.Drawing.Point(3, 3);
@@ -1636,86 +1722,6 @@
             this.LikabilityRatingUserControl.SizeChanged += new System.EventHandler(this.LikabilityRatingUserControl_SizeChanged);
             this.LikabilityRatingUserControl.Resize += new System.EventHandler(this.LikabilityRatingUserControl_Resize);
             this.LikabilityRatingUserControl.StyleChanged += new System.EventHandler(this.LikabilityRatingUserControl_StyleChanged);
-            // 
-            // MenuStrip
-            // 
-            this.MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.File_ToolStripMenuItem,
-            this.Results_ToolStripMenuItem,
-            this.Admin_ToolStripMenuItem});
-            this.MenuStrip.Location = new System.Drawing.Point(0, 0);
-            this.MenuStrip.Name = "MenuStrip";
-            this.MenuStrip.Size = new System.Drawing.Size(1184, 24);
-            this.MenuStrip.TabIndex = 1;
-            this.MenuStrip.Text = "menuStrip1";
-            // 
-            // File_ToolStripMenuItem
-            // 
-            this.File_ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.File_Close_ToolStripMenuItem});
-            this.File_ToolStripMenuItem.Name = "File_ToolStripMenuItem";
-            this.File_ToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.File_ToolStripMenuItem.Text = "File";
-            // 
-            // File_Close_ToolStripMenuItem
-            // 
-            this.File_Close_ToolStripMenuItem.Name = "File_Close_ToolStripMenuItem";
-            this.File_Close_ToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
-            this.File_Close_ToolStripMenuItem.Text = "Close";
-            this.File_Close_ToolStripMenuItem.Click += new System.EventHandler(this.CloseToolStripMenuItem_Click);
-            // 
-            // Results_ToolStripMenuItem
-            // 
-            this.Results_ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Results_Points_ToolStripMenuItem});
-            this.Results_ToolStripMenuItem.Name = "Results_ToolStripMenuItem";
-            this.Results_ToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
-            this.Results_ToolStripMenuItem.Text = "Results";
-            // 
-            // Results_Points_ToolStripMenuItem
-            // 
-            this.Results_Points_ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.PointsToolStripMenuItem});
-            this.Results_Points_ToolStripMenuItem.Name = "Results_Points_ToolStripMenuItem";
-            this.Results_Points_ToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.Results_Points_ToolStripMenuItem.Text = "Points";
-            // 
-            // PointsToolStripMenuItem
-            // 
-            this.PointsToolStripMenuItem.Name = "PointsToolStripMenuItem";
-            this.PointsToolStripMenuItem.Size = new System.Drawing.Size(80, 22);
-            this.PointsToolStripMenuItem.Text = "0";
-            // 
-            // Admin_ToolStripMenuItem
-            // 
-            this.Admin_ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Admin_Enabled_ToolStripMenuItem,
-            this.Admin_AllowTabSelection_ToolStripMenuItem,
-            this.Admin_RealTimeResponse_ToolStripMenuItem});
-            this.Admin_ToolStripMenuItem.Name = "Admin_ToolStripMenuItem";
-            this.Admin_ToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
-            this.Admin_ToolStripMenuItem.Text = "Admin";
-            // 
-            // Admin_Enabled_ToolStripMenuItem
-            // 
-            this.Admin_Enabled_ToolStripMenuItem.Name = "Admin_Enabled_ToolStripMenuItem";
-            this.Admin_Enabled_ToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
-            this.Admin_Enabled_ToolStripMenuItem.Text = "Enabled";
-            this.Admin_Enabled_ToolStripMenuItem.Click += new System.EventHandler(this.Admin_Enabled_ToolStripMenuItem_Click);
-            // 
-            // Admin_AllowTabSelection_ToolStripMenuItem
-            // 
-            this.Admin_AllowTabSelection_ToolStripMenuItem.Name = "Admin_AllowTabSelection_ToolStripMenuItem";
-            this.Admin_AllowTabSelection_ToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
-            this.Admin_AllowTabSelection_ToolStripMenuItem.Text = "Allow Tab Selection";
-            this.Admin_AllowTabSelection_ToolStripMenuItem.Visible = false;
-            // 
-            // Admin_RealTimeResponse_ToolStripMenuItem
-            // 
-            this.Admin_RealTimeResponse_ToolStripMenuItem.Name = "Admin_RealTimeResponse_ToolStripMenuItem";
-            this.Admin_RealTimeResponse_ToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
-            this.Admin_RealTimeResponse_ToolStripMenuItem.Text = "Real Time Response";
-            this.Admin_RealTimeResponse_ToolStripMenuItem.Visible = false;
             // 
             // SocialExchangeForm
             // 

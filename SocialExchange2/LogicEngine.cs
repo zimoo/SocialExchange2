@@ -99,7 +99,8 @@ namespace SocialExchange2
                         new TrustExchangeRound
                         (
                             persona,
-                            (points) => points * TrustExchangePointsMultiplier + 1,
+                            //(points) => points * TrustExchangePointsMultiplier + 1,
+                            (points) => points * TrustExchangePointsMultiplier,
                             GetNextTrustExchangePersonaClassification
                         )
             );
